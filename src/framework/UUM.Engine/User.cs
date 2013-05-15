@@ -8,7 +8,6 @@ namespace UUM.Engin
 	using System.Diagnostics;
 	using System.Linq;
 	using System.Xml;
-	using System;
 	using System.Text;
 	using System.IO;
 	// Add references to Soap and Binary formatters. 
@@ -47,7 +46,7 @@ namespace UUM.Engin
 			return string.Format("User: IsEnabled={0}, Login={1}",
 			                     IsEnabled, Login);
 		}
-		string filepath = "";
+		//string filepath = "D:/Work/uum/Users.xml";
 		#region ISerializable
 
 		public System.Xml.Schema.XmlSchema GetSchema()
@@ -55,52 +54,28 @@ namespace UUM.Engin
 			return null;
 		}
 		
-		public void WriteXml(XmlReader reader)
-		{
-			
-			//Login = reader.GetAttribute("Id");
-			//reader.ReadStartElement();
-			//Firstname = reader.ReadElementString("Firstname");
-			//Lastname = reader.ReadElementString("Lastname");
-			//IsEnabled = Convert.ToBoolean(reader.ReadElementString("Active"));
-			//reader.MoveToContent();
-			//bool empty = reader.IsEmptyElement;
-			//reader.ReadEndElement();
-
-        IFormatter formatter = new BinaryFormatter();
-       	SerializeItem(filepath, formatter); // Serialize an instance of the class.
-        Console.WriteLine("Done deserializing");
-        Console.ReadLine();
-    }
-
+		
     public static void SerializeItem(string filepath, IFormatter formatter)
-    {
+    { 
+    	
+       
+       
         // Create an instance of the type and serialize it.
         User t = new User("Ahmed.labib","Ahmed","Labib",false);
        // t.MyProperty = "Hello World";
         FileStream s = new FileStream(filepath , FileMode.Create);
-        formatter.Serialize(s, t);            
+        formatter.Serialize(s, t);     
         s.Close();
+ 		Console.WriteLine("Done deserializing");
+        Console.ReadLine();        
+        
     }
     
-		
-		
-		
-		public void ReadXml(XmlWriter writer)
-		{
-			
-		//	writer.WriteAttributeString("Id", Login);
-		//	writer.WriteElementString("Firstname", Firstname);
-		//	writer.WriteElementString("Lastname", Lastname);
-		//	writer.WriteElementString("Active", Convert.ToString(IsEnabled));
-		IFormatter formatter = new BinaryFormatter();
+		 public static void DeserializeItem(string filepath, IFormatter formatter)
+    {
 		 	DeserializeItem(filepath, formatter); // Deserialize the instance.
 			Console.WriteLine("Done Serializing");
         	Console.ReadLine();
-		
-		}
-		 public static void DeserializeItem(string filepath, IFormatter formatter)
-    {
         FileStream s = new FileStream(filepath, FileMode.Open);
         User t = (User)formatter.Deserialize(s);
         //Console.WriteLine(t.MyProperty);            
@@ -112,7 +87,7 @@ namespace UUM.Engin
 		
 		public void GetObjectData(SerializationInfo info, StreamingContext context)
 		{
-			throw new NotImplementedException();
+			  info.AddValue("props", Login, typeof(string));
 		}
 	}
 }
