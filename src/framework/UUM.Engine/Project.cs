@@ -20,6 +20,9 @@ namespace UUM.Engine
 		{
 		}
 		
+		protected Project(SerializationInfo info, StreamingContext context)
+			: base(info, context) { }
+		
 		public string ProjectName
 		{
 			get { return GetValue<string>(ProjectNameProperty); }
