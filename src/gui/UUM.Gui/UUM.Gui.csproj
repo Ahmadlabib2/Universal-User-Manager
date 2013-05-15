@@ -54,6 +54,9 @@
     <Reference Include="Catel.Core">
       <HintPath>..\..\packages\Catel.Core.3.5\lib\NET40\Catel.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Catel.Extensions.Controls">
+      <HintPath>..\..\packages\Catel.Extensions.Controls.3.5\lib\NET40\Catel.Extensions.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="Catel.MVVM">
       <HintPath>..\..\packages\Catel.MVVM.3.5\lib\net40\Catel.MVVM.dll</HintPath>
     </Reference>

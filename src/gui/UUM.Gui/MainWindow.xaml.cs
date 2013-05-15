@@ -11,6 +11,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 
+using Catel.Data;
+using UUM.Controls.ViewModels;
 using UUM.Engine;
 
 namespace UUM.Gui
@@ -22,9 +24,16 @@ namespace UUM.Gui
 	{
 		public MainWindow()
 		{
-			IFormatter formatter = new BinaryFormatter();
-			User.SerializeItem("D:/Work/uum/Users.xml", formatter);
 			InitializeComponent();
+
+			//TODO: Remove this test code
+			User user = new User()
+			{
+				FirstName = "Albert",
+				LastName = "Einstein"
+			};
+			user.Save("Users.xml", SerializationMode.Xml);
+			DataContext = new UserViewModel(user);
 		}
 	}
 }
