@@ -3,3 +3,5 @@ bin
 obj
 /src/packages/Catel.Core.3.5
 /src/packages/Catel.MVVM.3.5
+
+/src/*.suo
