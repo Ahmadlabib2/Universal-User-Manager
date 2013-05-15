@@ -56,7 +56,7 @@ namespace UUM.Engine
 			set { SetValue(PhoneNumberProperty, value); }
 		}
 
-		public static readonly PropertyData PhoneNumberProperty = RegisterProperty("PhoneNummber", typeof(string));
+		public static readonly PropertyData PhoneNumberProperty = RegisterProperty("PhoneNumber", typeof(string));
 		
 		public bool IsEnabled
 		{
@@ -64,7 +64,7 @@ namespace UUM.Engine
 			set { SetValue(IsEnabledProperty, value); }
 		}
 
-		public static readonly PropertyData IsEnabledProperty = RegisterProperty("IsEnabled", typeof(bool));
+		public static readonly PropertyData IsEnabledProperty = RegisterProperty("IsEnabled", typeof(bool), true);
 		
 		
 	}
