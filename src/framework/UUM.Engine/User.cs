@@ -1,6 +1,6 @@
 ﻿// See LICENCE.txt in the root for conditions of use
 
-namespace UUM.Engin
+namespace UUM.Engine
 
 {
 	using System;
@@ -10,7 +10,7 @@ namespace UUM.Engin
 	using System.Xml;
 	using System.Text;
 	using System.IO;
-	// Add references to Soap and Binary formatters. 
+	// Add references to Soap and Binary formatters.
 	using System.Runtime.Serialization.Formatters.Binary;
 	using System.Runtime.Serialization;
 
@@ -55,39 +55,36 @@ namespace UUM.Engin
 		}
 		
 		
-    public static void SerializeItem(string filepath, IFormatter formatter)
-    { 
-    	
-       
-       
-        // Create an instance of the type and serialize it.
-        User t = new User("Ahmed.labib","Ahmed","Labib",false);
-       // t.MyProperty = "Hello World";
-        FileStream s = new FileStream(filepath , FileMode.Create);
-        formatter.Serialize(s, t);     
-        s.Close();
- 		Console.WriteLine("Done deserializing");
-        Console.ReadLine();        
-        
-    }
-    
-		 public static void DeserializeItem(string filepath, IFormatter formatter)
-    {
-		 	DeserializeItem(filepath, formatter); // Deserialize the instance.
-			Console.WriteLine("Done Serializing");
-        	Console.ReadLine();
-        FileStream s = new FileStream(filepath, FileMode.Open);
-        User t = (User)formatter.Deserialize(s);
-        //Console.WriteLine(t.MyProperty);            
-    }       
-		#endregion
-	
+		public static void SerializeItem(string filepath, IFormatter formatter)
+		{
+			// Create an instance of the type and serialize it.
+			User t = new User("Ahmed.labib","Ahmed","Labib",false);
+			// t.MyProperty = "Hello World";
+			FileStream s = new FileStream(filepath , FileMode.Create);
+			formatter.Serialize(s, t);
+			s.Close();
+			Console.WriteLine("Done deserializing");
+			Console.ReadLine();
+			
+		}
 		
-	
+		public static void DeserializeItem(string filepath, IFormatter formatter)
+		{
+			DeserializeItem(filepath, formatter); // Deserialize the instance.
+			Console.WriteLine("Done Serializing");
+			Console.ReadLine();
+			FileStream s = new FileStream(filepath, FileMode.Open);
+			User t = (User)formatter.Deserialize(s);
+			//Console.WriteLine(t.MyProperty);
+		}
+		#endregion
+		
+		
+		
 		
 		public void GetObjectData(SerializationInfo info, StreamingContext context)
 		{
-			  info.AddValue("props", Login, typeof(string));
+			info.AddValue("props", Login, typeof(string));
 		}
 	}
 }
