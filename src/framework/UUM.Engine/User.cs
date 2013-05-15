@@ -42,11 +42,30 @@ namespace UUM.Engine
 
 		public static readonly PropertyData LastNameProperty = RegisterProperty("LastName", typeof(string));
 
-		public Boolean IsEnabled {get;set;}
+		public string EmailAddress
+		{
+			get { return GetValue<string>(EmailAddressProperty); }
+			set { SetValue(EmailAddressProperty, value); }
+		}
+
+		public static readonly PropertyData EmailAddressProperty = RegisterProperty("EmailAddress", typeof(string));
 		
-		public String EmailAddress {get; set;}
+		public string PhoneNumber
+		{
+			get { return GetValue<string>(PhoneNumberProperty); }
+			set { SetValue(PhoneNumberProperty, value); }
+		}
 
-		public String PhoneNumber {get; set;}
+		public static readonly PropertyData PhoneNumberProperty = RegisterProperty("PhoneNummber", typeof(string));
+		
+		public bool IsEnabled
+		{
+			get { return GetValue<bool>(IsEnabledProperty); }
+			set { SetValue(IsEnabledProperty, value); }
+		}
 
+		public static readonly PropertyData IsEnabledProperty = RegisterProperty("IsEnabled", typeof(bool));
+		
+		
 	}
 }
