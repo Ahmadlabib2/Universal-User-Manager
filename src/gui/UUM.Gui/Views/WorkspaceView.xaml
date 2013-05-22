@@ -14,7 +14,10 @@
 				<Separator></Separator>
 				<MenuItem Header="Exit" Click="ApplicationExit_Click"></MenuItem>
 			</MenuItem>
-		</Menu>
+            <MenuItem Header="_Plugins"
+                      ItemsSource="{Binding Plugins}">
+            </MenuItem>
+        </Menu>
 		<uum:ProjectView DataContext="{Binding Project}" />
 	</DockPanel>
 </catel:UserControl>

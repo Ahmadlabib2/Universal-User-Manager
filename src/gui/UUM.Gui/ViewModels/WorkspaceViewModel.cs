@@ -1,7 +1,14 @@
 ﻿
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.Composition;
 using Catel.Data;
 using Catel.MVVM;
+
+using UUM.Api;
+using System.ComponentModel.Composition.Hosting;
+
 using UUM.Engine;
 using UUM.Controls.ViewModels;
 
@@ -17,6 +24,12 @@ namespace UUM.Gui.ViewModels
 			NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
 			SaveProject = new Command(OnSaveProjectExecuted, OnSaveProjectCanExecute);
 			//TODO: LoadProject
+
+            // MEF loading of available plugins
+            var catalog = new DirectoryCatalog(".", "UUM.Plugin.*.dll");
+            var container = new CompositionContainer(catalog);
+            
+            container.SatisfyImportsOnce(this);
 		}
 		
 		#region Property: Project
@@ -57,5 +70,8 @@ namespace UUM.Gui.ViewModels
 			return Project != null;
 		}
 		#endregion
+
+        [ImportMany(AllowRecomposition = true)]
+        public ObservableCollection<IPlugin> Plugins { get; set; }
 	}
 }
