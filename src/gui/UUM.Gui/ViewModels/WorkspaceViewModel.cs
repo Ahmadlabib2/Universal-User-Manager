@@ -9,7 +9,6 @@ using Catel.MVVM;
 using Catel.MVVM.Services;
 using UUM.Api;
 using UUM.Controls.ViewModels;
-using UUM.Engine;
 using UUM.Engine.Models;
 
 namespace UUM.Gui.ViewModels
@@ -19,7 +18,10 @@ namespace UUM.Gui.ViewModels
 	/// </summary>
 	public class WorkspaceViewModel : ViewModelBase
 	{
-		public WorkspaceViewModel()
+	    /// <summary>UUM Project files|*.uumx|All files|*.*</summary>
+	    public const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
+
+	    public WorkspaceViewModel()
 		{
 			NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
 			SaveProject = new Command(OnSaveProjectExecuted, OnSaveProjectCanExecute);
@@ -75,7 +77,7 @@ namespace UUM.Gui.ViewModels
 		private void OnSaveProjectExecuted()
 		{
 			var saveFileService = GetService<ISaveFileService>();
-			saveFileService.Filter = "UUM Project files|*.uumx|All files|*.*";
+			saveFileService.Filter = UumProjectFileFilter;
 			if (saveFileService.DetermineFile())
 			{
 				Project.Project.Save(saveFileService.FileName ,SerializationMode.Xml);
@@ -95,17 +97,17 @@ namespace UUM.Gui.ViewModels
 		private void OnLoadProjectExecuted()
 		{
 			var openFileService = GetService<IOpenFileService>();
-			openFileService.Filter = "All files|*.*";
+            openFileService.Filter = UumProjectFileFilter;
 			if (openFileService.DetermineFile())
 			{
-				ProjectModel newProjectModel = ProjectModel.Load(openFileService.FileName);
+				ProjectModel newProjectModel = ProjectModel.Load(openFileService.FileName, SerializationMode.Xml);
 				Project = new ProjectViewModel(newProjectModel);
 			}
 			
 		}
 		private bool OnLoadProjectCanExecute()
 		{
-			return Project != null;
+			return Project == null;
 		}
 		#endregion
 		
