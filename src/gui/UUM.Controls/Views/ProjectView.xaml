@@ -20,9 +20,9 @@
 		</catel:StackGrid.ColumnDefinitions>
 		
 		<Label Content="Project Name" />
-		<TextBox Text="{Binding Model.Name}" />
+		<TextBox Text="{Binding Project.Name}" />
 		
 		<Label Content="Project Description" />
-		<TextBox Text="{Binding Model.Description}" />
+		<TextBox Text="{Binding Project.Description}" />
 	</catel:StackGrid>
 </catel:UserControl>

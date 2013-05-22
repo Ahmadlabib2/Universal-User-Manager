@@ -1,6 +1,6 @@
 ﻿using Catel.Data;
 using Catel.MVVM;
-using UUM.Engine;
+using UUM.Engine.Models;
 
 namespace UUM.Controls.ViewModels
 {
@@ -13,9 +13,9 @@ namespace UUM.Controls.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="UserViewModel"/> class.
         /// </summary>
-        public UserViewModel(User model)
+        public UserViewModel(UserModel model)
         {
-            Model = model;
+            User = model;
         }
         #endregion
 
@@ -24,21 +24,22 @@ namespace UUM.Controls.ViewModels
         /// Gets the title of the view model.
         /// </summary>
         /// <value>The title.</value>
-        public override string Title { get { return "User view model"; } }
+        public override string Title { get { return "User"; } }
 
         #region Model
 
         [Model]
-        public User Model
+        public UserModel User
         {
-            get { return GetValue<User>(ModelProperty); }
+            get { return GetValue<UserModel>(ModelProperty); }
             private set { SetValue(ModelProperty, value); }
         }
 
         /// <summary>
         /// Register the Model property so it is known in the class.
         /// </summary>
-        public static readonly PropertyData ModelProperty = RegisterProperty("Model", typeof(User));
+        public static readonly PropertyData ModelProperty =
+            RegisterProperty("User", typeof(UserModel));
 
         #endregion
 

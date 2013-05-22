@@ -10,6 +10,7 @@ using Catel.MVVM.Services;
 using UUM.Api;
 using UUM.Controls.ViewModels;
 using UUM.Engine;
+using UUM.Engine.Models;
 
 namespace UUM.Gui.ViewModels
 {
@@ -31,8 +32,20 @@ namespace UUM.Gui.ViewModels
             
             container.SatisfyImportsOnce(this);
 		}
-		
-		#region Property: Project
+
+        #region Properties
+        /// <summary>
+        /// Gets the title of the view model.
+        /// </summary>
+        /// <value>The title.</value>
+        public override string Title { get { return "Workspace"; } }
+
+        [ImportMany(AllowRecomposition = true)]
+        public ObservableCollection<IPlugin> Plugins { get; set; }
+
+        #endregion
+
+        #region Property: Project
 		public ProjectViewModel Project
 		{
 			get { return GetValue<ProjectViewModel>(ProjectProperty); }
@@ -47,7 +60,7 @@ namespace UUM.Gui.ViewModels
 
 		private void OnNewProjectExecuted()
 		{
-			Project = new ProjectViewModel(new Project());
+			Project = new ProjectViewModel(new ProjectModel());
 		}
 		
 		private bool OnNewProjectCanExecute()
@@ -65,7 +78,7 @@ namespace UUM.Gui.ViewModels
 			saveFileService.Filter = "UUM Project files|*.uumx|All files|*.*";
 			if (saveFileService.DetermineFile())
 			{
-				Project.Model.Save(saveFileService.FileName ,SerializationMode.Xml);
+				Project.Project.Save(saveFileService.FileName ,SerializationMode.Xml);
 			}
 			
 		}
@@ -76,9 +89,6 @@ namespace UUM.Gui.ViewModels
 		}
 		#endregion
 		
-        [ImportMany(AllowRecomposition = true)]
-        public ObservableCollection<IPlugin> Plugins { get; set; }
-
 		#region Command: LoadProject
 		public Command LoadProject { get; private set; }
 
@@ -88,8 +98,8 @@ namespace UUM.Gui.ViewModels
 			openFileService.Filter = "All files|*.*";
 			if (openFileService.DetermineFile())
 			{
-				Project newProject = UUM.Engine.Project.Load(openFileService.FileName);
-				Project = new ProjectViewModel(newProject);
+				ProjectModel newProjectModel = ProjectModel.Load(openFileService.FileName);
+				Project = new ProjectViewModel(newProjectModel);
 			}
 			
 		}

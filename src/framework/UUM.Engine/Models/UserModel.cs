@@ -1,22 +1,20 @@
-﻿// See LICENCE.txt in the root for conditions of use
-using System;
+﻿using System;
 using System.Runtime.Serialization;
-
 using Catel.Data;
 
-namespace UUM.Engine
+namespace UUM.Engine.Models
 {
 	/// <summary>
 	/// User abstraction
 	/// </summary>
 	[Serializable]
-	public class User : SavableModelBase<User>
+	public class UserModel : SavableModelBase<UserModel>
 	{
-		public User()
+		public UserModel()
 		{
 		}
 
-		protected User(SerializationInfo info, StreamingContext context)
+		protected UserModel(SerializationInfo info, StreamingContext context)
 			: base(info, context) { }
 		
 		public string FirstName
@@ -25,7 +23,8 @@ namespace UUM.Engine
 			set { SetValue(FirstNameProperty, value); }
 		}
 
-		public static readonly PropertyData FirstNameProperty = RegisterProperty("FirstName", typeof(string));
+		public static readonly PropertyData FirstNameProperty =
+            RegisterProperty("FirstName", typeof(string));
 
 		public string LastName
 		{
@@ -33,7 +32,8 @@ namespace UUM.Engine
 			set { SetValue(LastNameProperty, value); }
 		}
 
-		public static readonly PropertyData LastNameProperty = RegisterProperty("LastName", typeof(string));
+		public static readonly PropertyData LastNameProperty =
+            RegisterProperty("LastName", typeof(string));
 
 		public string EmailAddress
 		{
@@ -41,7 +41,8 @@ namespace UUM.Engine
 			set { SetValue(EmailAddressProperty, value); }
 		}
 
-		public static readonly PropertyData EmailAddressProperty = RegisterProperty("EmailAddress", typeof(string));
+		public static readonly PropertyData EmailAddressProperty = 
+            RegisterProperty("EmailAddress", typeof(string));
 		
 		public string PhoneNumber
 		{
@@ -49,7 +50,8 @@ namespace UUM.Engine
 			set { SetValue(PhoneNumberProperty, value); }
 		}
 
-		public static readonly PropertyData PhoneNumberProperty = RegisterProperty("PhoneNumber", typeof(string));
+		public static readonly PropertyData PhoneNumberProperty =
+            RegisterProperty("PhoneNumber", typeof(string));
 		
 		public bool IsEnabled
 		{
@@ -57,8 +59,8 @@ namespace UUM.Engine
 			set { SetValue(IsEnabledProperty, value); }
 		}
 
-		public static readonly PropertyData IsEnabledProperty = RegisterProperty("IsEnabled", typeof(bool), true);
-		
+		public static readonly PropertyData IsEnabledProperty =
+            RegisterProperty("IsEnabled", typeof(bool), true);
 		
 	}
 }

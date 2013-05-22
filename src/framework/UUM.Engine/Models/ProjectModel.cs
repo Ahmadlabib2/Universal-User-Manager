@@ -1,23 +1,21 @@
-﻿// See LICENCE.txt in the root for conditions of use
-using System;
+﻿using System;
 using System.Runtime.Serialization;
 using Catel.Data;
 
-
-namespace UUM.Engine
+namespace UUM.Engine.Models
 {
 	/// <summary>
 	/// Description of Project.
 	/// </summary>
 	[Serializable]
-	public class Project : SavableModelBase<Project>
+	public class ProjectModel : SavableModelBase<ProjectModel>
 	{
-		public Project()
+		public ProjectModel()
 		{
 			//UserPool
 		}
 		
-		protected Project(SerializationInfo info, StreamingContext context)
+		protected ProjectModel(SerializationInfo info, StreamingContext context)
 			: base(info, context) { }
 		
 		public string Name

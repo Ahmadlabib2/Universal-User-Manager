@@ -24,7 +24,7 @@ namespace UUM.Gui.ViewModels
         /// Gets the title of the view model.
         /// </summary>
         /// <value>The title.</value>
-        public override string Title { get { return "Main Window View model"; } }
+        public override string Title { get { return "Main Window"; } }
 
         #endregion
 

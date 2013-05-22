@@ -4,8 +4,9 @@
                   xmlns:gui="clr-namespace:UUM.Gui.Views"
                   xmlns:catel="http://catel.codeplex.com"
                   SizeToContent="Manual"
+                  ShowInTaskbar="True"
                   WindowStartupLocation="Manual"
                   ResizeMode="CanResizeWithGrip"
                   Title="UUM Gui" Height="300" Width="300">
-    <gui:WorkspaceView />
+    <gui:WorkspaceView  />
 </catel:DataWindow>

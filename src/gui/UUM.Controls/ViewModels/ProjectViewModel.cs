@@ -2,6 +2,7 @@
 using Catel.Data;
 using Catel.MVVM;
 using UUM.Engine;
+using UUM.Engine.Models;
 
 namespace UUM.Controls.ViewModels
 {
@@ -15,24 +16,31 @@ namespace UUM.Controls.ViewModels
 		{
 		}
 		
-		public ProjectViewModel(Project model)
+		public ProjectViewModel(ProjectModel project)
 		{
-			Model = model;
+			Project = project;
 		}
 
         #region Model
 
+        /// <summary>
+        /// Gets the title of the view model.
+        /// </summary>
+        /// <value>The title.</value>
+        public override string Title { get { return "Project"; } }
+
         [Model]
-        public Project Model
+        public ProjectModel Project
         {
-            get { return GetValue<Project>(ModelProperty); }
+            get { return GetValue<ProjectModel>(ModelProperty); }
             private set { SetValue(ModelProperty, value); }
         }
 
         /// <summary>
         /// Register the Model property so it is known in the class.
         /// </summary>
-        public static readonly PropertyData ModelProperty = RegisterProperty("Model", typeof(Project));
+        public static readonly PropertyData ModelProperty =
+            RegisterProperty("Project", typeof(ProjectModel));
 
         #endregion
 
@@ -40,7 +48,7 @@ namespace UUM.Controls.ViewModels
 		{
 			get
 			{
-				return (Model == null) ? Visibility.Collapsed : Visibility.Visible;
+				return (Project == null) ? Visibility.Collapsed : Visibility.Visible;
 			}
 		}
 		

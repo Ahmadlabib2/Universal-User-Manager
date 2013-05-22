@@ -22,15 +22,15 @@
 		</catel:StackGrid.ColumnDefinitions>
 		
 		<Label Content="First Name" />
-		<TextBox Text="{Binding Model.FirstName}" />
+		<TextBox Text="{Binding User.FirstName}" />
 		
 		<Label Content="Last Name" />
-		<TextBox Text="{Binding Model.LastName}" />
+        <TextBox Text="{Binding User.LastName}" />
 		
 		<Label Content="EmailAddress" />
-		<TextBox Text="{Binding Model.EmailAddress}" />
+        <TextBox Text="{Binding User.EmailAddress}" />
 		
 		<Label Content="PhoneNumber" />
-		<TextBox Text="{Binding Model.PhoneNumber}" />
+        <TextBox Text="{Binding User.PhoneNumber}" />
 	</catel:StackGrid>
 </catel:UserControl>
