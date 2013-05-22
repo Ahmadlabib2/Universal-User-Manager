@@ -9,10 +9,8 @@
 	mc:Ignorable="d"
 	d:DesignHeight="300"
 	d:DesignWidth="300">
-	<catel:StackGrid>
+	<catel:StackGrid Visibility="{Binding Visibility}">
 		<catel:StackGrid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
 		</catel:StackGrid.RowDefinitions>
@@ -22,15 +20,9 @@
 		</catel:StackGrid.ColumnDefinitions>
 		
 		<Label Content="Project Name" />
-		<TextBox Text="{Binding Model.ProjectName}" />
+		<TextBox Text="{Binding Model.Name}" />
 		
 		<Label Content="Project Description" />
-		<TextBox Text="{Binding Model.ProjectDescription}" />
-		
-		<catel:EmptyRow />
-		
-		<WrapPanel Grid.ColumnSpan="2">
-			<Button Command="ApplicationCommands.Close" Content="Close" />
-		</WrapPanel>
+		<TextBox Text="{Binding Model.Description}" />
 	</catel:StackGrid>
 </catel:UserControl>

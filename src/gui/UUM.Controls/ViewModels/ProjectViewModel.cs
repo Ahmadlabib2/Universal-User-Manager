@@ -1,7 +1,9 @@
 ﻿// See LICENCE.txt in the root for conditions of use
 using System;
-using UUM.Engine;
+using System.Windows;
+using Catel.Data;
 using Catel.MVVM;
+using UUM.Engine;
 
 namespace UUM.Controls.ViewModels
 {
@@ -10,19 +12,32 @@ namespace UUM.Controls.ViewModels
 	/// </summary>
 	public class ProjectViewModel : ViewModelBase
 	{
-		private readonly Project Projectmodel;
+		private readonly Project _model;
 		
-	
-			public ProjectViewModel(Project model)
-			{
-				Projectmodel = model;
-			}
-			
-			[Model]
-			public Project Model
-			{
-				get { return Projectmodel; }
-			}
-			
+		public ProjectViewModel()
+			: this(null)
+		{
 		}
+		
+		public ProjectViewModel(Project model)
+		{
+			_model = model;
+		}
+		
+		[Model]
+		public Project Model
+		{
+			get { return _model; }
+		}
+
+		public Visibility Visibility
+		{
+			get
+			{
+				return (Model == null) ? Visibility.Collapsed : Visibility.Visible;
+			}
+		}
+		
+		
 	}
+}

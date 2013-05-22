@@ -32,11 +32,5 @@
 		
 		<Label Content="PhoneNumber" />
 		<TextBox Text="{Binding Model.PhoneNumber}" />
-		
-		<catel:EmptyRow />
-		
-		<WrapPanel Grid.ColumnSpan="2">
-			<Button Command="ApplicationCommands.Close" Content="Close" />
-		</WrapPanel>
 	</catel:StackGrid>
 </catel:UserControl>

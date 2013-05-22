@@ -23,21 +23,23 @@ namespace UUM.Engine
 		protected Project(SerializationInfo info, StreamingContext context)
 			: base(info, context) { }
 		
-		public string ProjectName
+		public string Name
 		{
-			get { return GetValue<string>(ProjectNameProperty); }
-			set { SetValue(ProjectNameProperty, value); }
+			get { return GetValue<string>(NameProperty); }
+			set { SetValue(NameProperty, value); }
 		}
 
-		public static readonly PropertyData ProjectNameProperty = RegisterProperty("ProjectName", typeof(string));
+		public static readonly PropertyData NameProperty =
+			RegisterProperty("Name", typeof(string), "<New Project Name>");
 		
-		public string ProjectDescription
+		public string Description
 		{
-			get { return GetValue<string>(ProjectDescriptionProperty); }
-			set { SetValue(ProjectDescriptionProperty, value); }
+			get { return GetValue<string>(DescriptionProperty); }
+			set { SetValue(DescriptionProperty, value); }
 		}
 		
-		public static readonly PropertyData ProjectDescriptionProperty = RegisterProperty("ProjectDescription", typeof(string));
+		public static readonly PropertyData DescriptionProperty =
+			RegisterProperty("Description", typeof(string), "<Add Description Here>");
 	}
 
 }

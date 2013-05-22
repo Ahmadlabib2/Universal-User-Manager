@@ -13,7 +13,9 @@ using System.Windows.Media;
 
 using Catel.Data;
 using UUM.Controls.ViewModels;
+using UUM.Controls.Views;
 using UUM.Engine;
+using UUM.Gui.ViewModels;
 
 namespace UUM.Gui
 {
@@ -25,27 +27,6 @@ namespace UUM.Gui
 		public MainWindow()
 		{
 			InitializeComponent();
-
-			//TODO: Remove this test code
-			
-			User user = new User()
-			{
-				FirstName = "Albert",
-				LastName = "Einstein"
-				
-			};
-			user.Save("Users.xml", SerializationMode.Xml);
-			DataContext = new UserViewModel(user);
-			
-			Project project = new Project()
-			{
-			 ProjectName ="FirstProject",
-			 ProjectDescription= "Load from LDAP"
-			};
-			project.Save("Projects.xml", SerializationMode.Xml);
-			DataContext = new ProjectViewModel(project);
-			
-			
 		}
 	}
 }
