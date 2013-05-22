@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Windows;
+using Catel.MVVM.Services;
 using Catel.Windows.Controls;
 
 namespace UUM.Gui.Views
@@ -15,10 +16,5 @@ namespace UUM.Gui.Views
 			InitializeComponent();
 		}
 		
-		private void ApplicationExit_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			//TODO: ask user
-            Application.Current.Shutdown();
-		}
 	}
 }

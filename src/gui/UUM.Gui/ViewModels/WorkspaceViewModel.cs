@@ -1,16 +1,15 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Windows;
 using Catel.Data;
 using Catel.MVVM;
-
+using Catel.MVVM.Services;
 using UUM.Api;
-using System.ComponentModel.Composition.Hosting;
-
-using UUM.Engine;
 using UUM.Controls.ViewModels;
+using UUM.Engine;
 
 namespace UUM.Gui.ViewModels
 {
@@ -23,7 +22,8 @@ namespace UUM.Gui.ViewModels
 		{
 			NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
 			SaveProject = new Command(OnSaveProjectExecuted, OnSaveProjectCanExecute);
-			//TODO: LoadProject
+			LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
+			ApplicationExit= new Command(OnApplicationExitExecuted);
 
             // MEF loading of available plugins
             var catalog = new DirectoryCatalog(".", "UUM.Plugin.*.dll");
@@ -35,11 +35,11 @@ namespace UUM.Gui.ViewModels
 		#region Property: Project
 		public ProjectViewModel Project
 		{
-            get { return GetValue<ProjectViewModel>(ProjectProperty); }
-            set { SetValue(ProjectProperty, value); }
+			get { return GetValue<ProjectViewModel>(ProjectProperty); }
+			set { SetValue(ProjectProperty, value); }
 		}
-        public static readonly PropertyData ProjectProperty = 
-            RegisterProperty("Project", typeof (ProjectViewModel), null);
+		public static readonly PropertyData ProjectProperty =
+			RegisterProperty("Project", typeof (ProjectViewModel), null);
 		#endregion
 		
 		#region Command: NewProject
@@ -61,8 +61,13 @@ namespace UUM.Gui.ViewModels
 
 		private void OnSaveProjectExecuted()
 		{
-			//HACK: use the catel File services to ask user for a fileName
-			Project.Model.Save("project.xml", SerializationMode.Xml);
+			var saveFileService = GetService<ISaveFileService>();
+			saveFileService.Filter = "UUM Project files|*.uumx|All files|*.*";
+			if (saveFileService.DetermineFile())
+			{
+				Project.Model.Save(saveFileService.FileName ,SerializationMode.Xml);
+			}
+			
 		}
 		
 		private bool OnSaveProjectCanExecute()
@@ -70,8 +75,45 @@ namespace UUM.Gui.ViewModels
 			return Project != null;
 		}
 		#endregion
-
+		
         [ImportMany(AllowRecomposition = true)]
         public ObservableCollection<IPlugin> Plugins { get; set; }
+
+		#region Command: LoadProject
+		public Command LoadProject { get; private set; }
+
+		private void OnLoadProjectExecuted()
+		{
+			var openFileService = GetService<IOpenFileService>();
+			openFileService.Filter = "All files|*.*";
+			if (openFileService.DetermineFile())
+			{
+				Project newProject = UUM.Engine.Project.Load(openFileService.FileName);
+				Project = new ProjectViewModel(newProject);
+			}
+			
+		}
+		private bool OnLoadProjectCanExecute()
+		{
+			return Project != null;
+		}
+		#endregion
+		
+		#region Command: ApplicationExit
+		public Command ApplicationExit { get; private set; }
+		
+		private void OnApplicationExitExecuted()
+		{
+			var messageService = GetService<IMessageService>();
+			if (messageService.Show("Are you sure you want to exit application?", 
+			                        "Are you sure?", MessageButton.YesNo) == MessageResult.Yes)
+			{
+				Application.Current.Shutdown();
+				// Do it!
+			}
+		
+			
+		}
+		#endregion
 	}
 }
