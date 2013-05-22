@@ -1,10 +1,6 @@
 ﻿// See LICENCE.txt in the root for conditions of use
 using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Xml;
-using System.Text;
-using System.IO;
 using Catel.Data;
 
 

@@ -1,6 +1,4 @@
-﻿// See LICENCE.txt in the root for conditions of use
-using System;
-using System.Windows;
+﻿using System.Windows;
 using Catel.Data;
 using Catel.MVVM;
 using UUM.Engine;
@@ -12,8 +10,6 @@ namespace UUM.Controls.ViewModels
 	/// </summary>
 	public class ProjectViewModel : ViewModelBase
 	{
-		private readonly Project _model;
-		
 		public ProjectViewModel()
 			: this(null)
 		{
@@ -21,14 +17,24 @@ namespace UUM.Controls.ViewModels
 		
 		public ProjectViewModel(Project model)
 		{
-			_model = model;
+			Model = model;
 		}
-		
-		[Model]
-		public Project Model
-		{
-			get { return _model; }
-		}
+
+        #region Model
+
+        [Model]
+        public Project Model
+        {
+            get { return GetValue<Project>(ModelProperty); }
+            private set { SetValue(ModelProperty, value); }
+        }
+
+        /// <summary>
+        /// Register the Model property so it is known in the class.
+        /// </summary>
+        public static readonly PropertyData ModelProperty = RegisterProperty("Model", typeof(Project));
+
+        #endregion
 
 		public Visibility Visibility
 		{

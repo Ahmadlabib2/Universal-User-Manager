@@ -1,18 +1,11 @@
 ﻿// See LICENCE.txt in the root for conditions of use
+using System;
+using System.Runtime.Serialization;
+
+using Catel.Data;
 
 namespace UUM.Engine
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Diagnostics;
-	using System.Linq;
-	using System.Runtime.Serialization;
-	using System.Xml;
-	using System.Text;
-	using System.IO;
-	
-	using Catel.Data;
-
 	/// <summary>
 	/// User abstraction
 	/// </summary>
