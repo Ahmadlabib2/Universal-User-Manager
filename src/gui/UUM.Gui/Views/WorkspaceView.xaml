@@ -15,6 +15,7 @@
                 <MenuItem Header="New Project" Command="{Binding NewProject}"></MenuItem>
                 <MenuItem Header="Save Project" Command="{Binding SaveProject}"></MenuItem>
                 <MenuItem Header="Load Project" Command="{Binding LoadProject}"></MenuItem>
+                <MenuItem Header="Close Project" Command="{Binding CloseProject}"></MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Exit" Command="{Binding ApplicationExit}"></MenuItem>
             </MenuItem>

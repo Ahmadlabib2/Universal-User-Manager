@@ -13,27 +13,28 @@ using UUM.Engine.Models;
 
 namespace UUM.Gui.ViewModels
 {
-	/// <summary>
-	/// Description of WorkspaceViewModel.
-	/// </summary>
-	public class WorkspaceViewModel : ViewModelBase
-	{
-	    /// <summary>UUM Project files|*.uumx|All files|*.*</summary>
-	    public const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
+    /// <summary>
+    /// Description of WorkspaceViewModel.
+    /// </summary>
+    public class WorkspaceViewModel : ViewModelBase
+    {
+        /// <summary>UUM Project files|*.uumx|All files|*.*</summary>
+        public const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
 
-	    public WorkspaceViewModel()
-		{
-			NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
-			SaveProject = new Command(OnSaveProjectExecuted, OnSaveProjectCanExecute);
-			LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
-			ApplicationExit= new Command(OnApplicationExitExecuted);
+        public WorkspaceViewModel()
+        {
+            NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
+            SaveProject = new Command(OnSaveProjectExecuted, OnSaveProjectCanExecute);
+            LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
+            CloseProject = new Command(OnCloseProjectExecute, OnCloseProjectCanExecute);
+            ApplicationExit = new Command(OnApplicationExitExecuted);
 
             // MEF loading of available plugins
             var catalog = new DirectoryCatalog(".", "UUM.Plugin.*.dll");
             var container = new CompositionContainer(catalog);
-            
+
             container.SatisfyImportsOnce(this);
-		}
+        }
 
         #region Properties
         /// <summary>
@@ -48,84 +49,100 @@ namespace UUM.Gui.ViewModels
         #endregion
 
         #region Property: Project
-		public ProjectViewModel Project
-		{
-			get { return GetValue<ProjectViewModel>(ProjectProperty); }
-			set { SetValue(ProjectProperty, value); }
-		}
-		public static readonly PropertyData ProjectProperty =
-			RegisterProperty("Project", typeof (ProjectViewModel), null);
-		#endregion
-		
-		#region Command: NewProject
-		public Command NewProject { get; private set; }
+        public ProjectViewModel Project
+        {
+            get { return GetValue<ProjectViewModel>(ProjectProperty); }
+            set { SetValue(ProjectProperty, value); }
+        }
+        public static readonly PropertyData ProjectProperty =
+            RegisterProperty("Project", typeof(ProjectViewModel), null);
+        #endregion
 
-		private void OnNewProjectExecuted()
-		{
-			Project = new ProjectViewModel(new ProjectModel());
-		}
-		
-		private bool OnNewProjectCanExecute()
-		{
-			return Project == null;
-		}
-		#endregion
-		
-		#region Command: SaveProject
-		public Command SaveProject { get; private set; }
+        #region Command: NewProject
+        public Command NewProject { get; private set; }
 
-		private void OnSaveProjectExecuted()
-		{
-			var saveFileService = GetService<ISaveFileService>();
-			saveFileService.Filter = UumProjectFileFilter;
-			if (saveFileService.DetermineFile())
-			{
-				Project.Project.Save(saveFileService.FileName ,SerializationMode.Xml);
-			}
-			
-		}
-		
-		private bool OnSaveProjectCanExecute()
-		{
-			return Project != null;
-		}
-		#endregion
-		
-		#region Command: LoadProject
-		public Command LoadProject { get; private set; }
+        private void OnNewProjectExecuted()
+        {
+            Project = new ProjectViewModel(new ProjectModel());
+        }
 
-		private void OnLoadProjectExecuted()
-		{
-			var openFileService = GetService<IOpenFileService>();
+        private bool OnNewProjectCanExecute()
+        {
+            return Project == null;
+        }
+        #endregion
+
+        #region Command: SaveProject
+        public Command SaveProject { get; private set; }
+
+        private void OnSaveProjectExecuted()
+        {
+            var saveFileService = GetService<ISaveFileService>();
+            saveFileService.Filter = UumProjectFileFilter;
+            if (saveFileService.DetermineFile())
+            {
+                Project.Project.Save(saveFileService.FileName, SerializationMode.Xml);
+            }
+
+        }
+
+        private bool OnSaveProjectCanExecute()
+        {
+            return Project != null;
+        }
+        #endregion
+
+        #region Command: LoadProject
+        
+        public Command LoadProject { get; private set; }
+
+        private void OnLoadProjectExecuted()
+        {
+            var openFileService = GetService<IOpenFileService>();
             openFileService.Filter = UumProjectFileFilter;
-			if (openFileService.DetermineFile())
-			{
-				ProjectModel newProjectModel = ProjectModel.Load(openFileService.FileName, SerializationMode.Xml);
-				Project = new ProjectViewModel(newProjectModel);
-			}
-			
-		}
-		private bool OnLoadProjectCanExecute()
-		{
-			return Project == null;
-		}
-		#endregion
-		
-		#region Command: ApplicationExit
-		public Command ApplicationExit { get; private set; }
-		
-		private void OnApplicationExitExecuted()
-		{
-			var messageService = GetService<IMessageService>();
-			if (messageService.Show("Are you sure you want to exit application?", 
-			                        "Are you sure?", MessageButton.YesNo) == MessageResult.Yes)
-			{
-				Application.Current.Shutdown();
-				// Do it!
-			}
-		
-			
-		}
-		#endregion
-	}
+            if (openFileService.DetermineFile())
+            {
+                ProjectModel newProjectModel = ProjectModel.Load(openFileService.FileName, SerializationMode.Xml);
+                Project = new ProjectViewModel(newProjectModel);
+            }
+        }
+
+        private bool OnLoadProjectCanExecute()
+        {
+            return Project == null;
+        }
+        #endregion
+
+        #region Command: CloseProject
+
+        public Command CloseProject { get; private set; }
+
+        private void OnCloseProjectExecute()
+        {
+            Project = null;
+        }
+
+        private bool OnCloseProjectCanExecute()
+        {
+            return Project != null;
+        }
+        #endregion
+
+        #region Command: ApplicationExit
+        public Command ApplicationExit { get; private set; }
+
+        private void OnApplicationExitExecuted()
+        {
+            var messageService = GetService<IMessageService>();
+            if (messageService.Show("Are you sure you want to exit application?",
+                                    "Are you sure?", MessageButton.YesNo) == MessageResult.Yes)
+            {
+                Application.Current.Shutdown();
+                // Do it!
+            }
+
+
+        }
+        #endregion
+    }
 }
