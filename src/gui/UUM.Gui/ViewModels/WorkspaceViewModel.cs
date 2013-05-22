@@ -2,8 +2,9 @@
 using System;
 using Catel.Data;
 using Catel.MVVM;
-using UUM.Engine;
+using Catel.MVVM.Services;
 using UUM.Controls.ViewModels;
+using UUM.Engine;
 
 namespace UUM.Gui.ViewModels
 {
@@ -22,11 +23,11 @@ namespace UUM.Gui.ViewModels
 		#region Property: Project
 		public ProjectViewModel Project
 		{
-            get { return GetValue<ProjectViewModel>(ProjectProperty); }
-            set { SetValue(ProjectProperty, value); }
+			get { return GetValue<ProjectViewModel>(ProjectProperty); }
+			set { SetValue(ProjectProperty, value); }
 		}
-        public static readonly PropertyData ProjectProperty = 
-            RegisterProperty("Project", typeof (ProjectViewModel), null);
+		public static readonly PropertyData ProjectProperty =
+			RegisterProperty("Project", typeof (ProjectViewModel), null);
 		#endregion
 		
 		#region Command: NewProject
@@ -49,7 +50,16 @@ namespace UUM.Gui.ViewModels
 		private void OnSaveProjectExecuted()
 		{
 			//HACK: use the catel File services to ask user for a fileName
-			Project.Model.Save("project.xml", SerializationMode.Xml);
+			
+			var saveFileService = GetService<ISaveFileService>();
+			saveFileService.Filter = "C# File|*.cs";
+			if (saveFileService.DetermineFile())
+			{
+				
+				Project.Model.Save(saveFileService.FileName ,SerializationMode.Xml);
+				
+			}
+			
 		}
 		
 		private bool OnSaveProjectCanExecute()
@@ -57,5 +67,24 @@ namespace UUM.Gui.ViewModels
 			return Project != null;
 		}
 		#endregion
+		
+		#region Command: LoadProject
+		public Command LoadProject { get; private set; }
+
+		private void OnLoadProjectExecuted()
+		{
+			
+			
+			var openFileService = GetService<IOpenFileService>();
+			openFileService.Filter = "All files|*.*";
+			if (openFileService.DetermineFile())
+			{
+				Project.Load(openFileService.FileName);
+				
+			}
+			
+		}
+		#endregion
+		
 	}
 }

@@ -18,7 +18,7 @@ namespace UUM.Engine
 	{
 		public Project()
 		{
-			UserPool
+			//UserPool
 		}
 		
 		protected Project(SerializationInfo info, StreamingContext context)
