@@ -1,0 +1,11 @@
+﻿<catel:DataWindow x:Class="UUM.Gui.Views.MainWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:gui="clr-namespace:UUM.Gui.Views"
+                  xmlns:catel="http://catel.codeplex.com"
+                  SizeToContent="Manual"
+                  WindowStartupLocation="Manual"
+                  ResizeMode="CanResizeWithGrip"
+                  Title="UUM Gui" Height="300" Width="300">
+    <gui:WorkspaceView />
+</catel:DataWindow>
