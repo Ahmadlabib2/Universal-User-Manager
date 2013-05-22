@@ -83,6 +83,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\CommonAssemblyInfo.cs">
+      <Link>Properties\CommonAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\WPFAssemblyInfo.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
@@ -103,10 +106,7 @@
     <Page Include="Views\ProjectView.xaml" />
     <Page Include="Views\UserView.xaml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels" />
-    <Folder Include="Views" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\framework\UUM.Engine\UUM.Engine.csproj">
       <Project>{26317A12-5078-452C-AF0E-5CAC6FE1C769}</Project>
