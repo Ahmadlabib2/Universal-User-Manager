@@ -12,7 +12,7 @@
 				<MenuItem Header="Save Project" Command="{Binding SaveProject}"></MenuItem>
 				<MenuItem Header="Load Project" Command="{Binding LoadProject}"></MenuItem>
 				<Separator></Separator>
-				<MenuItem Header="Exit" Click="ApplicationExit_Click"></MenuItem>
+				<MenuItem Header="Exit" Command="{Binding ApplicationExit}"></MenuItem>
 			</MenuItem>
 		</Menu>
 		<uum:ProjectView DataContext="{Binding Project}" />

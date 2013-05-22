@@ -16,16 +16,5 @@ namespace UUM.Gui.Views
 			InitializeComponent();
 		}
 		
-		private void ApplicationExit_Click(object sender, System.Windows.RoutedEventArgs e)
-		{
-			var messageService = GetService<IMessageService>();
-			if (messageService.Show("Are you sure you want to do this?", "Are you sure?", MessageButton.YesNo) == MessageResult.Yes)
-			{
-				Application.Current.Shutdown();
-				// Do it!
-			}
-			//TODO: ask user
-			
-		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Windows;
 using Catel.Data;
 using Catel.MVVM;
 using Catel.MVVM.Services;
@@ -17,6 +18,8 @@ namespace UUM.Gui.ViewModels
 		{
 			NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
 			SaveProject = new Command(OnSaveProjectExecuted, OnSaveProjectCanExecute);
+			LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
+			ApplicationExit= new Command(OnApplicationExitExecuted);
 			//TODO: LoadProject
 		}
 		
@@ -49,15 +52,11 @@ namespace UUM.Gui.ViewModels
 
 		private void OnSaveProjectExecuted()
 		{
-			//HACK: use the catel File services to ask user for a fileName
-			
 			var saveFileService = GetService<ISaveFileService>();
-			saveFileService.Filter = "C# File|*.cs";
+			saveFileService.Filter = "UUM Project files|*.uumx|All files|*.*";
 			if (saveFileService.DetermineFile())
 			{
-				
 				Project.Model.Save(saveFileService.FileName ,SerializationMode.Xml);
-				
 			}
 			
 		}
@@ -73,18 +72,36 @@ namespace UUM.Gui.ViewModels
 
 		private void OnLoadProjectExecuted()
 		{
-			
-			
 			var openFileService = GetService<IOpenFileService>();
 			openFileService.Filter = "All files|*.*";
 			if (openFileService.DetermineFile())
 			{
-				Project.Load(openFileService.FileName);
-				
+				Project newProject = UUM.Engine.Project.Load(openFileService.FileName);
+				Project = new ProjectViewModel(newProject);
 			}
 			
 		}
+		private bool OnLoadProjectCanExecute()
+		{
+			return Project != null;
+		}
 		#endregion
 		
+		#region Command: ApplicationExit
+		public Command ApplicationExit { get; private set; }
+		
+		private void OnApplicationExitExecuted()
+		{
+			var messageService = GetService<IMessageService>();
+			if (messageService.Show("Are you sure you want to exit application?", 
+			                        "Are you sure?", MessageButton.YesNo) == MessageResult.Yes)
+			{
+				Application.Current.Shutdown();
+				// Do it!
+			}
+		
+			
+		}
+		#endregion
 	}
 }
