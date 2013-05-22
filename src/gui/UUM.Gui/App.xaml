@@ -1,10 +1,14 @@
 ﻿<Application x:Class="UUM.Gui.App"
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	StartupUri="Views/MainWindow.xaml">
-	<Application.Resources>
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:catel="http://catel.codeplex.com"
+             StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <catel:ReferenceToCollapsingVisibilityConverter x:Key="ReferenceToCollapsingVisibilityConverter" />
+                </ResourceDictionary>
                 <!-- Set theme -->
                 <ResourceDictionary Source="/Catel.Extensions.Controls;component/themes/generic.xaml" />
             </ResourceDictionary.MergedDictionaries>

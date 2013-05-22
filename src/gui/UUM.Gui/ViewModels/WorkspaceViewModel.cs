@@ -49,13 +49,13 @@ namespace UUM.Gui.ViewModels
         #endregion
 
         #region Property: Project
-        public ProjectViewModel Project
+        public ProjectModel Project
         {
-            get { return GetValue<ProjectViewModel>(ProjectProperty); }
+            get { return GetValue<ProjectModel>(ProjectProperty); }
             set { SetValue(ProjectProperty, value); }
         }
         public static readonly PropertyData ProjectProperty =
-            RegisterProperty("Project", typeof(ProjectViewModel), null);
+            RegisterProperty("Project", typeof(ProjectModel), null);
         #endregion
 
         #region Command: NewProject
@@ -63,7 +63,7 @@ namespace UUM.Gui.ViewModels
 
         private void OnNewProjectExecuted()
         {
-            Project = new ProjectViewModel(new ProjectModel());
+            Project = new ProjectModel();
         }
 
         private bool OnNewProjectCanExecute()
@@ -81,7 +81,7 @@ namespace UUM.Gui.ViewModels
             saveFileService.Filter = UumProjectFileFilter;
             if (saveFileService.DetermineFile())
             {
-                Project.Project.Save(saveFileService.FileName, SerializationMode.Xml);
+                Project.Save(saveFileService.FileName, SerializationMode.Xml);
             }
 
         }
@@ -102,8 +102,7 @@ namespace UUM.Gui.ViewModels
             openFileService.Filter = UumProjectFileFilter;
             if (openFileService.DetermineFile())
             {
-                ProjectModel newProjectModel = ProjectModel.Load(openFileService.FileName, SerializationMode.Xml);
-                Project = new ProjectViewModel(newProjectModel);
+                Project = ProjectModel.Load(openFileService.FileName, SerializationMode.Xml);
             }
         }
 

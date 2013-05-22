@@ -11,11 +11,6 @@ namespace UUM.Controls.ViewModels
 	/// </summary>
 	public class ProjectViewModel : ViewModelBase
 	{
-		public ProjectViewModel()
-			: this(null)
-		{
-		}
-		
 		public ProjectViewModel(ProjectModel project)
 		{
 			Project = project;
@@ -30,6 +25,8 @@ namespace UUM.Controls.ViewModels
         public override string Title { get { return "Project"; } }
 
         [Model]
+        [Expose("Name")]
+        [Expose("Description")]
         public ProjectModel Project
         {
             get { return GetValue<ProjectModel>(ModelProperty); }
@@ -43,15 +40,5 @@ namespace UUM.Controls.ViewModels
             RegisterProperty("Project", typeof(ProjectModel));
 
         #endregion
-
-		public Visibility Visibility
-		{
-			get
-			{
-				return (Project == null) ? Visibility.Collapsed : Visibility.Visible;
-			}
-		}
-		
-		
 	}
 }

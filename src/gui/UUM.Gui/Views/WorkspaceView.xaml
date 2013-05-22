@@ -28,6 +28,9 @@
                 </MenuItem.ItemTemplate>
             </MenuItem>
         </Menu>
-        <uum:ProjectView DataContext="{Binding Project}" />
+        <uum:ProjectView 
+            DataContext="{Binding Project}"
+            Visibility="{Binding Path=.,Converter={StaticResource ReferenceToCollapsingVisibilityConverter}}"
+            />
     </DockPanel>
 </catel:UserControl>

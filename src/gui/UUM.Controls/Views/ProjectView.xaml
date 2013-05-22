@@ -9,7 +9,7 @@
 	mc:Ignorable="d"
 	d:DesignHeight="300"
 	d:DesignWidth="300">
-	<catel:StackGrid Visibility="{Binding Visibility}">
+    <catel:StackGrid>
 		<catel:StackGrid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
@@ -20,9 +20,9 @@
 		</catel:StackGrid.ColumnDefinitions>
 		
 		<Label Content="Project Name" />
-		<TextBox Text="{Binding Project.Name}" />
+		<TextBox Text="{Binding Name}" />
 		
 		<Label Content="Project Description" />
-		<TextBox Text="{Binding Project.Description}" />
+		<TextBox Text="{Binding Description}" />
 	</catel:StackGrid>
 </catel:UserControl>
