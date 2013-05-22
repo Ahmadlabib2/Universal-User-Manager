@@ -1,23 +1,32 @@
 ﻿<catel:UserControl x:Class="UUM.Gui.Views.WorkspaceView"
-	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:uum="clr-namespace:UUM.Controls.Views;assembly=UUM.Controls"
-	xmlns:catel="http://catel.codeplex.com"
->
-	<DockPanel>
-		<Menu DockPanel.Dock="Top"
-		      HorizontalAlignment="Stretch">
-			<MenuItem Header="_File">
-				<MenuItem Header="New Project" Command="{Binding NewProject}"></MenuItem>
-				<MenuItem Header="Save Project" Command="{Binding SaveProject}"></MenuItem>
-				<MenuItem Header="Load Project" Command="{Binding LoadProject}"></MenuItem>
-				<Separator></Separator>
-				<MenuItem Header="Exit" Command="{Binding ApplicationExit}"></MenuItem>
-			</MenuItem>
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:uum="clr-namespace:UUM.Controls.Views;assembly=UUM.Controls"
+                   xmlns:catel="http://catel.codeplex.com"
+                   mc:Ignorable="d"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   d:DesignHeight="79"
+                   d:DesignWidth="422">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top"
+              HorizontalAlignment="Stretch">
+            <MenuItem Header="_File">
+                <MenuItem Header="New Project" Command="{Binding NewProject}"></MenuItem>
+                <MenuItem Header="Save Project" Command="{Binding SaveProject}"></MenuItem>
+                <MenuItem Header="Load Project" Command="{Binding LoadProject}"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Exit" Command="{Binding ApplicationExit}"></MenuItem>
+            </MenuItem>
             <MenuItem Header="_Plugins"
                       ItemsSource="{Binding Plugins}">
+                <MenuItem.ItemTemplate>
+                    <DataTemplate>
+                        <MenuItem Header="{Binding Name}" ToolTip="{Binding Description}" />
+                    </DataTemplate>
+                </MenuItem.ItemTemplate>
             </MenuItem>
         </Menu>
-		<uum:ProjectView DataContext="{Binding Project}" />
-	</DockPanel>
+        <uum:ProjectView DataContext="{Binding Project}" />
+    </DockPanel>
 </catel:UserControl>

@@ -6,5 +6,14 @@ namespace UUM.Plugin.Doors
     [Export(typeof(IPlugin))]
     public class DoorsPlugin : IPlugin
     {
+        public string Name
+        {
+            get { return "Doors"; }
+        }
+
+        public string Description
+        {
+            get { return "Plugin for the DOORS requirements management system"; }
+        }
     }
 }
