@@ -8,5 +8,5 @@
                   WindowStartupLocation="Manual"
                   ResizeMode="CanResizeWithGrip"
                   Title="UUM Gui" Height="300" Width="300">
-    <gui:WorkspaceView  />
+    <gui:WorkspaceView Margin="-6" />
 </catel:DataWindow>
