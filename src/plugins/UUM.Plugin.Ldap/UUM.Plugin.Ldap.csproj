@@ -48,6 +48,7 @@
       <HintPath>..\..\packages\Catel.Core.3.5\lib\NET40\Catel.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>

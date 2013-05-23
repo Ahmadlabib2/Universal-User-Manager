@@ -1,6 +1,19 @@
-﻿namespace UUM.Plugin.Ldap
+﻿using System.ComponentModel.Composition;
+using UUM.Api;
+
+namespace UUM.Plugin.Ldap
 {
-    public class LdapPlugin
+    [Export(typeof(IPlugin))]
+    public class LdapPlugin : IPlugin
     {
+        public string Name
+        {
+            get { return "Ldap"; }
+        }
+
+        public string Description
+        {
+            get { return "Plugin for the Ldap system"; }
+        }
     }
 }
