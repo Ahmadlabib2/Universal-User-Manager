@@ -8,7 +8,6 @@ using Catel.Data;
 using Catel.MVVM;
 using Catel.MVVM.Services;
 using UUM.Api;
-using UUM.Controls.ViewModels;
 using UUM.Engine.Models;
 
 namespace UUM.Gui.ViewModels
@@ -19,7 +18,7 @@ namespace UUM.Gui.ViewModels
     public class WorkspaceViewModel : ViewModelBase
     {
         /// <summary>UUM Project files|*.uumx|All files|*.*</summary>
-        public const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
+        private const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
 
         public WorkspaceViewModel()
         {
