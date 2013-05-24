@@ -1,70 +1,71 @@
-﻿// See LICENCE.txt in the root for conditions of use
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Xml.Serialization;
-
+﻿using System.Collections.Generic;
 using Catel.Data;
 using Catel.MVVM;
 using UUM.Engine.Models;
 
 namespace UUM.Controls.ViewModels
 {
-	#region Constructor
-	/// <summary>
-	/// Description of UserpoolViewModel.
-	/// </summary>
-	public class UserpoolViewModel : ViewModelBase, IXmlSerializable
-	{
-		public UserpoolViewModel(UserpoolModel pool)
-		{
-			Userpool = pool;
-		}
-		#endregion
-	
-		#region Properties
-		public  IList<UserModel> users;
-		
-		public void AddUser(UserModel user)
-			{
-			users.Add(user);
-			}
-			
-		public void RemoveUser(UserModel user)
-			{
-			users.Remove(user);
-			}
-		public void EditUser(UserModel user)
-			{
-			
-			}
-		#endregion
-		
-		[Model]
-        public UserpoolModel Userpool
+    /// <summary>
+    ///     Description of UserpoolViewModel.
+    /// </summary>
+    public class UserPoolViewModel : ViewModelBase
+    {
+        #region Constructor
+
+        public UserPoolViewModel(UserPoolModel pool)
         {
-            get { return GetValue<UserpoolModel>(ModelProperty); }
+            UserPool = pool;
+            AddUser = new Command(OnAddUserExecute);
+            RemoveUser = new Command(OnRemoveUserExecute);
+        }
+
+        #endregion
+
+        #region Model: UserPool
+
+        public static readonly PropertyData ModelProperty =
+            RegisterProperty("UserPool", typeof(UserPoolModel));
+
+        [Model]
+        public UserPoolModel UserPool
+        {
+            get { return GetValue<UserPoolModel>(ModelProperty); }
             private set { SetValue(ModelProperty, value); }
         }
 
-       
-        public static readonly PropertyData ModelProperty =
-            RegisterProperty("Userpool", typeof(UserpoolModel));
-        
-        
-		public System.Xml.Schema.XmlSchema GetSchema()
-		{
-			throw new NotImplementedException();
-		}
-		
-		public void ReadXml(System.Xml.XmlReader reader)
-		{
-			throw new NotImplementedException();
-		}
-		
-		public void WriteXml(System.Xml.XmlWriter writer)
-		{
-			throw new NotImplementedException();
-		}
-	}
+        #endregion
+
+        #region Property: SelectedUser
+        public UserModel SelectedUser
+        {
+            get { return GetValue<UserModel>(SelectedUserProperty); }
+            set { SetValue(SelectedUserProperty, value); }
+        }
+
+        public static readonly PropertyData SelectedUserProperty =
+            RegisterProperty("SelectedUser", typeof(UserModel), null);
+        #endregion
+
+        #region Commands
+
+        #region Command: AddUser
+        public Command AddUser { get; private set; }
+
+        private void OnAddUserExecute()
+        {
+            UserPool.Add(new UserModel());
+        }
+        #endregion
+
+        #region Command: RemoveUser
+        public Command RemoveUser { get; private set; }
+
+        private void OnRemoveUserExecute()
+        {
+            UserPool.Remove(SelectedUser);
+        }
+        #endregion
+
+        #endregion
+    }
 }
