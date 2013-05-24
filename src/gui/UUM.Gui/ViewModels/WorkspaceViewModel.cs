@@ -27,7 +27,7 @@ namespace UUM.Gui.ViewModels
             LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
             CloseProject = new Command(OnCloseProjectExecute, OnCloseProjectCanExecute);
             ApplicationExit = new Command(OnApplicationExitExecuted);
-
+			
             // MEF loading of available plugins
             var catalog = new DirectoryCatalog(".", "UUM.Plugin.*.dll");
             var container = new CompositionContainer(catalog);

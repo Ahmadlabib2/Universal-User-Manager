@@ -27,10 +27,13 @@
                     </DataTemplate>
                 </MenuItem.ItemTemplate>
             </MenuItem>
+    	
         </Menu>
         <uum:ProjectView 
             DataContext="{Binding Project}"
             Visibility="{Binding Path=.,Converter={StaticResource ReferenceToCollapsingVisibilityConverter}}"
             />
+	<uum:UserPoolView
+		DataContext="{Binding UserPool}"/>
     </DockPanel>
 </catel:UserControl>
