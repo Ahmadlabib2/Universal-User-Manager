@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Catel.Data;
+using UUM.Api;
 
 namespace UUM.Plugin.Doors.Models
 {
@@ -9,7 +10,7 @@ namespace UUM.Plugin.Doors.Models
     /// backwards compatibility and error checking.
     /// </summary>
     [Serializable]
-    public class Parameters : SavableModelBase<Parameters>
+    public class Parameters : SavableModelBase<Parameters>, IParameters
     {
         #region Fields
         #endregion
@@ -30,6 +31,49 @@ namespace UUM.Plugin.Doors.Models
         #endregion
 
         #region Properties
+        
+        #region Property: Server
+        /// <summary>
+        /// Server address.
+        /// </summary>
+        public String Server
+        {
+            get { return GetValue<String>(ServerProperty); }
+            set { SetValue(ServerProperty, value); }
+        }
+
+        public static readonly PropertyData ServerProperty =
+            RegisterProperty("Server", typeof(String), null);
+        #endregion
+
+        #region Property: UserName
+        /// <summary>
+        /// Name of a User with administrative rights.
+        /// </summary>
+        public String UserName
+        {
+            get { return GetValue<String>(UserNameProperty); }
+            set { SetValue(UserNameProperty, value); }
+        }
+
+        public static readonly PropertyData UserNameProperty =
+            RegisterProperty("UserName", typeof(String), null);
+        #endregion
+
+        #region Property: UserName
+        /// <summary>
+        /// Password.
+        /// </summary>
+        public String Password
+        {
+            get { return GetValue<String>(PasswordProperty); }
+            set { SetValue(PasswordProperty, value); }
+        }
+
+        public static readonly PropertyData PasswordProperty = 
+            RegisterProperty("Password", typeof(String), null);
+        #endregion
+
         #endregion
 
         #region Methods

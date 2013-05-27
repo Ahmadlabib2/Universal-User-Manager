@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Catel.Data;
+using UUM.Api;
 
 namespace UUM.Plugin.Subversion.Models
 {
@@ -9,7 +10,7 @@ namespace UUM.Plugin.Subversion.Models
     /// backwards compatibility and error checking.
     /// </summary>
     [Serializable]
-    public class Parameters : SavableModelBase<Parameters>
+    public class Parameters : SavableModelBase<Parameters>, IParameters
     {
         #region Fields
         #endregion
@@ -30,6 +31,24 @@ namespace UUM.Plugin.Subversion.Models
         #endregion
 
         #region Properties
+
+        #region Property: ConfigurationFile
+        /// <summary>
+        /// Path to Subversion Configuration File.
+        /// </summary>
+        public String ConfigurationFile
+        {
+            get { return GetValue<String>(ConfigurationFileProperty); }
+            set { SetValue(ConfigurationFileProperty, value); }
+        }
+
+        /// <summary>
+        /// Register the name property so it is known in the class.
+        /// </summary>
+        public static readonly PropertyData ConfigurationFileProperty =
+            RegisterProperty("ConfigurationFile", typeof(String), null);
+        #endregion
+        
         #endregion
 
         #region Methods

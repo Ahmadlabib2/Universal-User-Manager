@@ -2,6 +2,7 @@
 using Catel.Data;
 using Catel.MVVM;
 using UUM.Engine.Models;
+using UUM.Api.Models;
 
 namespace UUM.Controls.ViewModels
 {

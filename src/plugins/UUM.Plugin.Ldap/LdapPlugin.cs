@@ -15,5 +15,10 @@ namespace UUM.Plugin.Ldap
         {
             get { return "Plugin for the Ldap system"; }
         }
+
+        public IRepository GetRepository(IParameters parameters)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

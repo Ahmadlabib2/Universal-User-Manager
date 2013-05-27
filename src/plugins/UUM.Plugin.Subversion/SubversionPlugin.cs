@@ -15,5 +15,10 @@ namespace UUM.Plugin.Subversion
         {
             get { return "Plugin for the Subversion file based rights system"; }
         }
+
+        public IRepository GetRepository(IParameters parameters)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -118,6 +118,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\..\framework\UUM.Api\UUM.Api.csproj">
+      <Project>{d0b6587f-d167-4fd8-a3cd-080fbde45be9}</Project>
+      <Name>UUM.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\framework\UUM.Engine\UUM.Engine.csproj">
       <Project>{26317A12-5078-452C-AF0E-5CAC6FE1C769}</Project>
       <Name>UUM.Engine</Name>

@@ -15,5 +15,10 @@ namespace UUM.Plugin.Doors
         {
             get { return "Plugin for the DOORS requirements management system"; }
         }
+
+        public IRepository GetRepository(IParameters parameters)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
