@@ -1,8 +1,16 @@
-﻿namespace UUM.Api
+﻿namespace UUM.Api.Interfaces
 {
-    public interface IPlugin
+    public interface IPlugin: IIdentifiable
     {
+
+        /// <summary>
+        /// Short name of the plugin
+        /// </summary>
         string Name { get; }
+
+        /// <summary>
+        /// Detailled description
+        /// </summary>
         string Description { get; }
 
         /// <summary>

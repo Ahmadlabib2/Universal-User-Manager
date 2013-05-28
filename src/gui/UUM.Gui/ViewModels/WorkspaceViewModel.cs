@@ -8,6 +8,7 @@ using Catel.Data;
 using Catel.MVVM;
 using Catel.MVVM.Services;
 using UUM.Api;
+using UUM.Api.Interfaces;
 using UUM.Engine.Models;
 
 namespace UUM.Gui.ViewModels
@@ -82,7 +83,6 @@ namespace UUM.Gui.ViewModels
             {
                 Project.Save(saveFileService.FileName, SerializationMode.Xml);
             }
-
         }
 
         private bool OnSaveProjectCanExecute()

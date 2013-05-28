@@ -1,9 +1,8 @@
-﻿// See LICENCE.txt in the root for conditions of use
-
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Catel.Data;
+using UUM.Api.Interfaces;
 using UUM.Api.Models;
 
 namespace UUM.Engine.Models
@@ -36,6 +35,19 @@ namespace UUM.Engine.Models
 
         #endregion
 
+        #region Property: UsersInSources
+
+        public static readonly PropertyData UsersInSourcesProperty =
+            RegisterProperty("UsersInSources", typeof(ObservableCollection<UserModel>));
+
+        public ObservableCollection<IUserInSource> UsersInSources
+        {
+            get { return GetValue<ObservableCollection<IUserInSource>>(UsersInSourcesProperty); }
+            set { SetValue(UsersInSourcesProperty, value); }
+        }
+
+        #endregion
+
         #region Methods
 
         public void Add(UserModel user)
@@ -46,6 +58,11 @@ namespace UUM.Engine.Models
         public void Remove(UserModel user)
         {
             Users.Remove(user);
+        }
+
+        public IUserInSource FindUserInSourceById(Guid id)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

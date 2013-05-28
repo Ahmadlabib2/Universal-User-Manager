@@ -4,6 +4,7 @@
 				  xmlns:catel="http://catel.codeplex.com"
                   Title="UUM Trace Output Window (available in Debug build only)"
                   WindowStyle="ToolWindow"
+                  ShowInTaskbar="True"
                   WindowStartupLocation="Manual"
                   ResizeMode="CanResizeWithGrip"
                   Top="{Binding Top}"
