@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Catel.Data;
+﻿using Catel.Data;
 using Catel.MVVM;
 using UUM.Engine.Models;
-using UUM.Api.Models;
 
 namespace UUM.Controls.ViewModels
 {
@@ -25,7 +23,7 @@ namespace UUM.Controls.ViewModels
         #region Model: UserPool
 
         public static readonly PropertyData ModelProperty =
-            RegisterProperty("UserPool", typeof(UserPoolModel));
+            RegisterProperty("UserPool", typeof (UserPoolModel));
 
         [Model]
         public UserPoolModel UserPool
@@ -37,34 +35,40 @@ namespace UUM.Controls.ViewModels
         #endregion
 
         #region Property: SelectedUser
+
+        public static readonly PropertyData SelectedUserProperty =
+            RegisterProperty("SelectedUser", typeof (UserModel), null);
+
         public UserModel SelectedUser
         {
             get { return GetValue<UserModel>(SelectedUserProperty); }
             set { SetValue(SelectedUserProperty, value); }
         }
 
-        public static readonly PropertyData SelectedUserProperty =
-            RegisterProperty("SelectedUser", typeof(UserModel), null);
         #endregion
 
         #region Commands
 
         #region Command: AddUser
+
         public Command AddUser { get; private set; }
 
         private void OnAddUserExecute()
         {
             UserPool.Add(new UserModel());
         }
+
         #endregion
 
         #region Command: RemoveUser
+
         public Command RemoveUser { get; private set; }
 
         private void OnRemoveUserExecute()
         {
             UserPool.Remove(SelectedUser);
         }
+
         #endregion
 
         #endregion
