@@ -7,6 +7,7 @@ using System.Windows;
 using Catel.Data;
 using Catel.MVVM;
 using Catel.MVVM.Services;
+using Catel.MVVM.Tasks;
 using UUM.Api;
 using UUM.Api.Interfaces;
 using UUM.Engine.Models;
@@ -23,13 +24,20 @@ namespace UUM.Gui.ViewModels
 
         public WorkspaceViewModel()
         {
+            var splashScreenService = GetService<ISplashScreenService>();
+            splashScreenService.Enqueue(new ActionTask("Loading plug-ins", OnLoadPlugins));
+            splashScreenService.Commit();
+
             NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
             SaveProject = new Command(OnSaveProjectExecuted, OnSaveProjectCanExecute);
             LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
             CloseProject = new Command(OnCloseProjectExecute, OnCloseProjectCanExecute);
             ApplicationExit = new Command(OnApplicationExitExecuted);
-			
-            // MEF loading of available plugins
+        }
+
+        private void OnLoadPlugins(ITaskProgressTracker tracker)
+        {
+            // MEF loading of available plug-ins
             var catalog = new DirectoryCatalog(".", "UUM.Plugin.*.dll");
             var container = new CompositionContainer(catalog);
 

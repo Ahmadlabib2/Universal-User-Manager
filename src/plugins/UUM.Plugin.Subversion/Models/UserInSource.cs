@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Catel.Data;
-using UUM.Api;
 using UUM.Api.Interfaces;
-using UUM.Api.Models;
 
 namespace UUM.Plugin.Subversion.Models
 {
@@ -45,27 +43,27 @@ namespace UUM.Plugin.Subversion.Models
 
         #region Property: Id
 
+        public static readonly PropertyData IdProperty =
+            RegisterProperty("Id", typeof (Guid));
+
         public Guid Id
         {
             get { return GetValue<Guid>(IdProperty); }
             set { SetValue(IdProperty, value); }
         }
 
-        public static readonly PropertyData IdProperty =
-            RegisterProperty("Id", typeof(Guid));
-
         #endregion
 
         #region Property: LoginName
+
+        public static readonly PropertyData LoginNameProperty =
+            RegisterProperty("LoginName", typeof (string));
 
         public string LoginName
         {
             get { return GetValue<string>(LoginNameProperty); }
             set { SetValue(LoginNameProperty, value); }
         }
-
-        public static readonly PropertyData LoginNameProperty =
-            RegisterProperty("LoginName", typeof(string));
 
         #endregion
 

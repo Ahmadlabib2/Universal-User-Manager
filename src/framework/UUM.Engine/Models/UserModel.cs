@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Catel.Data;
 
-namespace UUM.Api.Models
+namespace UUM.Engine.Models
 {
     /// <summary>
     ///     User abstraction
