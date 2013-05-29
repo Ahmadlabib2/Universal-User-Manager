@@ -13,7 +13,6 @@ namespace UUM.Engine.Models
     {
         public UserModel()
         {
-            LinkedUsers = new ObservableCollection<Guid>();
         }
 
         protected UserModel(SerializationInfo info, StreamingContext context)
@@ -89,7 +88,7 @@ namespace UUM.Engine.Models
         #region Property: LinkedUsers
 
         public static readonly PropertyData LinkedUsersProperty =
-            RegisterProperty("LinkedUsers", typeof (ObservableCollection<Guid>), null);
+            RegisterProperty("LinkedUsers", typeof(ObservableCollection<Guid>), new ObservableCollection<Guid>());
 
         public ObservableCollection<Guid> LinkedUsers
         {
