@@ -91,11 +91,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\WPFAssemblyInfo.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
+    <Compile Include="ViewModels\RepositorySettingsViewModel.cs" />
+    <Compile Include="ViewModels\RepositoryViewModel.cs" />
     <Compile Include="ViewModels\UserPoolViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Views\ProjectView.cs">
       <DependentUpon>ProjectView.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\RepositorySettingsControl.xaml.cs">
+      <DependentUpon>RepositorySettingsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RepositoryView.xaml.cs">
+      <DependentUpon>RepositoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserPoolView.xaml.cs">
       <DependentUpon>UserPoolView.xaml</DependentUpon>
@@ -111,6 +119,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\ProjectView.xaml" />
+    <Page Include="Views\RepositorySettingsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RepositoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserPoolView.xaml">
       <SubType>Designer</SubType>
     </Page>
