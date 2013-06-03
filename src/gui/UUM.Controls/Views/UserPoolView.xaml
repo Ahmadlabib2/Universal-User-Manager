@@ -3,36 +3,35 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:uum="clr-namespace:UUM.Controls.Views"
 	xmlns:catel="http://catel.codeplex.com">
-	<Grid>
+	
+	<catel:StackGrid>
+		<catel:StackGrid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"></ColumnDefinition>
+			<ColumnDefinition Width="Auto"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+		</catel:StackGrid.ColumnDefinitions>
+		<catel:StackGrid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</catel:StackGrid.RowDefinitions>
 		
-		<Grid.RowDefinitions>
-			<RowDefinition
-				Height="Auto"></RowDefinition>
-			<RowDefinition
-				Height="Auto"></RowDefinition>
-			<RowDefinition
-				Height="Auto"></RowDefinition>
-			<RowDefinition></RowDefinition>
-			<RowDefinition></RowDefinition>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition></ColumnDefinition>
-			<ColumnDefinition
-				Width="10"></ColumnDefinition>
-			<ColumnDefinition
-				Width="Auto"></ColumnDefinition>
-		</Grid.ColumnDefinitions>
+		<Button Command="{Binding AddUser}">Add User</Button>
+		<Button Command="{Binding RemoveUser}">Remove User</Button>
+		<!-- Button Command="{Binding SubmitAddUser}">Submit</Button- -->
+		<catel:EmptyColumn/>
+		
 		<ListView
-			ItemsSource="{Binding UserPool}"
+			Grid.ColumnSpan="3"
+			ItemsSource="{Binding Users}"
 			SelectedItem="{Binding SelectedUser}"
-			HorizontalContentAlignment="Stretch"
-			Name="Users"
-			Margin="10">
+			Name="Users">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<uum:UserView DataContext="{Binding}" />
+					<uum:UserView
+							DataContext="{Binding}">
+					</uum:UserView>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-	</Grid>
+	</catel:StackGrid>
 </catel:UserControl>

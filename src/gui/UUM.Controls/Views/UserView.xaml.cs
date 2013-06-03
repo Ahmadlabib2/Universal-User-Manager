@@ -12,7 +12,7 @@ namespace UUM.Controls.Views
 	{
 		public UserView()
 		{
-			InitializeComponent();
+			InitializeComponent();			
 		}
 	}
 }

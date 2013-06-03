@@ -1,76 +1,90 @@
-﻿using Catel.Data;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+
+using Catel.Data;
 using Catel.MVVM;
 using UUM.Engine.Models;
 
 namespace UUM.Controls.ViewModels
 {
-    /// <summary>
-    ///     Description of UserpoolViewModel.
-    /// </summary>
-    public class UserPoolViewModel : ViewModelBase
-    {
-        #region Constructor
+	/// <summary>
+	///     Description of UserpoolViewModel.
+	/// </summary>
+	public class UserPoolViewModel : ViewModelBase
+	{
+		#region Constructor
 
-        public UserPoolViewModel(UserPoolModel pool)
-        {
-            UserPool = pool;
-            AddUser = new Command(OnAddUserExecute);
-            RemoveUser = new Command(OnRemoveUserExecute);
-        }
+		public UserPoolViewModel(UserPoolModel pool)
+		{
+			UserPool= pool;
+			AddUser = new Command(OnAddUserExecute);
+			RemoveUser = new Command(OnRemoveUserExecute);
+			EditUser = new Command(OnEditUserExecute);
+		}
 
-        #endregion
+		#endregion
 
-        #region Model: UserPool
+		#region Model: UserPool
+		public static readonly PropertyData UserPoolProperty =
+			RegisterProperty("UserPool", typeof(UserPoolModel), new ObservableCollection<UserPoolModel>());
+		
+		[Model]
+		[Expose("Users")]
+		public UserPoolModel UserPool
+		{
+			get { return GetValue<UserPoolModel>(UserPoolProperty); }
+			set { SetValue(UserPoolProperty, value); }
+		}
+		#endregion
 
-        public static readonly PropertyData ModelProperty =
-            RegisterProperty("UserPool", typeof (UserPoolModel));
+		#region Property: SelectedUser
 
-        [Model]
-        public UserPoolModel UserPool
-        {
-            get { return GetValue<UserPoolModel>(ModelProperty); }
-            private set { SetValue(ModelProperty, value); }
-        }
+		public static readonly PropertyData SelectedUserProperty =
+			RegisterProperty("SelectedUser", typeof (UserModel), null);
 
-        #endregion
+		public UserModel SelectedUser
+		{
+			get { return GetValue<UserModel>(SelectedUserProperty); }
+			set { SetValue(SelectedUserProperty, value); }
+		}
 
-        #region Property: SelectedUser
+		#endregion
 
-        public static readonly PropertyData SelectedUserProperty =
-            RegisterProperty("SelectedUser", typeof (UserModel), null);
+		#region Commands
 
-        public UserModel SelectedUser
-        {
-            get { return GetValue<UserModel>(SelectedUserProperty); }
-            set { SetValue(SelectedUserProperty, value); }
-        }
+		#region Command: AddUser
 
-        #endregion
+		public Command AddUser { get; private set; }
 
-        #region Commands
+		private void OnAddUserExecute()
+		{
+			
+			UserPool.Add(new UserModel());
+		}
+		
+		
+		public Command EditUser {get; private set; }
+		
+		private void OnEditUserExecute()
+		{
+			throw new NotImplementedException();
+			//IEditableObject.BeginEdit();
+			
+		}
+		#endregion
 
-        #region Command: AddUser
+		#region Command: RemoveUser
 
-        public Command AddUser { get; private set; }
+		public Command RemoveUser { get; private set; }
 
-        private void OnAddUserExecute()
-        {
-            UserPool.Add(new UserModel());
-        }
+		private void OnRemoveUserExecute()
+		{
+			UserPool.Remove(SelectedUser);
+		}
 
-        #endregion
+		#endregion
 
-        #region Command: RemoveUser
-
-        public Command RemoveUser { get; private set; }
-
-        private void OnRemoveUserExecute()
-        {
-            UserPool.Remove(SelectedUser);
-        }
-
-        #endregion
-
-        #endregion
-    }
+		#endregion
+	}
 }

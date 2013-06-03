@@ -1,4 +1,5 @@
-﻿using Catel.Windows.Controls;
+﻿using System;
+using Catel.Windows.Controls;
 
 namespace UUM.Controls.Views
 {
