@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using Catel.Data;
-using UUM.Api;
+using UUM.Api.Interfaces;
 
 namespace UUM.Plugin.Subversion.Models
 {
