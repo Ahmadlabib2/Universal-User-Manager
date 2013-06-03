@@ -25,6 +25,7 @@ namespace UUM.Controls.ViewModels
         [Model]
         [Expose("Name")]
         [Expose("Description")]
+        [Expose("UserPool")]
         [Expose("Parameters", Mode = ViewModelToModelMode.OneWay)]
         public ProjectModel Project
         {

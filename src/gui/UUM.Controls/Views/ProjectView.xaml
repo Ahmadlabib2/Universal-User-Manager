@@ -32,8 +32,8 @@
             <views:RepositoryView DataContext="{Binding Parameters}" />
         </TabItem>
         <TabItem Header="User pool">
-            <catel:StackGrid>
-            </catel:StackGrid>
+			<views:UserPoolView
+				DataContext="{Binding UserPool}"/>
         </TabItem>
     </catel:TabControl>
 </catel:UserControl>

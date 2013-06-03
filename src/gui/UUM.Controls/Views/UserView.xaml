@@ -15,22 +15,28 @@
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
 		</catel:StackGrid.RowDefinitions>
 		<catel:StackGrid.ColumnDefinitions>
 			<ColumnDefinition Width="Auto" />
-			<ColumnDefinition Width="*" />
-		</catel:StackGrid.ColumnDefinitions>
+			<ColumnDefinition MinWidth="90" />
 		
+		</catel:StackGrid.ColumnDefinitions>
 		<Label Content="First Name" />
 		<TextBox Text="{Binding User.FirstName}" />
 		
 		<Label Content="Last Name" />
-        <TextBox Text="{Binding User.LastName}" />
+		<TextBox Text="{Binding User.LastName}" />
 		
 		<Label Content="EmailAddress" />
-        <TextBox Text="{Binding User.EmailAddress}" />
+		<TextBox Text="{Binding User.EmailAddress}" />
 		
 		<Label Content="PhoneNumber" />
-        <TextBox Text="{Binding User.PhoneNumber}" />
+		<TextBox Text="{Binding User.PhoneNumber}" />
+	
+	<Button Command="{Binding AddUser}">Submit</Button>
+	
+	
 	</catel:StackGrid>
 </catel:UserControl>

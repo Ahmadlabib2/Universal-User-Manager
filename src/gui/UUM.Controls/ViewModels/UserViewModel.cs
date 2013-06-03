@@ -1,4 +1,5 @@
-﻿using Catel.Data;
+﻿using System.ComponentModel;
+using Catel.Data;
 using Catel.MVVM;
 using UUM.Engine.Models;
 
@@ -7,7 +8,7 @@ namespace UUM.Controls.ViewModels
     /// <summary>
     /// User view model.
     /// </summary>
-    public class UserViewModel : ViewModelBase
+    public class UserViewModel : ViewModelBase, IEditableObject
     {
         #region Constructors
         /// <summary>
