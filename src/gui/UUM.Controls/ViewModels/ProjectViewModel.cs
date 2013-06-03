@@ -1,7 +1,5 @@
-﻿using System.Windows;
-using Catel.Data;
+﻿using Catel.Data;
 using Catel.MVVM;
-using UUM.Engine;
 using UUM.Engine.Models;
 
 namespace UUM.Controls.ViewModels
@@ -27,6 +25,7 @@ namespace UUM.Controls.ViewModels
         [Model]
         [Expose("Name")]
         [Expose("Description")]
+        [Expose("Parameters", Mode = ViewModelToModelMode.OneWay)]
         public ProjectModel Project
         {
             get { return GetValue<ProjectModel>(ModelProperty); }

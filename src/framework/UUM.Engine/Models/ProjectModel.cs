@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Catel.Data;
+using UUM.Api;
 
 namespace UUM.Engine.Models
 {
@@ -12,13 +14,16 @@ namespace UUM.Engine.Models
 	{
 		public ProjectModel()
 		{
-			//UserPool
 		}
 		
 		protected ProjectModel(SerializationInfo info, StreamingContext context)
-			: base(info, context) { }
-		
-		public string Name
+			: base(info, context) 
+        {
+        }
+
+        #region Property: Name
+
+        public string Name
 		{
 			get { return GetValue<string>(NameProperty); }
 			set { SetValue(NameProperty, value); }
@@ -26,8 +31,12 @@ namespace UUM.Engine.Models
 
 		public static readonly PropertyData NameProperty =
 			RegisterProperty("Name", typeof(string), "<New Project Name>");
-		
-		public string Description
+
+        #endregion
+
+        #region Property: Description
+
+        public string Description
 		{
 			get { return GetValue<string>(DescriptionProperty); }
 			set { SetValue(DescriptionProperty, value); }
@@ -35,6 +44,34 @@ namespace UUM.Engine.Models
 		
 		public static readonly PropertyData DescriptionProperty =
 			RegisterProperty("Description", typeof(string), "<Add Description Here>");
-	}
+    
+        #endregion
+
+        #region Property: UserPool
+
+        public UserPoolModel UserPool
+        {
+            get { return GetValue<UserPoolModel>(UserPoolProperty); }
+            set { SetValue(UserPoolProperty, value); }
+        }
+
+        public static readonly PropertyData UserPoolProperty =
+            RegisterProperty("UserPool", typeof(UserPoolModel), new UserPoolModel());
+
+        #endregion
+
+        #region Property: Parameters
+
+        public ObservableCollection<IParameters> Parameters
+        {
+            get { return GetValue<ObservableCollection<IParameters>>(ParametersProperty); }
+            set { SetValue(ParametersProperty, value); }
+        }
+
+        public static readonly PropertyData ParametersProperty =
+            RegisterProperty("Parameters", typeof(ObservableCollection<IParameters>));
+
+        #endregion
+    }
 
 }

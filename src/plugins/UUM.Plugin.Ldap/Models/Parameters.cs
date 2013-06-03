@@ -60,7 +60,7 @@ namespace UUM.Plugin.Ldap.Models
             RegisterProperty("UserName", typeof(String), null);
         #endregion
 
-        #region Property: UserName
+        #region Property: Password
         /// <summary>
         /// Password.
         /// </summary>

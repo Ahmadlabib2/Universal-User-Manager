@@ -24,7 +24,7 @@ namespace UUM.Engine.Models
         #region Property: Users
 
         public static readonly PropertyData UserProperty =
-            RegisterProperty("Users", typeof (ObservableCollection<UserModel>));
+            RegisterProperty("Users", typeof(ObservableCollection<UserModel>), new ObservableCollection<UserModel>());
 
         public ObservableCollection<UserModel> Users
         {
