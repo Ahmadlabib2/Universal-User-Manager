@@ -1,6 +1,6 @@
 ﻿using Catel.Data;
 using Catel.MVVM;
-using UUM.Api;
+using UUM.Api.Interfaces;
 
 namespace UUM.Controls.ViewModels
 {

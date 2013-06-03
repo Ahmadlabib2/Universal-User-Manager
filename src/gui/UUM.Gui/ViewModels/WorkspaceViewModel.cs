@@ -1,15 +1,9 @@
-﻿
-using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
-using System.Windows;
+﻿using System.Windows;
 using Catel.Data;
 using Catel.MVVM;
 using Catel.MVVM.Services;
 using Catel.MVVM.Tasks;
-using UUM.Api;
-using UUM.Api.Interfaces;
+using UUM.Engine.Interfaces;
 using UUM.Engine.Models;
 
 namespace UUM.Gui.ViewModels
@@ -37,11 +31,8 @@ namespace UUM.Gui.ViewModels
 
         private void OnLoadPlugins(ITaskProgressTracker tracker)
         {
-            // MEF loading of available plug-ins
-            var catalog = new DirectoryCatalog(".", "UUM.Plugin.*.dll");
-            var container = new CompositionContainer(catalog);
-
-            container.SatisfyImportsOnce(this);
+            var pluginRepository = GetService<IPluginRepository>();
+            pluginRepository.Initialize();
         }
 
         #region Properties
@@ -50,9 +41,6 @@ namespace UUM.Gui.ViewModels
         /// </summary>
         /// <value>The title.</value>
         public override string Title { get { return "Workspace"; } }
-
-        [ImportMany(AllowRecomposition = true)]
-        public ObservableCollection<IPlugin> Plugins { get; set; }
 
         #endregion
 

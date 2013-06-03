@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Catel.Data;
-using UUM.Api;
+using UUM.Api.Interfaces;
 
 namespace UUM.Engine.Models
 {
