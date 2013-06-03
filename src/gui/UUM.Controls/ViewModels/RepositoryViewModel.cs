@@ -56,6 +56,7 @@ namespace UUM.Controls.ViewModels
 
         private void OnAddParameterExecute()
         {
+        	
             // TODO: Select the plugin / repository type to create
             // then add to the list
             throw new NotImplementedException();

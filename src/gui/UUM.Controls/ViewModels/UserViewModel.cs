@@ -8,7 +8,7 @@ namespace UUM.Controls.ViewModels
     /// <summary>
     /// User view model.
     /// </summary>
-    public class UserViewModel : ViewModelBase, IEditableObject
+    public class UserViewModel : ViewModelBase
     {
         #region Constructors
         /// <summary>
@@ -17,6 +17,7 @@ namespace UUM.Controls.ViewModels
         public UserViewModel(UserModel model)
         {
             User = model;
+            
         }
         #endregion
 
@@ -30,6 +31,11 @@ namespace UUM.Controls.ViewModels
         #region Model
 
         [Model]
+        [Expose("FirstName")]
+        [Expose("LastName")]
+        [Expose("EmailAddress")]
+        [Expose("PhoneNumber")]
+         
         public UserModel User
         {
             get { return GetValue<UserModel>(ModelProperty); }
@@ -45,5 +51,6 @@ namespace UUM.Controls.ViewModels
         #endregion
 
         #endregion
+    	
     }
 }
