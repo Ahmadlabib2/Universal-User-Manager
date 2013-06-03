@@ -1,15 +1,17 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using Catel.Data;
 using Catel.MVVM;
 using Catel.MVVM.Services;
 using Catel.MVVM.Tasks;
+using UUM.Api.Interfaces;
 using UUM.Engine.Interfaces;
 using UUM.Engine.Models;
 
 namespace UUM.Gui.ViewModels
 {
     /// <summary>
-    /// Description of WorkspaceViewModel.
+    ///     Description of WorkspaceViewModel.
     /// </summary>
     public class WorkspaceViewModel : ViewModelBase
     {
@@ -33,28 +35,50 @@ namespace UUM.Gui.ViewModels
         {
             var pluginRepository = GetService<IPluginRepository>();
             pluginRepository.Initialize();
+            Plugins = pluginRepository.Plugins;
         }
 
         #region Properties
+
         /// <summary>
-        /// Gets the title of the view model.
+        ///     Gets the title of the view model.
         /// </summary>
         /// <value>The title.</value>
-        public override string Title { get { return "Workspace"; } }
+        public override string Title
+        {
+            get { return "Workspace"; }
+        }
 
         #endregion
 
         #region Property: Project
+
+        public static readonly PropertyData ProjectProperty =
+            RegisterProperty("Project", typeof (ProjectModel), null);
+
         public ProjectModel Project
         {
             get { return GetValue<ProjectModel>(ProjectProperty); }
             set { SetValue(ProjectProperty, value); }
         }
-        public static readonly PropertyData ProjectProperty =
-            RegisterProperty("Project", typeof(ProjectModel), null);
+
+        #endregion
+
+        #region Property: Plugins
+
+        public static readonly PropertyData PluginsProperty =
+            RegisterProperty("Plugins", typeof (ObservableCollection<IPlugin>), null);
+
+        public ObservableCollection<IPlugin> Plugins
+        {
+            get { return GetValue<ObservableCollection<IPlugin>>(PluginsProperty); }
+            set { SetValue(PluginsProperty, value); }
+        }
+
         #endregion
 
         #region Command: NewProject
+
         public Command NewProject { get; private set; }
 
         private void OnNewProjectExecuted()
@@ -66,9 +90,11 @@ namespace UUM.Gui.ViewModels
         {
             return Project == null;
         }
+
         #endregion
 
         #region Command: SaveProject
+
         public Command SaveProject { get; private set; }
 
         private void OnSaveProjectExecuted()
@@ -85,10 +111,11 @@ namespace UUM.Gui.ViewModels
         {
             return Project != null;
         }
+
         #endregion
 
         #region Command: LoadProject
-        
+
         public Command LoadProject { get; private set; }
 
         private void OnLoadProjectExecuted()
@@ -105,6 +132,7 @@ namespace UUM.Gui.ViewModels
         {
             return Project == null;
         }
+
         #endregion
 
         #region Command: CloseProject
@@ -120,9 +148,11 @@ namespace UUM.Gui.ViewModels
         {
             return Project != null;
         }
+
         #endregion
 
         #region Command: ApplicationExit
+
         public Command ApplicationExit { get; private set; }
 
         private void OnApplicationExitExecuted()
@@ -134,9 +164,8 @@ namespace UUM.Gui.ViewModels
                 Application.Current.Shutdown();
                 // Do it!
             }
-
-
         }
+
         #endregion
     }
 }
