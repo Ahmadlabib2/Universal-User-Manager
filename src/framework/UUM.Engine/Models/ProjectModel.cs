@@ -56,7 +56,7 @@ namespace UUM.Engine.Models
         }
 
         public static readonly PropertyData UserPoolProperty =
-            RegisterProperty("UserPool", typeof(UserPoolModel), new ObservableCollection<UserPoolModel>());
+            RegisterProperty("UserPool", typeof(UserPoolModel), new UserPoolModel());
 
         #endregion
 
