@@ -24,16 +24,16 @@
 		
 		</catel:StackGrid.ColumnDefinitions>
 		<Label Content="First Name" />
-		<TextBox Text="{Binding FirstName}" />
+		<TextBox Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged}" />
 		
 		<Label Content="Last Name" />
-		<TextBox Text="{Binding LastName}" />
+		<TextBox Text="{Binding LastName,UpdateSourceTrigger=PropertyChanged}" />
 		
 		<Label Content="EmailAddress" />
-		<TextBox Text="{Binding EmailAddress}" />
+		<TextBox Text="{Binding EmailAddress,UpdateSourceTrigger=PropertyChanged}" />
 		
 		<Label Content="PhoneNumber" />
-		<TextBox Text="{Binding PhoneNumber}" />
+		<TextBox Text="{Binding PhoneNumber,UpdateSourceTrigger=PropertyChanged}" />
 	
 	
 	

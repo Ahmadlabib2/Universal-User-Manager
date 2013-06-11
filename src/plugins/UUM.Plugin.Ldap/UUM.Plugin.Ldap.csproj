@@ -44,8 +44,8 @@
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Catel.Core, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Catel.Core.3.5\lib\NET40\Catel.Core.dll</HintPath>
+    <Reference Include="Catel.Core">
+      <HintPath>..\..\packages\Catel.Core.3.5.1306110931-beta\lib\NET40\Catel.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -69,7 +69,6 @@
       <Name>UUM.Api</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
