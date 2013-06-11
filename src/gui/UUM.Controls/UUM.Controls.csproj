@@ -93,11 +93,16 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\WPFAssemblyInfo.cs" />
+    <Compile Include="ViewModels\ChoosePluginViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
     <Compile Include="ViewModels\RepositorySettingsViewModel.cs" />
     <Compile Include="ViewModels\RepositoryViewModel.cs" />
     <Compile Include="ViewModels\UserPoolViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="Views\ChoosePluginView.xaml.cs">
+      <DependentUpon>ChoosePluginView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\ProjectView.cs">
       <DependentUpon>ProjectView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -121,6 +126,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\ChoosePluginView.xaml" />
     <Page Include="Views\ProjectView.xaml" />
     <Page Include="Views\RepositorySettingsControl.xaml">
       <SubType>Designer</SubType>

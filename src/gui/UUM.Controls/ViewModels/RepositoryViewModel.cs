@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using Catel.Data;
 using Catel.MVVM;
+using Catel.MVVM.Services;
 using UUM.Api.Interfaces;
 
 namespace UUM.Controls.ViewModels
@@ -59,7 +60,9 @@ namespace UUM.Controls.ViewModels
         	
             // TODO: Select the plugin / repository type to create
             // then add to the list
-            throw new NotImplementedException();
+            var viewModel = new ChoosePluginViewModel();
+            var uiVisualizerService = GetService<IUIVisualizerService>();
+			uiVisualizerService.ShowDialog(viewModel);
         }
 
         #endregion

@@ -69,7 +69,7 @@ namespace UUM.Engine.Models
         }
 
         public static readonly PropertyData ParametersProperty =
-            RegisterProperty("Parameters", typeof(ObservableCollection<IParameters>));
+        	RegisterProperty("Parameters", typeof(ObservableCollection<IParameters>), new ObservableCollection<IParameters>());
 
         #endregion
     }
