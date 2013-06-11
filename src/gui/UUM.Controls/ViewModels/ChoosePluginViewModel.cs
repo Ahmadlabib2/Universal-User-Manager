@@ -16,6 +16,7 @@ namespace UUM.Controls.ViewModels
 		{
 			var pluginRepository = GetService<IPluginRepository>();
 			Plugins = pluginRepository.Plugins;
+			
 		}
 		#region Model
 		/// <summary>
