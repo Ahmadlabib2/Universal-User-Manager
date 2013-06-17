@@ -32,6 +32,15 @@ namespace UUM.Plugin.Ldap.Models
 
         #region Properties
 
+        #region PluginId
+
+        public Guid PluginId
+        {
+            get { return LdapPlugin.PluginId; }
+        }
+
+        #endregion
+
         #region Property: Server
         /// <summary>
         /// Server address.

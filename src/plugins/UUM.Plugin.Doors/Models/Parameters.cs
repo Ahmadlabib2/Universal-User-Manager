@@ -31,7 +31,16 @@ namespace UUM.Plugin.Doors.Models
         #endregion
 
         #region Properties
-        
+
+        #region PluginId
+
+        public Guid PluginId
+        {
+            get { return DoorsPlugin.PluginId; }
+        }
+
+        #endregion
+
         #region Property: Server
         /// <summary>
         /// Server address.

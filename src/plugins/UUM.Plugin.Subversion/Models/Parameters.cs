@@ -32,6 +32,15 @@ namespace UUM.Plugin.Subversion.Models
 
         #region Properties
 
+        #region PluginId
+
+        public Guid PluginId
+        {
+            get { return SubversionPlugin.PluginId; }
+        }
+
+        #endregion
+
         #region Property: ConfigurationFile
         /// <summary>
         /// Path to Subversion Configuration File.
