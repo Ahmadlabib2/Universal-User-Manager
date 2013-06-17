@@ -2,13 +2,13 @@
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:catel="http://catel.codeplex.com">
-    <ListView ItemsSource="{Binding Properties}">
+    <ListView ItemsSource="{Binding IPlugin}">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <catel:StackGrid>
                     <TextBlock Text="{Binding Name}" />
                     <!--TextBox Text="{Binding Value}" /-->
-                </catel:StackGrid>
+            	</catel:StackGrid>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

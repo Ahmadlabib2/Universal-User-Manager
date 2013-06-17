@@ -61,7 +61,6 @@ namespace UUM.Controls.ViewModels
             var uiVisualizerService = GetService<IUIVisualizerService>();
 			if (uiVisualizerService.ShowDialog(viewModel) == true)
 			{
-                // TODO: Retrieve & Set parameters from selected plugin
 			    Parameters.Add(viewModel.SelectedPlugin.GetParameters());
 			}
         }
