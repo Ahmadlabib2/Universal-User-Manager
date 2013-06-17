@@ -17,13 +17,13 @@
 		<ListView
 			Grid.ColumnSpan="3"
 			ItemsSource="{Binding Plugins}"
+			SelectedItem="{Binding SelectedPlugin}"
 			>
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<TextBlock Text="{Binding Name}" ToolTip="{Binding Description}" />
 				</DataTemplate>
 			</ListView.ItemTemplate>
-		
 		</ListView>
 	</catel:StackGrid>
 </catel:DataWindow>

@@ -69,7 +69,7 @@ namespace UUM.Plugin.Doors.Models
             RegisterProperty("UserName", typeof(String), null);
         #endregion
 
-        #region Property: UserName
+        #region Property: Password
         /// <summary>
         /// Password.
         /// </summary>

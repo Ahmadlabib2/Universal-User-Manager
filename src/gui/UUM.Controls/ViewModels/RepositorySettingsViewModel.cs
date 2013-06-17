@@ -54,7 +54,6 @@ namespace UUM.Controls.ViewModels
 		#region Commands
 
 		#endregion
-
 		
 		protected override void OnPropertyChanged(AdvancedPropertyChangedEventArgs e)
 		{

@@ -21,7 +21,7 @@
         <Button Command="{Binding RemoveRepository}">Remove</Button>
         <catel:EmptyColumn />
 
-        <ListView Grid.ColumnSpan="3" ItemsSource="{Binding Parameters}">
+        <ListView Grid.ColumnSpan="3" ItemsSource="{Binding Parameters}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <views:RepositorySettingsControl DataContext="{Binding}" />
