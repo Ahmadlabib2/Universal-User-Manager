@@ -7,59 +7,71 @@ using UUM.Api.Interfaces;
 
 namespace UUM.Controls.ViewModels
 {
-    /// <summary>
-    ///     RepositorySettingsViewModel view model.
-    /// </summary>
-    public class RepositorySettingsViewModel : ViewModelBase
-    {
-        public RepositorySettingsViewModel(IParameters parameters)
-        {
-            Parameters = parameters;
-        }
+	/// <summary>
+	///     RepositorySettingsViewModel view model.
+	/// </summary>
+	public class RepositorySettingsViewModel : ViewModelBase
+	{
+		public RepositorySettingsViewModel(IParameters parameters)
+		{
+			Parameters = parameters;
+		}
 
-        /// <summary>
-        ///     Gets the title of the view model.
-        /// </summary>
-        /// <value>The title.</value>
-        public override string Title
-        {
-            get { return "RepositorySettings"; }
-        }
+		/// <summary>
+		///     Gets the title of the view model.
+		/// </summary>
+		/// <value>The title.</value>
+		public override string Title
+		{
+			get { return "RepositorySettings"; }
+		}
 
-        #region Properties
+		#region Properties
 
-        #region Property: Parameters
+		#region Property: Parameters
 
-        public static readonly PropertyData ParametersProperty =
-            RegisterProperty("Parameters", typeof (IParameters));
+		public static readonly PropertyData ParametersProperty =
+			RegisterProperty("Parameters", typeof (IParameters));
 
-        [Model]
-        public IParameters Parameters
-        {
-            get { return GetValue<IParameters>(ParametersProperty); }
-            private set { SetValue(ParametersProperty, value); }
-        }
+		[Model]
+		public IParameters Parameters
+		{
+			get { return GetValue<IParameters>(ParametersProperty); }
+			private set { SetValue(ParametersProperty, value); }
+		}
 
-        #endregion
+		#endregion
 
-        #region Property: Properties
-        public IEnumerable<PropertyInfo> Properties
-        {
-            get { return Parameters.GetType().GetProperties().Where(x => x.CanRead && x.CanWrite); }
-        }
-        #endregion
+		#region Property: Properties
+		public IEnumerable<PropertyInfo> Properties
+		{
+			get { return Parameters.GetType().GetProperties().Where(x => x.CanRead && x.CanWrite); }
+		}
+		#endregion
 
-        #endregion
+		#endregion
 
-        #region Commands
+		#region Commands
 
-        #endregion
+		#endregion
 
-        protected override void OnPropertyChanged(AdvancedPropertyChangedEventArgs e)
-        {
-            base.OnPropertyChanged(e);
-            if (e.PropertyName == "Parameters")
-                RaisePropertyChanged("Properties");
-        }
-    }
+		#region Property: SelectedPlugin
+		
+		public static readonly PropertyData SelectedPluginProperty =
+			RegisterProperty("SelectedPlugin", typeof (IPlugin), null);
+
+		public IPlugin SelectedPlugin
+		{
+			get { return GetValue<IPlugin>(SelectedPluginProperty); }
+			set { SetValue(SelectedPluginProperty, value); }
+		}
+
+		#endregion
+		protected override void OnPropertyChanged(AdvancedPropertyChangedEventArgs e)
+		{
+			base.OnPropertyChanged(e);
+			if (e.PropertyName == "Parameters")
+				RaisePropertyChanged("Properties");
+		}
+	}
 }
