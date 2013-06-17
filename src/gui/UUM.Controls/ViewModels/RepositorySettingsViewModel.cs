@@ -1,4 +1,7 @@
-﻿using Catel.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Catel.Data;
 using Catel.MVVM;
 using UUM.Api.Interfaces;
 
@@ -39,10 +42,24 @@ namespace UUM.Controls.ViewModels
 
         #endregion
 
+        #region Property: Properties
+        public IEnumerable<PropertyInfo> Properties
+        {
+            get { return Parameters.GetType().GetProperties().Where(x => x.CanRead && x.CanWrite); }
+        }
+        #endregion
+
         #endregion
 
         #region Commands
 
         #endregion
+
+        protected override void OnPropertyChanged(AdvancedPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+            if (e.PropertyName == "Parameters")
+                RaisePropertyChanged("Properties");
+        }
     }
 }
