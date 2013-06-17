@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel.Composition;
-using UUM.Api;
 using UUM.Api.Interfaces;
+using UUM.Plugin.Subversion.Models;
 
 namespace UUM.Plugin.Subversion
 {
-    [Export(typeof(IPlugin))]
+    [Export(typeof (IPlugin))]
     public class SubversionPlugin : IPlugin
     {
         internal static readonly Guid PluginId = new Guid("{5D4E8772-0C14-4B2B-8BD5-347DAE494C4E}");
@@ -27,12 +27,15 @@ namespace UUM.Plugin.Subversion
 
         public IRepository GetRepository(IParameters parameters)
         {
-            throw new System.NotImplementedException();
+            if (!(parameters is Parameters))
+                throw new InvalidOperationException("Parameters not belonging to this plugin");
+
+            throw new NotImplementedException();
         }
-        
+
         public IParameters GetParameters()
-		{
-			return new Models.Parameters();
-		}
+        {
+            return new Parameters();
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Composition;
-using UUM.Api;
 using UUM.Api.Interfaces;
+using UUM.Plugin.Doors.Models;
 
 namespace UUM.Plugin.Doors
 {
@@ -27,11 +27,15 @@ namespace UUM.Plugin.Doors
 
         public IRepository GetRepository(IParameters parameters)
         {
+            if (!(parameters is Parameters))
+                throw new InvalidOperationException("Parameters not belonging to this plugin");
+
             throw new NotImplementedException();
         }
+
         public IParameters GetParameters()
-		{
-			return new Models.Parameters();
-		}
+        {
+            return new Parameters();
+        }
     }
 }
