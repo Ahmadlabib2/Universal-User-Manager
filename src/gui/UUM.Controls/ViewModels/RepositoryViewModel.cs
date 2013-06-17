@@ -18,8 +18,8 @@ namespace UUM.Controls.ViewModels
         public RepositoryViewModel(ObservableCollection<IParameters> parameters)
         {
             Parameters = parameters;
-            AddParameter = new Command(OnAddParameterExecute);
-            RemoveParameter = new Command(OnRemoveParameterExecute);
+            AddRepository = new Command(OnAddRepositoryExecute);
+            RemoveRepository = new Command(OnRemoveRepositoryExecute);
         }
 
         /// <summary>
@@ -51,27 +51,28 @@ namespace UUM.Controls.ViewModels
 
         #region Commands
 
-        #region Command: AddParameter
+        #region Command: AddRepository
 
-        public Command AddParameter { get; private set; }
+        public Command AddRepository { get; private set; }
 
-        private void OnAddParameterExecute()
+        private void OnAddRepositoryExecute()
         {
-        	
-            // TODO: Select the plugin / repository type to create
-            // then add to the list
             var viewModel = new ChoosePluginViewModel();
             var uiVisualizerService = GetService<IUIVisualizerService>();
-			uiVisualizerService.ShowDialog(viewModel);
+			if (uiVisualizerService.ShowDialog(viewModel) == true)
+			{
+                // TODO: Retrieve & Set parameters from selected plugin
+			    //Parameters.Add(viewModel.SelectedPlugin.GetParameters());
+			}
         }
 
         #endregion
 
-        #region Command: RemoveParameter
+        #region Command: RemoveRepository
 
-        public Command RemoveParameter { get; private set; }
+        public Command RemoveRepository { get; private set; }
 
-        private void OnRemoveParameterExecute()
+        private void OnRemoveRepositoryExecute()
         {
             // TODO: Handle command logic here
             throw new NotImplementedException();
