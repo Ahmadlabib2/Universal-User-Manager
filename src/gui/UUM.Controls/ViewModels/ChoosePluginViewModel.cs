@@ -32,6 +32,18 @@ namespace UUM.Controls.ViewModels
 			set { SetValue(PluginsProperty, value); }
 		}
 
+		#region Property: SelectedPlugin
+		
+		public static readonly PropertyData SelectedPluginProperty =
+			RegisterProperty("SelectedPlugin", typeof (IPlugin), null);
+
+		public IPlugin SelectedPlugin
+		{
+			get { return GetValue<IPlugin>(SelectedPluginProperty); }
+			set { SetValue(SelectedPluginProperty, value); }
+		}
+
+		#endregion
 		#endregion
 		
 	}
