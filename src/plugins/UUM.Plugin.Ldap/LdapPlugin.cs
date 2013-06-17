@@ -29,5 +29,10 @@ namespace UUM.Plugin.Ldap
         {
             throw new System.NotImplementedException();
         }
+    	
+		public IParameters GetParameters()
+		{
+			return new Models.Parameters();
+		}
     }
 }

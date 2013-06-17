@@ -1,4 +1,5 @@
-﻿using Catel.Data;
+﻿using System.Collections.Generic;
+using Catel.Data;
 
 namespace UUM.Api.Interfaces
 {
@@ -7,5 +8,6 @@ namespace UUM.Api.Interfaces
     /// </summary>
     public interface IParameters: IModel
     {
+    	IEnumerable<IParameters> GetParameters(IPlugin plugin);
     }
 }

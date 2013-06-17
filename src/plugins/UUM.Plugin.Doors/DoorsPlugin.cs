@@ -29,5 +29,9 @@ namespace UUM.Plugin.Doors
         {
             throw new NotImplementedException();
         }
+        public IParameters GetParameters()
+		{
+			return new Models.Parameters();
+		}
     }
 }
