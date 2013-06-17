@@ -20,6 +20,10 @@
         /// <returns>A repository capable of exchanging data with the source/target system</returns>
         IRepository GetRepository(IParameters parameters);
 
+        /// <summary>
+        /// Return a set of default parameters for this plugin
+        /// </summary>
+        /// <returns>Parameters initialized with default values</returns>
     	IParameters GetParameters();
     }
 }
