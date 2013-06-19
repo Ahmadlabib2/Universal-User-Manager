@@ -16,6 +16,7 @@ namespace UUM.Controls.ViewModels
         public RepositorySettingsViewModel(IParameters parameters)
         {
             Parameters = parameters;
+            Apply = new Command(OnApplyExecute);
         }
 
         /// <summary>
@@ -51,7 +52,9 @@ namespace UUM.Controls.ViewModels
             {
                 PropertyInfo[] properties = Parameters.GetType().GetProperties();
                 IEnumerable<PropertyInfo> readWriteProperties = properties.Where(x => x.CanRead && x.CanWrite);
-                return readWriteProperties.Where(x => x.Module.Name != "Catel.Core.dll").Select(x => new PluginParameter(Parameters, x));
+                return
+                    readWriteProperties.Where(x => x.Module.Name != "Catel.Core.dll")
+                                       .Select(x => new PluginParameter(Parameters, x));
             }
         }
 
@@ -61,19 +64,23 @@ namespace UUM.Controls.ViewModels
 
         #region Commands
 
+        #region Command: Apply
+
+        public Command Apply { get; private set; }
+
+        private void OnApplyExecute()
+        {
+            Parameters.EndEdit();
+        }
+
         #endregion
 
-        protected override void OnPropertyChanged(AdvancedPropertyChangedEventArgs e)
-        {
-            base.OnPropertyChanged(e);
-            if (e.PropertyName == "Parameters")
-                RaisePropertyChanged("Properties");
-        }
+        #endregion
 
         public class PluginParameter
         {
-            private readonly PropertyInfo _pi;
             private readonly IParameters _parameters;
+            private readonly PropertyInfo _pi;
 
             public PluginParameter(IParameters parameters, PropertyInfo pi)
             {
@@ -81,10 +88,13 @@ namespace UUM.Controls.ViewModels
                 _parameters = parameters;
             }
 
-            public string Name { get { return _pi.Name;  } }
+            public string Name
+            {
+                get { return _pi.Name; }
+            }
 
             /// <summary>
-            /// Use refection to set/get the value
+            ///     Use refection to set/get the value
             /// </summary>
             public string Value
             {

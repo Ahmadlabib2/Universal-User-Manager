@@ -8,6 +8,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <catel:ReferenceToCollapsingVisibilityConverter x:Key="ReferenceToCollapsingVisibilityConverter" />
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
                 </ResourceDictionary>
                 <!-- Set theme -->
                 <ResourceDictionary Source="/Catel.Extensions.Controls;component/themes/generic.xaml" />

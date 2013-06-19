@@ -21,12 +21,20 @@
         <Button Command="{Binding RemoveRepository}">Remove</Button>
         <catel:EmptyColumn />
 
-        <ListView Grid.ColumnSpan="3" ItemsSource="{Binding Parameters}" >
+        <ListView Grid.ColumnSpan="2" ItemsSource="{Binding Parameters}"
+                  SelectedItem="{Binding SelectedParameters}"
+                  Grid.IsSharedSizeScope="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <views:RepositorySettingsControl DataContext="{Binding}" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="A" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding PluginId}" />
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <views:RepositorySettingsControl DataContext="{Binding SelectedParameters}" />
     </catel:StackGrid>
 </catel:UserControl>

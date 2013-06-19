@@ -7,6 +7,6 @@
                   ShowInTaskbar="True"
                   WindowStartupLocation="Manual"
                   ResizeMode="CanResizeWithGrip"
-                  Title="UUM Gui" Height="300" Width="300">
+                  Title="UUM Gui" Height="400" Width="800">
     <gui:WorkspaceView Margin="-6" />
 </catel:DataWindow>

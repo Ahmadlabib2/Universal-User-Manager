@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Catel.Data;
 using Catel.MVVM;
 using Catel.MVVM.Services;
@@ -44,23 +43,24 @@ namespace UUM.Controls.ViewModels
             get { return GetValue<ObservableCollection<IParameters>>(ParametersProperty); }
             private set { SetValue(ParametersProperty, value); }
         }
-         #endregion
-         
-         #region Property: SelectedParameters
-         
+
+        #endregion
+
+        #region Property: SelectedParameters
+
         public static readonly PropertyData SelectedParametersProperty =
-            RegisterProperty("SelectedParameters", typeof (IParameters),null);
+            RegisterProperty("SelectedParameters", typeof (IParameters), null);
 
         [Model]
         public IParameters SelectedParameters
         {
             get { return GetValue<IParameters>(SelectedParametersProperty); }
-            private set { SetValue(SelectedParametersProperty, value); }
+            set { SetValue(SelectedParametersProperty, value); }
         }
-		#endregion
+
         #endregion
 
-       
+        #endregion
 
         #region Commands
 
@@ -72,14 +72,13 @@ namespace UUM.Controls.ViewModels
         {
             var viewModel = new ChoosePluginViewModel();
             var uiVisualizerService = GetService<IUIVisualizerService>();
-			if (uiVisualizerService.ShowDialog(viewModel) == true)
-			{
-			    if (viewModel.SelectedPlugin != null)
-			    {
-			        Parameters.Add(viewModel.SelectedPlugin.GetParameters());
-			    }
-			    
-			}
+            if (uiVisualizerService.ShowDialog(viewModel) == true)
+            {
+                if (viewModel.SelectedPlugin != null)
+                {
+                    Parameters.Add(viewModel.SelectedPlugin.GetParameters());
+                }
+            }
         }
 
         #endregion
@@ -90,13 +89,11 @@ namespace UUM.Controls.ViewModels
 
         private void OnRemoveRepositoryExecute()
         {
-            // TODO: Handle command logic here
-            
             Parameters.Remove(SelectedParameters);
         }
 
         #endregion
-        
+
         #endregion
     }
 }
