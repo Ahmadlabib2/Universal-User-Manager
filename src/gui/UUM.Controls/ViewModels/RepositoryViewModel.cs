@@ -44,10 +44,23 @@ namespace UUM.Controls.ViewModels
             get { return GetValue<ObservableCollection<IParameters>>(ParametersProperty); }
             private set { SetValue(ParametersProperty, value); }
         }
+         #endregion
+         
+         #region Property: SelectedParameters
+         
+        public static readonly PropertyData SelectedParametersProperty =
+            RegisterProperty("SelectedParameters", typeof (ObservableCollection<IParameters>));
 
+        
+        public ObservableCollection<IParameters> SelectedParameters
+        {
+            get { return GetValue<ObservableCollection<IParameters>>(SelectedParametersProperty); }
+            private set { SetValue(SelectedParametersProperty, value); }
+        }
+		#endregion
         #endregion
 
-        #endregion
+       
 
         #region Commands
 
@@ -65,6 +78,7 @@ namespace UUM.Controls.ViewModels
 			    {
 			        Parameters.Add(viewModel.SelectedPlugin.GetParameters());
 			    }
+			    
 			}
         }
 
@@ -77,11 +91,12 @@ namespace UUM.Controls.ViewModels
         private void OnRemoveRepositoryExecute()
         {
             // TODO: Handle command logic here
-            throw new NotImplementedException();
+            
+            Parameters.Remove(SelectedParameters);
         }
 
         #endregion
-
+        
         #endregion
     }
 }
