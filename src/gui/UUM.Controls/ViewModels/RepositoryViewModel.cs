@@ -49,12 +49,12 @@ namespace UUM.Controls.ViewModels
          #region Property: SelectedParameters
          
         public static readonly PropertyData SelectedParametersProperty =
-            RegisterProperty("SelectedParameters", typeof (ObservableCollection<IParameters>));
+            RegisterProperty("SelectedParameters", typeof (IParameters),null);
 
-        
-        public ObservableCollection<IParameters> SelectedParameters
+        [Model]
+        public IParameters SelectedParameters
         {
-            get { return GetValue<ObservableCollection<IParameters>>(SelectedParametersProperty); }
+            get { return GetValue<IParameters>(SelectedParametersProperty); }
             private set { SetValue(SelectedParametersProperty, value); }
         }
 		#endregion
