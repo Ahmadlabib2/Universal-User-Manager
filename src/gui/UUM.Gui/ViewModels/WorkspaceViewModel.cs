@@ -5,7 +5,6 @@ using Catel.MVVM;
 using Catel.MVVM.Services;
 using Catel.MVVM.Tasks;
 using UUM.Api.Interfaces;
-using UUM.Engine.Interfaces;
 using UUM.Engine.Models;
 
 namespace UUM.Gui.ViewModels

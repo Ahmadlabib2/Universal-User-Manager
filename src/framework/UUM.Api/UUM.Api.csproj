@@ -70,6 +70,7 @@
     <Compile Include="Interfaces\IIdentifiable.cs" />
     <Compile Include="Interfaces\IParameters.cs" />
     <Compile Include="Interfaces\IPlugin.cs" />
+    <Compile Include="Interfaces\IPluginRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUserInSource.cs" />
     <Compile Include="Models\ParametersBase.cs" />

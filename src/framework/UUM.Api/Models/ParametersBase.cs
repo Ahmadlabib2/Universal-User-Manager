@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Catel.Data;
+using Catel.IoC;
 using UUM.Api.Interfaces;
 
 namespace UUM.Api.Models
@@ -10,6 +12,7 @@ namespace UUM.Api.Models
     ///     backwards compatibility and error checking.
     /// </summary>
     [Serializable]
+    [KnownType("GetPluginParameterTypes")]
     public abstract class ParametersBase : SavableModelBase<ParametersBase>, IParameters
     {
         #region Constructors
@@ -39,5 +42,16 @@ namespace UUM.Api.Models
         #endregion
 
         public Guid PluginId { get; private set; }
+
+        static Type[] GetPluginParameterTypes()
+        {
+            var types = new List<Type>();
+            var pluginRepository = ServiceLocator.Default.GetService(typeof(IPluginRepository)) as IPluginRepository;
+            foreach (var plugin in pluginRepository.Plugins)
+            {
+                types.Add(plugin.GetParameters().GetType());
+            }
+            return types.ToArray();
+        }        
     }
 }

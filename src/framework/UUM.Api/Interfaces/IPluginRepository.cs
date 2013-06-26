@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
-using UUM.Api.Interfaces;
 
-namespace UUM.Engine.Interfaces
+namespace UUM.Api.Interfaces
 {
     public interface IPluginRepository
     {

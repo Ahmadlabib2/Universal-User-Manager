@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using Catel.IoC;
-using UUM.Engine.Interfaces;
+using UUM.Api.Interfaces;
 using UUM.Engine.Services;
 
 namespace UUM.Gui

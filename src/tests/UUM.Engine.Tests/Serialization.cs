@@ -20,7 +20,6 @@ namespace UUM.Engine.Tests
     [KnownType("KnownTypes")]
     public class ParamsBase : SavableModelBase<ParamsPluginA>, IParams
     {
-
         // This method returns the array of known types.
         static Type[] KnownTypes()
         {
