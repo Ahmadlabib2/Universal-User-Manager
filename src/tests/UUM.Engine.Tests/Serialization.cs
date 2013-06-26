@@ -18,7 +18,7 @@ namespace UUM.Engine.Tests
     //[KnownType(typeof(ParamsPluginA))]
     //[KnownType(typeof(ParamsPluginB))]
     [KnownType("KnownTypes")]
-    public class ParamsBase : SavableModelBase<ParamsPluginA>, IParams
+    public class ParamsBase : SavableModelBase<ParamsBase>, IParams
     {
         // This method returns the array of known types.
         static Type[] KnownTypes()
