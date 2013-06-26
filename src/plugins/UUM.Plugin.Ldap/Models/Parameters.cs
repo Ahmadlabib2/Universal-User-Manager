@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using Catel.Data;
-using UUM.Api.Interfaces;
+using UUM.Api.Models;
 
 namespace UUM.Plugin.Ldap.Models
 {
-    /// <summary>
-    /// Parameters model which fully supports serialization, property changed notifications,
-    /// backwards compatibility and error checking.
-    /// </summary>
     [Serializable]
-    public class Parameters : SavableModelBase<Parameters>, IParameters
+    public class Parameters : ParametersBase
     {
         #region Fields
         #endregion
@@ -19,27 +14,13 @@ namespace UUM.Plugin.Ldap.Models
         /// <summary>
         /// Initializes a new object from scratch.
         /// </summary>
-        public Parameters() { }
+        public Parameters()
+            : base(LdapPlugin.PluginId)
+        { }
 
-        /// <summary>
-        /// Initializes a new object based on <see cref="SerializationInfo"/>.
-        /// </summary>
-        /// <param name="info"><see cref="SerializationInfo"/> that contains the information.</param>
-        /// <param name="context"><see cref="StreamingContext"/>.</param>
-        protected Parameters(SerializationInfo info, StreamingContext context)
-            : base(info, context) { }
         #endregion
 
         #region Properties
-
-        #region PluginId
-
-        public Guid PluginId
-        {
-            get { return LdapPlugin.PluginId; }
-        }
-
-        #endregion
 
         #region Property: Server
         /// <summary>

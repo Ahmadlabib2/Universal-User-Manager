@@ -4,3 +4,5 @@ obj
 /src/packages/Catel.*
 /src/packages/NUnit*
 /src/*.suo
+
+/src/*.user
