@@ -10,7 +10,7 @@ namespace UUM.Engine.Services
     {
         public void Initialize()
         {
-            if (Plugins.Any())
+            if (Plugins == null)
             {
                 // MEF loading of available plug-ins
                 var catalog = new DirectoryCatalog(".", "UUM.Plugin.*.dll");
