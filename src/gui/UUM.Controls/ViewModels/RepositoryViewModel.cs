@@ -3,6 +3,7 @@ using Catel.Data;
 using Catel.MVVM;
 using Catel.MVVM.Services;
 using UUM.Api.Interfaces;
+using UUM.Api.Models;
 
 namespace UUM.Controls.ViewModels
 {
@@ -14,7 +15,7 @@ namespace UUM.Controls.ViewModels
         /// <summary>
         ///     Initializes a new instance of the <see cref="RepositoryViewModel" /> class.
         /// </summary>
-        public RepositoryViewModel(ObservableCollection<IParameters> parameters)
+        public RepositoryViewModel(ObservableCollection<ParametersBase> parameters)
         {
             Parameters = parameters;
             AddRepository = new Command(OnAddRepositoryExecute);
@@ -35,12 +36,12 @@ namespace UUM.Controls.ViewModels
         #region Property: Parameters
 
         public static readonly PropertyData ParametersProperty =
-            RegisterProperty("Parameters", typeof (ObservableCollection<IParameters>));
+            RegisterProperty("Parameters", typeof (ObservableCollection<ParametersBase>));
 
         [Model]
-        public ObservableCollection<IParameters> Parameters
+        public ObservableCollection<ParametersBase> Parameters
         {
-            get { return GetValue<ObservableCollection<IParameters>>(ParametersProperty); }
+            get { return GetValue<ObservableCollection<ParametersBase>>(ParametersProperty); }
             private set { SetValue(ParametersProperty, value); }
         }
 
@@ -49,12 +50,12 @@ namespace UUM.Controls.ViewModels
         #region Property: SelectedParameters
 
         public static readonly PropertyData SelectedParametersProperty =
-            RegisterProperty("SelectedParameters", typeof (IParameters), null);
+            RegisterProperty("SelectedParameters", typeof (ParametersBase), null);
 
         [Model]
-        public IParameters SelectedParameters
+        public ParametersBase SelectedParameters
         {
-            get { return GetValue<IParameters>(SelectedParametersProperty); }
+            get { return GetValue<ParametersBase>(SelectedParametersProperty); }
             set { SetValue(SelectedParametersProperty, value); }
         }
 

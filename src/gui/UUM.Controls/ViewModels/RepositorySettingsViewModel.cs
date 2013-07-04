@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+
 using Catel.Data;
 using Catel.MVVM;
 using UUM.Api.Interfaces;
+using UUM.Api.Models;
 
 namespace UUM.Controls.ViewModels
 {
@@ -13,7 +15,7 @@ namespace UUM.Controls.ViewModels
     /// </summary>
     public class RepositorySettingsViewModel : ViewModelBase
     {
-        public RepositorySettingsViewModel(IParameters parameters)
+        public RepositorySettingsViewModel(ParametersBase parameters)
         {
             Parameters = parameters;
             Apply = new Command(OnApplyExecute);
@@ -33,12 +35,12 @@ namespace UUM.Controls.ViewModels
         #region Property: Parameters
 
         public static readonly PropertyData ParametersProperty =
-            RegisterProperty("Parameters", typeof (IParameters));
+            RegisterProperty("Parameters", typeof (ParametersBase));
 
         [Model]
-        public IParameters Parameters
+        public ParametersBase Parameters
         {
-            get { return GetValue<IParameters>(ParametersProperty); }
+            get { return GetValue<ParametersBase>(ParametersProperty); }
             private set { SetValue(ParametersProperty, value); }
         }
 
@@ -70,7 +72,7 @@ namespace UUM.Controls.ViewModels
 
         private void OnApplyExecute()
         {
-            Parameters.EndEdit();
+            //Parameters.EndEdit();
         }
 
         #endregion
@@ -79,10 +81,10 @@ namespace UUM.Controls.ViewModels
 
         public class PluginParameter
         {
-            private readonly IParameters _parameters;
+            private readonly ParametersBase _parameters;
             private readonly PropertyInfo _pi;
 
-            public PluginParameter(IParameters parameters, PropertyInfo pi)
+            public PluginParameter(ParametersBase parameters, PropertyInfo pi)
             {
                 _pi = pi;
                 _parameters = parameters;

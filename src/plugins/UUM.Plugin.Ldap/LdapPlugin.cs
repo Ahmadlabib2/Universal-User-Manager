@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using UUM.Api.Interfaces;
+using UUM.Api.Models;
 using UUM.Plugin.Ldap.Models;
 
 namespace UUM.Plugin.Ldap
@@ -25,7 +26,7 @@ namespace UUM.Plugin.Ldap
             get { return "Plugin for the Ldap system"; }
         }
 
-        public IRepository GetRepository(IParameters parameters)
+        public IRepository GetRepository(ParametersBase parameters)
         {
             if (!(parameters is Parameters))
                 throw new InvalidOperationException("Parameters not belonging to this plugin");
@@ -33,7 +34,7 @@ namespace UUM.Plugin.Ldap
             throw new NotImplementedException();
         }
 
-        public IParameters GetParameters()
+        public ParametersBase GetParameters()
         {
             return new Parameters();
         }

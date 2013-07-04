@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Xml.Serialization;
 using Catel.Data;
 using UUM.Api.Models;
@@ -18,4 +18,4 @@ namespace UUM.Api.Interfaces
         /// </summary>
         Guid PluginId { get; }
     }
-}
+}*/

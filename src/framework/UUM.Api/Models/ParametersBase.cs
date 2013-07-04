@@ -13,7 +13,7 @@ namespace UUM.Api.Models
     /// </summary>
     [Serializable]
     [KnownType("GetPluginParameterTypes")]
-    public abstract class ParametersBase : SavableModelBase<ParametersBase>, IParameters
+    public abstract class ParametersBase : SavableModelBase<ParametersBase>
     {
         #region Constructors
 
@@ -40,7 +40,7 @@ namespace UUM.Api.Models
         }
 
         #endregion
-
+		
         public Guid PluginId { get; private set; }
 
         static Type[] GetPluginParameterTypes()
@@ -55,5 +55,6 @@ namespace UUM.Api.Models
         }        
         
 		
+    	
     }
 }
