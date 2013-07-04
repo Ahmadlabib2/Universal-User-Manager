@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Xml.Serialization;
 using Catel.Data;
+using UUM.Api.Models;
 
 namespace UUM.Api.Interfaces
 {
@@ -8,6 +10,7 @@ namespace UUM.Api.Interfaces
     ///     without any properties or methods. The plugins may implement it
     ///     with the properties they need.
     /// </summary>
+    [XmlInclude(typeof (ParametersBase))]
     public interface IParameters : IModel
     {
         /// <summary>
