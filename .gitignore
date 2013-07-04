@@ -2,7 +2,7 @@
 bin
 obj
 /src/packages/Catel.*
+/src/packages/log4net.*
 /src/packages/NUnit*
 /src/*.suo
-
 /src/*.user
