@@ -1,4 +1,5 @@
-﻿namespace UUM.Api.Interfaces
+﻿using UUM.Api.Models;
+namespace UUM.Api.Interfaces
 {
     public interface IPlugin: IIdentifiable
     {
@@ -18,12 +19,12 @@
         /// </summary>
         /// <param name="parameters">Initialized parameters</param>
         /// <returns>A repository capable of exchanging data with the source/target system</returns>
-        IRepository GetRepository(IParameters parameters);
+        IRepository GetRepository(ParametersBase parameters);
 
         /// <summary>
         /// Return a set of default parameters for this plugin
         /// </summary>
         /// <returns>Parameters initialized with default values</returns>
-    	IParameters GetParameters();
+    	ParametersBase GetParameters();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using UUM.Api.Interfaces;
+using UUM.Api.Models;
 using UUM.Plugin.Doors.Models;
 
 namespace UUM.Plugin.Doors
@@ -25,7 +26,7 @@ namespace UUM.Plugin.Doors
             get { return "Plugin for the DOORS requirements management system"; }
         }
 
-        public IRepository GetRepository(IParameters parameters)
+        public IRepository GetRepository(ParametersBase parameters)
         {
             if (!(parameters is Parameters))
                 throw new InvalidOperationException("Parameters not belonging to this plugin");
@@ -33,7 +34,7 @@ namespace UUM.Plugin.Doors
             throw new NotImplementedException();
         }
 
-        public IParameters GetParameters()
+        public ParametersBase GetParameters()
         {
             return new Parameters();
         }

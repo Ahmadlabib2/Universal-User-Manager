@@ -22,7 +22,6 @@ namespace UUM.Gui.ViewModels
             var splashScreenService = GetService<ISplashScreenService>();
             splashScreenService.Enqueue(new ActionTask("Loading plug-ins", OnLoadPlugins));
             splashScreenService.Commit();
-
             NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
             SaveProject = new Command(OnSaveProjectExecuted, OnSaveProjectCanExecute);
             LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
@@ -47,9 +46,9 @@ namespace UUM.Gui.ViewModels
         {
             get { return "Workspace"; }
         }
-
+		
         #endregion
-
+		
         #region Property: Project
 
         public static readonly PropertyData ProjectProperty =
@@ -62,11 +61,11 @@ namespace UUM.Gui.ViewModels
         }
 
         #endregion
-
+		
         #region Property: Plugins
 
         public static readonly PropertyData PluginsProperty =
-            RegisterProperty("Plugins", typeof (ObservableCollection<IPlugin>), null);
+            RegisterProperty("Plugins", typeof (ObservableCollection<IPlugin>), new ObservableCollection<IPlugin>());
 
         public ObservableCollection<IPlugin> Plugins
         {

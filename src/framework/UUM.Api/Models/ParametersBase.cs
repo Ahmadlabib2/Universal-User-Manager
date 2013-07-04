@@ -13,14 +13,14 @@ namespace UUM.Api.Models
     /// </summary>
     [Serializable]
     [KnownType("GetPluginParameterTypes")]
-    public abstract class ParametersBase : SavableModelBase<ParametersBase>, IParameters
+    public abstract class ParametersBase : SavableModelBase<ParametersBase>
     {
         #region Constructors
 
         /// <summary>
         ///     Initializes a new object from scratch.
         /// </summary>
-        protected ParametersBase(Guid pluginId)
+        protected ParametersBase(Guid pluginId) 
         {
             PluginId = pluginId;
         }
@@ -35,12 +35,12 @@ namespace UUM.Api.Models
         ///     <see cref="StreamingContext" />.
         /// </param>
         protected ParametersBase(SerializationInfo info, StreamingContext context)
-            : base(info, context)
+            : base(info, context) 
         {
         }
 
         #endregion
-
+		
         public Guid PluginId { get; private set; }
 
         static Type[] GetPluginParameterTypes()
