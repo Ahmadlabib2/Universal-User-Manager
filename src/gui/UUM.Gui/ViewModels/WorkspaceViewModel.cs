@@ -122,7 +122,7 @@ namespace UUM.Gui.ViewModels
             openFileService.Filter = UumProjectFileFilter;
             if (openFileService.DetermineFile())
             {
-                Project = ProjectModel.Load(openFileService.FileName, SerializationMode.Xml);
+                Project = ProjectModel.Load(openFileService.FileName, SerializationMode.Xml, false);
             }
         }
 

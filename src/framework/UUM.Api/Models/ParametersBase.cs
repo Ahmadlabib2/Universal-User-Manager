@@ -20,7 +20,7 @@ namespace UUM.Api.Models
         /// <summary>
         ///     Initializes a new object from scratch.
         /// </summary>
-        protected ParametersBase(Guid pluginId)
+        protected ParametersBase(Guid pluginId) 
         {
             PluginId = pluginId;
         }
@@ -35,7 +35,7 @@ namespace UUM.Api.Models
         ///     <see cref="StreamingContext" />.
         /// </param>
         protected ParametersBase(SerializationInfo info, StreamingContext context)
-            : base(info, context)
+            : base(info, context) 
         {
         }
 
@@ -53,8 +53,5 @@ namespace UUM.Api.Models
             }
             return types.ToArray();
         }        
-        
-		
-    	
     }
 }
