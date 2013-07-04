@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
+
 using Catel.Data;
+using Catel.IoC;
 using UUM.Api.Interfaces;
+using UUM.Api.Models;
 
 namespace UUM.Engine.Models
 {
@@ -61,15 +65,24 @@ namespace UUM.Engine.Models
         #endregion
 
         #region Property: Parameters
-
-        public ObservableCollection<IParameters> Parameters
+        static Type[] GetPluginParameterTypes()
         {
-            get { return GetValue<ObservableCollection<IParameters>>(ParametersProperty); }
+            var types = new List<Type>();
+            var pluginRepository = ServiceLocator.Default.GetService(typeof(IPluginRepository)) as IPluginRepository;
+            foreach (var plugin in pluginRepository.Plugins)
+            {
+                types.Add(plugin.GetParameters().GetType());
+            }
+            return types.ToArray();
+        }        
+        public ObservableCollection<ParametersBase> Parameters
+        {
+            get { return GetValue<ObservableCollection<ParametersBase>>(ParametersProperty); }
             set { SetValue(ParametersProperty, value); }
         }
 
         public static readonly PropertyData ParametersProperty =
-        	RegisterProperty("Parameters", typeof(ObservableCollection<IParameters>), new ObservableCollection<IParameters>());
+        	RegisterProperty("Parameters", typeof(ObservableCollection<ParametersBase>), new ObservableCollection<ParametersBase>());
 
         #endregion
     }
