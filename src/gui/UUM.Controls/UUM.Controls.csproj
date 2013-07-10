@@ -54,6 +54,9 @@
     <Reference Include="Catel.MVVM">
       <HintPath>..\..\packages\Catel.MVVM.3.6.1307042241-beta\lib\net40\Catel.MVVM.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.2.0.0\lib\net40-client\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
