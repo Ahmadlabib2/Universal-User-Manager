@@ -2,6 +2,16 @@
 using Catel;
 using Catel.Logging;
 
+//TODO:
+// We want a log4net Listener, which allows the configurability of log4net,
+// not just an own file listener
+// the backends can be almost everything that is supported by log4net through
+// app.config, this is needlessly restricting the operation modi.
+// see https://catelproject.atlassian.net/wiki/display/CTL/Log4net
+
+// just a short review on the existing code, needs to be rewritten
+// according to the goal explained above.
+
 //TODO: Move to a Services subdirectory
 //TODO: Add a proper namespace
 public class FileLogListener : LogListenerBase
