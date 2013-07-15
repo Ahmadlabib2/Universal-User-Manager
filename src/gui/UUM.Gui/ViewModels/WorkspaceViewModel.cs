@@ -7,7 +7,7 @@ using Catel.MVVM.Tasks;
 using UUM.Api.Interfaces;
 using UUM.Engine.Models;
 using Catel.Logging;
-//HACK: Should be using Catel.Logging;
+
 
 
 namespace UUM.Gui.ViewModels
@@ -20,6 +20,7 @@ namespace UUM.Gui.ViewModels
         /// <summary>UUM Project files|*.uumx|All files|*.*</summary>
         private const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
         private readonly ILog _log = LogManager.GetCurrentClassLogger();
+       
         //GetLogger(typeof(WorkspaceViewModel));
 
 
@@ -33,6 +34,7 @@ namespace UUM.Gui.ViewModels
             LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
             CloseProject = new Command(OnCloseProjectExecute, OnCloseProjectCanExecute);
             ApplicationExit = new Command(OnApplicationExitExecuted);
+            
         }
 
         private void OnLoadPlugins(ITaskProgressTracker tracker)
@@ -88,7 +90,8 @@ namespace UUM.Gui.ViewModels
         private void OnNewProjectExecuted()
         {
             Project = new ProjectModel();
-            _log.Info("NewProject command executed");
+            LogManager.AddListener(new FileLogListener("UUM.log"));
+           // _log.Info("NewProject command executed");
         }
 
         private bool OnNewProjectCanExecute()
@@ -110,7 +113,8 @@ namespace UUM.Gui.ViewModels
             {
                 string fileName = saveFileService.FileName;
                 Project.Save(fileName, SerializationMode.Xml);
-                _log.Info("SaveProject command executed: '{0}'", fileName);
+                 LogManager.AddListener(new FileLogListener("UUM.log"));
+              //  _log.Info("SaveProject command executed: '{0}'", fileName);
             }
         }
 
@@ -133,7 +137,8 @@ namespace UUM.Gui.ViewModels
             {
                 string fileName = openFileService.FileName;
                 Project = ProjectModel.Load(fileName, SerializationMode.Xml);
-                _log.Info("LoadProject command executed: '{0}'", fileName);
+                 LogManager.AddListener(new FileLogListener("UUM.log"));
+                //_log.Info("LoadProject command executed: '{0}'", fileName);
             }
         }
 
