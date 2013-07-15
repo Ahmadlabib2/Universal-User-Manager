@@ -11,10 +11,13 @@ namespace UUM.Gui
 	/// </summary>
 	public partial class App : Application
 	{
+		
         protected override void OnStartup(StartupEventArgs e)
         {
-            //HACK: this is wrong for use of log4net over Catel
-            XmlConfigurator.Configure();
+        	#if DEBUG
+        	Catel.Logging.LogManager.RegisterDebugListener();
+        	#endif
+            log4net.Config.XmlConfigurator.Configure();
             
             Catel.Windows.StyleHelper.CreateStyleForwardersForDefaultStyles();
 

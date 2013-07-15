@@ -1,5 +1,6 @@
 ﻿#region Using directives
 
+using System;
 using System.Reflection;
 
 #endregion
@@ -10,3 +11,5 @@ using System.Reflection;
 [assembly: AssemblyTitle("UUM.Gui")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyProduct("UUM.Gui")]
+
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]

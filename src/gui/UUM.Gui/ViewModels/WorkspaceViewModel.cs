@@ -6,8 +6,9 @@ using Catel.MVVM.Services;
 using Catel.MVVM.Tasks;
 using UUM.Api.Interfaces;
 using UUM.Engine.Models;
+using Catel.Logging;
 //HACK: Should be using Catel.Logging;
-using log4net;
+
 
 namespace UUM.Gui.ViewModels
 {
@@ -18,7 +19,8 @@ namespace UUM.Gui.ViewModels
     {
         /// <summary>UUM Project files|*.uumx|All files|*.*</summary>
         private const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
-        private readonly ILog _log = LogManager.GetLogger(typeof(WorkspaceViewModel));
+        private readonly ILog _log = LogManager.GetCurrentClassLogger();
+        //GetLogger(typeof(WorkspaceViewModel));
 
 
         public WorkspaceViewModel()
@@ -108,7 +110,7 @@ namespace UUM.Gui.ViewModels
             {
                 string fileName = saveFileService.FileName;
                 Project.Save(fileName, SerializationMode.Xml);
-                _log.InfoFormat("SaveProject command executed: '{0}'", fileName);
+                _log.Info("SaveProject command executed: '{0}'", fileName);
             }
         }
 
@@ -131,7 +133,7 @@ namespace UUM.Gui.ViewModels
             {
                 string fileName = openFileService.FileName;
                 Project = ProjectModel.Load(fileName, SerializationMode.Xml);
-                _log.InfoFormat("LoadProject command executed: '{0}'", fileName);
+                _log.Info("LoadProject command executed: '{0}'", fileName);
             }
         }
 
