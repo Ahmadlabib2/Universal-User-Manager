@@ -8,8 +8,6 @@ using UUM.Api.Interfaces;
 using UUM.Engine.Models;
 using Catel.Logging;
 
-
-
 namespace UUM.Gui.ViewModels
 {
     /// <summary>
@@ -113,6 +111,7 @@ namespace UUM.Gui.ViewModels
             {
                 string fileName = saveFileService.FileName;
                 Project.Save(fileName, SerializationMode.Xml);
+                //TODO: Listener must be setup at application startup!
                  LogManager.AddListener(new FileLogListener("UUM.log"));
               //  _log.Info("SaveProject command executed: '{0}'", fileName);
             }
@@ -137,6 +136,7 @@ namespace UUM.Gui.ViewModels
             {
                 string fileName = openFileService.FileName;
                 Project = ProjectModel.Load(fileName, SerializationMode.Xml);
+                //TODO: No.....
                  LogManager.AddListener(new FileLogListener("UUM.log"));
                 //_log.Info("LoadProject command executed: '{0}'", fileName);
             }
