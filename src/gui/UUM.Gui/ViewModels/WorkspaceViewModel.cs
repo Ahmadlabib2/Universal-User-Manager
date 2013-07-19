@@ -88,8 +88,8 @@ namespace UUM.Gui.ViewModels
         private void OnNewProjectExecuted()
         {
             Project = new ProjectModel();
-            LogManager.AddListener(new FileLogListener("UUM.log"));
-           // _log.Info("NewProject command executed");
+           // LogManager.AddListener(new FileLogListener("UUM.log"));
+            _log.Info("NewProject command executed");
         }
 
         private bool OnNewProjectCanExecute()
@@ -112,8 +112,8 @@ namespace UUM.Gui.ViewModels
                 string fileName = saveFileService.FileName;
                 Project.Save(fileName, SerializationMode.Xml);
                 //TODO: Listener must be setup at application startup!
-                 LogManager.AddListener(new FileLogListener("UUM.log"));
-              //  _log.Info("SaveProject command executed: '{0}'", fileName);
+               //  LogManager.AddListener(new FileLogListener("UUM.log"));
+               _log.Info("SaveProject command executed: '{0}'", fileName);
             }
         }
 
@@ -137,8 +137,9 @@ namespace UUM.Gui.ViewModels
                 string fileName = openFileService.FileName;
                 Project = ProjectModel.Load(fileName, SerializationMode.Xml);
                 //TODO: No.....
-                 LogManager.AddListener(new FileLogListener("UUM.log"));
-                //_log.Info("LoadProject command executed: '{0}'", fileName);
+                // LogManager.AddListener(new FileLogListener("UUM.log"));
+                // LogManager.AddListener(new Log4netListener());
+                _log.Info("LoadProject command executed: '{0}'", fileName);
             }
         }
 

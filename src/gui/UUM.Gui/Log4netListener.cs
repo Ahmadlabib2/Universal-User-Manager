@@ -1,8 +1,4 @@
-﻿using System.IO;
-using Catel;
-using Catel.Logging;
-
-//TODO:
+﻿//TODO:
 // We want a log4net Listener, which allows the configurability of log4net,
 // not just an own file listener
 // the backends can be almost everything that is supported by log4net through
@@ -14,7 +10,7 @@ using Catel.Logging;
 
 //TODO: Move to a Services subdirectory
 //TODO: Add a proper namespace
-public class FileLogListener : LogListenerBase
+/*public class FileLogListener : LogListenerBase
 {
     private readonly TextWriter _textWriter;
  
@@ -23,6 +19,7 @@ public class FileLogListener : LogListenerBase
         Argument.IsNotNullOrWhitespace("fileName", fileName);
         FileName = fileName;
         //TODO: implement IDisposable to dispose this
+        
         _textWriter = new StreamWriter(fileName, true);
     }
  
@@ -35,3 +32,33 @@ public class FileLogListener : LogListenerBase
     }
 }
 
+*/
+
+using System.IO;
+using Catel.Logging;
+
+public class Log4netListener : LogListenerBase
+{
+    log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+ 
+    public override void Debug(ILog log, string message)
+    {
+        
+        log.Debug(message);
+    }
+ 
+    public override void Info(ILog log, string message)
+    {
+        log.Info(message);
+    }
+ 
+    public override void Warning(ILog log, string message)
+    {
+    	log.Warning(message);
+    }
+ 
+    public override void Error(ILog log, string message)
+    {
+    	log.Error(message);
+    }
+}
