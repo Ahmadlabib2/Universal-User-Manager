@@ -12,7 +12,9 @@ namespace CatenaLogic.Diagnostics
 
 	
 		private static readonly ILog _log = LogManager.GetLogger("TraceOutput");
-		
+		/// <summary>
+		/// Initializes <see cref="Log4netTraceListener"/>class that we added in the app.conf .
+		/// </summary>
 		public Log4netTraceListener()
 		{
 			//default values
