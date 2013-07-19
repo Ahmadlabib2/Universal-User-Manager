@@ -18,7 +18,9 @@ namespace UUM.Gui.ViewModels
         /// <summary>UUM Project files|*.uumx|All files|*.*</summary>
         private const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
         private readonly ILog _log = LogManager.GetCurrentClassLogger();
-       
+        //AddListener(new Log4netListener());
+        
+        
         //GetLogger(typeof(WorkspaceViewModel));
 
 
@@ -32,6 +34,7 @@ namespace UUM.Gui.ViewModels
             LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
             CloseProject = new Command(OnCloseProjectExecute, OnCloseProjectCanExecute);
             ApplicationExit = new Command(OnApplicationExitExecuted);
+           
             
         }
 
@@ -138,7 +141,7 @@ namespace UUM.Gui.ViewModels
                 Project = ProjectModel.Load(fileName, SerializationMode.Xml);
                 //TODO: No.....
                 // LogManager.AddListener(new FileLogListener("UUM.log"));
-                // LogManager.AddListener(new Log4netListener());
+                 
                 _log.Info("LoadProject command executed: '{0}'", fileName);
             }
         }
