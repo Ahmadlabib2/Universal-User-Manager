@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+# SharpDevelop 4.3
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "framework", "framework", "{22867BB0-D04A-4324-BB22-359E958FD526}"
+	ProjectSection(SolutionItems) = postProject
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UUM.Engine", "framework\UUM.Engine\UUM.Engine.csproj", "{26317A12-5078-452C-AF0E-5CAC6FE1C769}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UUM.Api", "framework\UUM.Api\UUM.Api.csproj", "{D0B6587F-D167-4FD8-A3CD-080FBDE45BE9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gui", "gui", "{7BCF3AE5-CF59-4B46-93D4-A244405BA19F}"
+	ProjectSection(SolutionItems) = postProject
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UUM.Controls", "gui\UUM.Controls\UUM.Controls.csproj", "{A756D2EC-A02B-43A3-AB7B-86D5E97557DA}"
 EndProject
@@ -19,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UUM.Gui", "gui\UUM.Gui\UUM.
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "plugins", "plugins", "{ABED6DB8-EE56-48A2-8D59-DC340F8EE923}"
+	ProjectSection(SolutionItems) = postProject
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UUM.Plugin.Subversion", "plugins\UUM.Plugin.Subversion\UUM.Plugin.Subversion.csproj", "{6709A80F-EE47-43DF-B233-42C538EC56F9}"
 EndProject
@@ -34,6 +41,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1D901F
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D67A98D0-4EDA-45DE-8F4E-0529CB0B4FE0}"
+	ProjectSection(SolutionItems) = postProject
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UUM.Engine.Tests", "tests\UUM.Engine.Tests\UUM.Engine.Tests.csproj", "{B62F47E6-2BC6-4FF1-B41F-D3998CB3D0ED}"
 EndProject
