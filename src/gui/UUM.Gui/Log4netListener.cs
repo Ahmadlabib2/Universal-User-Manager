@@ -2,25 +2,25 @@
 
 public class Log4netListener : LogListenerBase
 {
-    log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+    Catel.Logging.ILog log = Catel.Logging.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
  
     public override void Debug(ILog log, string message)
     {
-        Log.Debug(message);
+        log.DebugWithData(message);
     }
  
     public override void Info(ILog log, string message)
     {
-        Log.Info(message);
+        log.InfoWithData(message);
     }
  
     public override void Warning(ILog log, string message)
     {
-        Log.Warn(message);
+        log.Warning(message);
     }
  
     public override void Error(ILog log, string message)
     {
-        Log.Error(message);
+        log.ErrorWithData(message);
     }
 }

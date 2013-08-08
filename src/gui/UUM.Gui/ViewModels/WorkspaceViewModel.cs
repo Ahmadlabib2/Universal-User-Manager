@@ -17,12 +17,12 @@ namespace UUM.Gui.ViewModels
     {
         /// <summary>UUM Project files|*.uumx|All files|*.*</summary>
         private const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
-        private readonly ILog _log = LogManager.GetCurrentClassLogger();
+        
         //AddListener(new Log4netListener());
         
         
         //GetLogger(typeof(WorkspaceViewModel));
-
+		private readonly ILog _log = LogManager.GetCurrentClassLogger();
 
         public WorkspaceViewModel()
         {
@@ -34,7 +34,7 @@ namespace UUM.Gui.ViewModels
             LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
             CloseProject = new Command(OnCloseProjectExecute, OnCloseProjectCanExecute);
             ApplicationExit = new Command(OnApplicationExitExecuted);
-           
+           	Catel.Logging.LogManager.AddListener(new Log4netListener());
             
         }
 

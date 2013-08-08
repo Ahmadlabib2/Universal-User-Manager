@@ -12,4 +12,5 @@ using System.Reflection;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyProduct("UUM.Gui")]
 
+
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
