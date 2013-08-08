@@ -11,6 +11,7 @@ namespace UUM.Engine.Models
     /// </summary>
     [Serializable]
     public class UserPoolModel : SavableModelBase<UserPoolModel>
+    	
     {
         public UserPoolModel()
         {
