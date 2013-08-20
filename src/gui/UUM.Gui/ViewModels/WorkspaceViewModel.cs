@@ -25,8 +25,8 @@ namespace UUM.Gui.ViewModels
 		private readonly ILog _log = LogManager.GetCurrentClassLogger();
 
         public WorkspaceViewModel()
+        
         {
-        	
         	Catel.Logging.LogManager.AddListener(new Log4netListener());
             var splashScreenService = GetService<ISplashScreenService>();
             splashScreenService.Enqueue(new ActionTask("Loading plug-ins", OnLoadPlugins));
@@ -35,16 +35,14 @@ namespace UUM.Gui.ViewModels
             SaveProject = new Command(OnSaveProjectExecuted, OnSaveProjectCanExecute);
             LoadProject = new Command(OnLoadProjectExecuted, OnLoadProjectCanExecute);
             CloseProject = new Command(OnCloseProjectExecute, OnCloseProjectCanExecute);
-            ApplicationExit = new Command(OnApplicationExitExecuted);
-          
-            
+            ApplicationExit = new Command(OnApplicationExitExecuted);    
         }
-
+        
         private void OnLoadPlugins(ITaskProgressTracker tracker)
         {
             var pluginRepository = GetService<IPluginRepository>();
             pluginRepository.Initialize();
-            Plugins = pluginRepository.Plugins;
+            Plugins = pluginRepository.Plugins;  
         }
 
         #region Properties
@@ -53,6 +51,7 @@ namespace UUM.Gui.ViewModels
         ///     Gets the title of the view model.
         /// </summary>
         /// <value>The title.</value>
+        
         public override string Title
         {
             get { return "Workspace"; }

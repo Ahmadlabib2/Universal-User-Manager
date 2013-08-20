@@ -24,3 +24,4 @@ public class Log4netListener : LogListenerBase
         log.ErrorWithData(message);
     }
 }
+

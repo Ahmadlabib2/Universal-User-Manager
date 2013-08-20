@@ -20,6 +20,7 @@ namespace UUM.Plugin.Subversion.Models
             : base(SubversionPlugin.PluginId)
         {
         }
+        
 
         #endregion
 
