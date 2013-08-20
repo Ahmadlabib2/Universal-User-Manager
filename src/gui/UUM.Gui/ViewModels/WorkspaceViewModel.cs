@@ -1,12 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using Catel.Data;
+using Catel.Logging;
 using Catel.MVVM;
 using Catel.MVVM.Services;
 using Catel.MVVM.Tasks;
 using UUM.Api.Interfaces;
 using UUM.Engine.Models;
-using Catel.Logging;
+using UUM.Gui.Logging;
 
 namespace UUM.Gui.ViewModels
 {
@@ -28,6 +29,7 @@ namespace UUM.Gui.ViewModels
         
         {
         	Catel.Logging.LogManager.AddListener(new Log4netListener());
+        	
             var splashScreenService = GetService<ISplashScreenService>();
             splashScreenService.Enqueue(new ActionTask("Loading plug-ins", OnLoadPlugins));
             splashScreenService.Commit();
