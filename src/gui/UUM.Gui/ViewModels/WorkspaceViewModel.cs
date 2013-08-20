@@ -19,10 +19,6 @@ namespace UUM.Gui.ViewModels
         /// <summary>UUM Project files|*.uumx|All files|*.*</summary>
         private const string UumProjectFileFilter = "UUM Project files|*.uumx|All files|*.*";
         
-        //AddListener(new Log4netListener());
-        
-        
-        //GetLogger(typeof(WorkspaceViewModel));
 		private readonly ILog _log = LogManager.GetCurrentClassLogger();
 
         public WorkspaceViewModel()
