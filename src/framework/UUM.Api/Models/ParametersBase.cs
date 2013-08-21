@@ -22,6 +22,7 @@ namespace UUM.Api.Models
         /// </summary>
         protected ParametersBase(Guid pluginId) 
         {
+        	Id = Guid.NewGuid();
             PluginId = pluginId;
         }
 
@@ -41,6 +42,31 @@ namespace UUM.Api.Models
 
         #endregion
 		
+        #region Properties
+
+        #region Property: Name
+
+        /// <summary>
+        ///     Register the name property so it is known in the class.
+        /// </summary>
+        public static readonly PropertyData NameProperty =
+            RegisterProperty("Name", typeof (String), null);
+
+        /// <summary>
+        ///     Path to Subversion Configuration File.
+        /// </summary>
+        public String Name
+        {
+            get { return GetValue<String>(NameProperty); }
+            set { SetValue(NameProperty, value); }
+        }
+
+        #endregion
+
+        #endregion
+
+        public Guid Id { get; private set; }
+        
         public Guid PluginId { get; private set; }
 
         static Type[] GetPluginParameterTypes()
