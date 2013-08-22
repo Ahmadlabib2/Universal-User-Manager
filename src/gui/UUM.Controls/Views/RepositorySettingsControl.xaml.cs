@@ -13,6 +13,7 @@ namespace UUM.Controls.Views
         public RepositorySettingsControl()
         {
             InitializeComponent();
+            DisableWhenNoViewModel = true;
         }
     }
 }
