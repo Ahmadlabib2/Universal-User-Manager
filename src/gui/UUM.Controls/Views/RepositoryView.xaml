@@ -29,8 +29,10 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="A" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="B" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Name}" />
+                        <TextBlock Grid.Column="0" Text="{Binding Id}" />
+                        <TextBlock Grid.Column="1" Text="{Binding Name}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

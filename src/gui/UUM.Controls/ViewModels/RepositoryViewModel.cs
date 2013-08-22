@@ -52,7 +52,6 @@ namespace UUM.Controls.ViewModels
         public static readonly PropertyData SelectedParametersProperty =
             RegisterProperty("SelectedParameters", typeof (ParametersBase), null);
 
-        [Model]
         public ParametersBase SelectedParameters
         {
             get { return GetValue<ParametersBase>(SelectedParametersProperty); }

@@ -68,7 +68,6 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Interfaces\IIdentifiable.cs" />
-    <Compile Include="Interfaces\IParameters.cs" />
     <Compile Include="Interfaces\IPlugin.cs" />
     <Compile Include="Interfaces\IPluginRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
