@@ -10,6 +10,7 @@ namespace UUM.Controls.ViewModels
 	public class ProjectViewModel : ViewModelBase
 	{
 		public ProjectViewModel(ProjectModel project)
+			: base(false)
 		{
 			Project = project;
 		}

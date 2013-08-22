@@ -16,9 +16,9 @@ namespace UUM.Controls.ViewModels
     public class RepositorySettingsViewModel : ViewModelBase
     {
         public RepositorySettingsViewModel(ParametersBase parameters)
+			: base(false)
         {
             Parameters = parameters;
-            Apply = new Command(OnApplyExecute);
         }
 
         /// <summary>
@@ -38,6 +38,7 @@ namespace UUM.Controls.ViewModels
             RegisterProperty("Parameters", typeof (ParametersBase));
 
         [Model]
+        [Expose("Name")]
         public ParametersBase Parameters
         {
             get { return GetValue<ParametersBase>(ParametersProperty); }
@@ -54,25 +55,10 @@ namespace UUM.Controls.ViewModels
             {
                 PropertyInfo[] properties = Parameters.GetType().GetProperties();
                 IEnumerable<PropertyInfo> readWriteProperties = properties.Where(x => x.CanRead && x.CanWrite);
-                return
-                    readWriteProperties.Where(x => x.Module.Name != "Catel.Core.dll")
-                                       .Select(x => new PluginParameter(Parameters, x));
+                return readWriteProperties
+                	.Where(x => x.Module.Name != "Catel.Core.dll" && x.Name != "Name")
+                    .Select(x => new PluginParameter(Parameters, x));
             }
-        }
-
-        #endregion
-
-        #endregion
-
-        #region Commands
-
-        #region Command: Apply
-
-        public Command Apply { get; private set; }
-
-        private void OnApplyExecute()
-        {
-            //Parameters.EndEdit();
         }
 
         #endregion
