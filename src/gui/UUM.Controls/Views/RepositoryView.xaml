@@ -30,7 +30,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="A" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding PluginId}" />
+                        <TextBlock Text="{Binding Name}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
