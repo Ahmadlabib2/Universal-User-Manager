@@ -10,7 +10,7 @@ namespace UUM.Plugin.Doors
 {
 	[Export(typeof (IPlugin))]
 	[Guid("E25D7256-EE26-45E5-A781-C7FDB9B5ABA3")]
-	public class DoorsPlugin : PluginBase<Parameters>
+	public class DoorsPlugin : PluginBase<Parameters, UserInSource>
 	{
 		#region Constructors
 		public DoorsPlugin()

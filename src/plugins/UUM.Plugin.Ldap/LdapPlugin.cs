@@ -10,7 +10,7 @@ namespace UUM.Plugin.Ldap
 {
     [Export(typeof (IPlugin))]
     [Guid("11CBEB4D-56B2-4A26-9706-D13C946ED316")]
-    public class LdapPlugin : PluginBase<Parameters>
+    public class LdapPlugin : PluginBase<Parameters, UserInSource>
     {
 		#region Constructors
 		public LdapPlugin()

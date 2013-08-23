@@ -20,12 +20,6 @@ namespace UUM.Plugin.Subversion.Models
 
         public UserInSource()
         {
-            Id = Guid.NewGuid();
-        }
-
-        protected UserInSource(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
         }
 
         #endregion

@@ -11,7 +11,7 @@ namespace UUM.Plugin.Wmi
 {
     [Export(typeof (IPlugin))]
     [Guid("6DB2B502-E399-4938-A309-CE998D562C5E")]
-    public class WmiPlugin : PluginBase<Parameters>
+    public class WmiPlugin : PluginBase<Parameters, UserInSource>
     {
 		#region Constructors
 		public WmiPlugin()

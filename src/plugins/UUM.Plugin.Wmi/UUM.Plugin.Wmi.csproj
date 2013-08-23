@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Parameters.cs" />
+    <Compile Include="Models\UserInSource.cs" />
     <Compile Include="WmiPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

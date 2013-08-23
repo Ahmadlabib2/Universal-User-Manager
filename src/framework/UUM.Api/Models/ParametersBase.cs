@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+
 using Catel.Data;
 using Catel.IoC;
+
 using UUM.Api.Interfaces;
 
 namespace UUM.Api.Models
@@ -23,8 +25,6 @@ namespace UUM.Api.Models
         protected ParametersBase() 
         {
         	Id = Guid.NewGuid();
-        	//TODO: Initialize with the correct plugin Id
-        	//PluginId = typeof(TPlugin).GUID;
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace UUM.Api.Models
 
         #endregion
 
-        #region Property: Name
+        #region Property: Id
 
         /// <summary>
         ///     Register the id property so it is known in the class.
@@ -85,16 +85,43 @@ namespace UUM.Api.Models
 
         #endregion
         
-        public Guid PluginId { get; private set; }
+        #region Property: Plugin
+        
+        /// <summary>
+        /// Determine the associated plugin
+        /// </summary>
+        public IPlugin Plugin 
+        {
+        	get
+        	{
+        		if (_plugin == null)
+        		{
+					var pluginRepository = ServiceLocator.ResolveType<IPluginRepository>();
+		            foreach (var plugin in pluginRepository.Plugins)
+		            {
+		            	if (plugin.GetParametersType() == GetType())
+		            	{
+		            		_plugin = plugin;
+		            		break;
+		            	}
+		            }
+        		}
+        		return _plugin;
+        	}
+        }
+        
+        private IPlugin _plugin;
+        
+        #endregion
 
         #region KnownTypes
         static Type[] GetPluginTypes()
         {
             var types = new List<Type>();
-            var pluginRepository = ServiceLocator.Default.GetService(typeof(IPluginRepository)) as IPluginRepository;
+			var pluginRepository = ServiceLocator.ResolveType<IPluginRepository>();
             foreach (var plugin in pluginRepository.Plugins)
             {
-                types.Add(plugin.GetParameters().GetType());
+                types.Add(plugin.GetParametersType());
             }
             return types.ToArray();
         }

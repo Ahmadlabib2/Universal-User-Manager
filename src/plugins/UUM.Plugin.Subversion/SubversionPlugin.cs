@@ -11,7 +11,7 @@ namespace UUM.Plugin.Subversion
 {
     [Export(typeof (IPlugin))]
     [Guid("5D4E8772-0C14-4B2B-8BD5-347DAE494C4E")]
-    public class SubversionPlugin : PluginBase<Parameters>
+    public class SubversionPlugin : PluginBase<Parameters, UserInSource>
     {
 		#region Constructors
 		public SubversionPlugin()

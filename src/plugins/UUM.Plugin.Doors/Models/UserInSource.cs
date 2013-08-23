@@ -20,12 +20,6 @@ namespace UUM.Plugin.Doors.Models
 
         public UserInSource()
         {
-            Id = Guid.NewGuid();
-        }
-
-        protected UserInSource(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
         }
 
         #endregion

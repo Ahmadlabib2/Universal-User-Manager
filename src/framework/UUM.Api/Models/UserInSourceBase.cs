@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+
 using Catel.Data;
 using Catel.IoC;
+
 using UUM.Api.Interfaces;
 
 namespace UUM.Api.Models
@@ -46,7 +48,6 @@ namespace UUM.Api.Models
 
         #endregion
 
-    	
         /// <summary>
         ///     The Guid of the plugin parameters that was used to create this user in source.
         ///     Identifies which plugin instance created this item. Used for serialization.
@@ -75,7 +76,7 @@ namespace UUM.Api.Models
         static Type[] GetPluginTypes()
         {
             var types = new List<Type>();
-            var pluginRepository = ServiceLocator.Default.GetService(typeof(IPluginRepository)) as IPluginRepository;
+			var pluginRepository = ServiceLocator.ResolveType<IPluginRepository>();
             foreach (var plugin in pluginRepository.Plugins)
             {
                 types.Add(plugin.GetUserInSourceType());

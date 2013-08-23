@@ -7,8 +7,9 @@ namespace UUM.Api
 	/// <summary>
 	/// Description of PluginBase.
 	/// </summary>
-	public abstract class PluginBase<TParameters> : IPlugin
+	public abstract class PluginBase<TParameters, TUserInSource> : IPlugin
 		where TParameters : ParametersBase, new()
+		where TUserInSource : UserInSourceBase, new()
 	{
 		protected PluginBase()
 		{
@@ -49,7 +50,7 @@ namespace UUM.Api
 
 		public Type GetUserInSourceType()
 		{
-			return typeof(TParameters);
+			return typeof(TUserInSource);
 		}
 	}
 }

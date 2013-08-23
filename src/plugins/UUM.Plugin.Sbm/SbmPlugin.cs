@@ -11,7 +11,7 @@ namespace UUM.Plugin.Sbm
 {
     [Export(typeof (IPlugin))]
     [Guid("BBFAD1BD-E4AE-4DBB-ABA7-BA35F94F62AD")]
-    public class SbmPlugin : PluginBase<Parameters>
+    public class SbmPlugin : PluginBase<Parameters, UserInSource>
     {
 		#region Constructors
 		public SbmPlugin()
