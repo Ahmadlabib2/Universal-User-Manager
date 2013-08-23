@@ -96,7 +96,7 @@ namespace UUM.Api.Models
         	{
         		if (_plugin == null)
         		{
-					var pluginRepository = ServiceLocator.ResolveType<IPluginRepository>();
+					var pluginRepository = ServiceLocator.Default.ResolveType<IPluginRepository>();
 		            foreach (var plugin in pluginRepository.Plugins)
 		            {
 		            	if (plugin.GetParametersType() == GetType())
@@ -118,7 +118,7 @@ namespace UUM.Api.Models
         static Type[] GetPluginTypes()
         {
             var types = new List<Type>();
-			var pluginRepository = ServiceLocator.ResolveType<IPluginRepository>();
+			var pluginRepository = ServiceLocator.Default.ResolveType<IPluginRepository>();
             foreach (var plugin in pluginRepository.Plugins)
             {
                 types.Add(plugin.GetParametersType());

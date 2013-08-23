@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
+
 using Catel.Data;
+using Catel.IoC;
 using Catel.MVVM;
 using Catel.MVVM.Services;
-using UUM.Api.Interfaces;
+
 using UUM.Api.Models;
 
 namespace UUM.Controls.ViewModels
@@ -70,8 +72,8 @@ namespace UUM.Controls.ViewModels
 
         private void OnAddRepositoryExecute()
         {
-            var viewModel = new ChoosePluginViewModel();
-            var uiVisualizerService = GetService<IUIVisualizerService>();
+            var viewModel = TypeFactory.Default.CreateInstance<ChoosePluginViewModel>();
+            var uiVisualizerService = ServiceLocator.ResolveType<IUIVisualizerService>();
             if (uiVisualizerService.ShowDialog(viewModel) == true)
             {
                 if (viewModel.SelectedPlugin != null)

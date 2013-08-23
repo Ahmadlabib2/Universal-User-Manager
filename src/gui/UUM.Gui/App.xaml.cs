@@ -15,7 +15,7 @@ namespace UUM.Gui
         protected override void OnStartup(StartupEventArgs e)
         {
         	#if DEBUG
-        	//Catel.Logging.LogManager.RegisterDebugListener();
+        	Catel.Logging.LogManager.RegisterDebugListener();
         	#endif
             log4net.Config.XmlConfigurator.Configure();
             

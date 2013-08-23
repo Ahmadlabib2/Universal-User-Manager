@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+
 using Catel.Data;
 using Catel.MVVM;
+
 using UUM.Api.Interfaces;
-using UUM.Engine.Models;
 
 namespace UUM.Controls.ViewModels
 {
@@ -11,12 +12,11 @@ namespace UUM.Controls.ViewModels
 	/// </summary>
 	public class ChoosePluginViewModel : ViewModelBase
 	{
-		public ChoosePluginViewModel()
+		public ChoosePluginViewModel(IPluginRepository pluginRepository)
 		{
-			var pluginRepository = GetService<IPluginRepository>();
 			Plugins = pluginRepository.Plugins;
-			
 		}
+
 		#region Model
 		/// <summary>
 		/// Loads the Plugins
