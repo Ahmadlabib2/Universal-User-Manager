@@ -19,6 +19,8 @@ namespace UUM.Controls.ViewModels
 			: base(false)
         {
             Parameters = parameters;
+            GetUsers = new Command(GetUsersExecute);
+            GetGroups = new Command(GetGroupsExecute);
         }
 
         /// <summary>
@@ -59,6 +61,32 @@ namespace UUM.Controls.ViewModels
                 	.Where(x => x.Module.Name != "Catel.Core.dll" && x.Name != "Name")
                     .Select(x => new PluginParameter(Parameters, x));
             }
+        }
+
+        #endregion
+
+        #endregion
+        
+        #region Commands
+
+        #region Command: GetUsers
+
+        public Command GetUsers { get; private set; }
+
+        private void GetUsersExecute()
+        {
+        	throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Command: GetGroups
+
+        public Command GetGroups { get; private set; }
+
+        private void GetGroupsExecute()
+        {
+        	throw new NotImplementedException();
         }
 
         #endregion

@@ -14,7 +14,9 @@
 			</StackPanel>
 		</GroupBox.Header>
 	    <StackPanel Orientation="Vertical">
-	        <ListView ItemsSource="{Binding Properties}" HorizontalAlignment="Stretch" Grid.IsSharedSizeScope="True">
+	        <Button Command="{Binding GetUsers}">Get Users</Button>
+	        <Button Command="{Binding GetGroups}" IsEnabled="False">Get Groups</Button>
+	    	<ListView ItemsSource="{Binding Properties}" HorizontalAlignment="Stretch" Grid.IsSharedSizeScope="True">
 	            <ListView.ItemTemplate>
 	                <DataTemplate>
 	                    <catel:StackGrid>
