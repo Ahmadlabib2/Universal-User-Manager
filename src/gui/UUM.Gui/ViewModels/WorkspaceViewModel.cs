@@ -139,8 +139,6 @@ namespace UUM.Gui.ViewModels
                 string fileName = openFileService.FileName;
                 Project = ProjectModel.Load(fileName, SerializationMode.Xml);
                 
-                // LogManager.AddListener(new FileLogListener("UUM.log"));
-                 
                 _log.Info("LoadProject command executed: '{0}'", fileName);
             }
         }

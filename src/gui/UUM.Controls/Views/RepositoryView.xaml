@@ -8,9 +8,9 @@
                    d:DesignHeight="180" d:DesignWidth="280">
     <catel:StackGrid>
         <catel:StackGrid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
         </catel:StackGrid.ColumnDefinitions>
         <catel:StackGrid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
