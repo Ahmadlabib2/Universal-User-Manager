@@ -11,19 +11,6 @@ namespace UUM.Plugin.Subversion.Models
 
         #endregion
 
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new object from scratch.
-        /// </summary>
-        public Parameters()
-            : base(SubversionPlugin.PluginId)
-        {
-        }
-        
-
-        #endregion
-
         #region Properties
 
         #region Property: ConfigurationFile

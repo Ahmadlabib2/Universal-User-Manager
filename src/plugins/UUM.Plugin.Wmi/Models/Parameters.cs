@@ -11,19 +11,6 @@ namespace UUM.Plugin.Wmi.Models
 
         #endregion
 
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new object from scratch.
-        /// </summary>
-        public Parameters()
-            : base(WmiPlugin.PluginId)
-        {
-        }
-        
-
-        #endregion
-
         #region Properties
 
         #region Property: ComputerName

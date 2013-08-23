@@ -10,16 +10,6 @@ namespace UUM.Plugin.Ldap.Models
         #region Fields
         #endregion
 
-        #region Constructors
-        /// <summary>
-        /// Initializes a new object from scratch.
-        /// </summary>
-        public Parameters()
-            : base(LdapPlugin.PluginId)
-        { }
-
-        #endregion
-
         #region Properties
 
         #region Property: Server

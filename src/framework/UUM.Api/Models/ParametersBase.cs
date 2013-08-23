@@ -12,7 +12,7 @@ namespace UUM.Api.Models
     ///     backwards compatibility and error checking.
     /// </summary>
     [Serializable]
-    [KnownType("GetPluginParameterTypes")]
+    [KnownType("GetPluginTypes")]
     public abstract class ParametersBase : SavableModelBase<ParametersBase>
     {
         #region Constructors
@@ -20,10 +20,11 @@ namespace UUM.Api.Models
         /// <summary>
         ///     Initializes a new object from scratch.
         /// </summary>
-        protected ParametersBase(Guid pluginId) 
+        protected ParametersBase() 
         {
         	Id = Guid.NewGuid();
-            PluginId = pluginId;
+        	//TODO: Initialize with the correct plugin Id
+        	//PluginId = typeof(TPlugin).GUID;
         }
 
         /// <summary>
@@ -86,7 +87,8 @@ namespace UUM.Api.Models
         
         public Guid PluginId { get; private set; }
 
-        static Type[] GetPluginParameterTypes()
+        #region KnownTypes
+        static Type[] GetPluginTypes()
         {
             var types = new List<Type>();
             var pluginRepository = ServiceLocator.Default.GetService(typeof(IPluginRepository)) as IPluginRepository;
@@ -95,6 +97,7 @@ namespace UUM.Api.Models
                 types.Add(plugin.GetParameters().GetType());
             }
             return types.ToArray();
-        }        
+        }
+        #endregion
     }
 }

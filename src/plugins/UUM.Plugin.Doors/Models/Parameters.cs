@@ -10,16 +10,6 @@ namespace UUM.Plugin.Doors.Models
         #region Fields
         #endregion
 
-        #region Constructors
-        /// <summary>
-        /// Initializes a new object from scratch.
-        /// </summary>
-        public Parameters()
-            : base(DoorsPlugin.PluginId)
-        { }
-
-        #endregion
-
         #region Properties
 
         #region Property: Server
