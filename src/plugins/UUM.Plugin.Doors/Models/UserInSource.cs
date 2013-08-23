@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Runtime.Serialization;
+
 using Catel.Data;
-using UUM.Api.Interfaces;
+
 using UUM.Api.Models;
 
 namespace UUM.Plugin.Doors.Models
@@ -17,11 +17,6 @@ namespace UUM.Plugin.Doors.Models
         #endregion
 
         #region Constructors
-
-        public UserInSource()
-        {
-        }
-
         #endregion
 
         #region Properties

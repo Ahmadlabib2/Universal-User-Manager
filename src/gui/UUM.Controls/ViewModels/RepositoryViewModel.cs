@@ -52,7 +52,7 @@ namespace UUM.Controls.ViewModels
         #region Property: SelectedParameters
 
         public static readonly PropertyData SelectedParametersProperty =
-            RegisterProperty("SelectedParameters", typeof (ParametersBase), null);
+            RegisterProperty("SelectedParameters", typeof (ParametersBase));
 
         public ParametersBase SelectedParameters
         {

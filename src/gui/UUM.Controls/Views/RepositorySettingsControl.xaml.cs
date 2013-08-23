@@ -1,11 +1,9 @@
-﻿using Catel.Windows.Controls;
-
-namespace UUM.Controls.Views
+﻿namespace UUM.Controls.Views
 {
     /// <summary>
     /// Interaction logic for RepositorySettingsControl.xaml.
     /// </summary>
-    public partial class RepositorySettingsControl : UserControl
+    public partial class RepositorySettingsControl
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositorySettingsControl"/> class.

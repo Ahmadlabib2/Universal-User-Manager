@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 
 using UUM.Api;
 using UUM.Api.Interfaces;
-using UUM.Api.Models;
 using UUM.Plugin.Subversion.Models;
 
 namespace UUM.Plugin.Subversion

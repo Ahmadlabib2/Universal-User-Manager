@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using System.Runtime.InteropServices;
+
 using UUM.Api;
 using UUM.Api.Interfaces;
-using UUM.Api.Models;
 using UUM.Plugin.Ldap.Models;
 
 namespace UUM.Plugin.Ldap

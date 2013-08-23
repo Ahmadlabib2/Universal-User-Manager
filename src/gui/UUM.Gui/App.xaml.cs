@@ -1,21 +1,23 @@
 ﻿using System.Windows;
+
 using Catel.IoC;
+using Catel.Logging;
+
 using UUM.Api.Interfaces;
 using UUM.Engine.Services;
-using log4net.Config;
 
 namespace UUM.Gui
 {
 	/// <summary>
 	/// Interaction logic for App.xaml
 	/// </summary>
-	public partial class App : Application
+	public partial class App
 	{
 		
         protected override void OnStartup(StartupEventArgs e)
         {
         	#if DEBUG
-        	Catel.Logging.LogManager.RegisterDebugListener();
+        	LogManager.RegisterDebugListener();
         	#endif
             log4net.Config.XmlConfigurator.Configure();
             

@@ -51,7 +51,7 @@ namespace UUM.Api.Models
         ///     Register the name property so it is known in the class.
         /// </summary>
         public static readonly PropertyData NameProperty =
-            RegisterProperty("Name", typeof (String), null);
+            RegisterProperty("Name", typeof (String));
 
         /// <summary>
         ///     Name of this parameter set.
@@ -70,7 +70,7 @@ namespace UUM.Api.Models
         ///     Register the id property so it is known in the class.
         /// </summary>
         public static readonly PropertyData IdProperty =
-            RegisterProperty("Id", typeof (Guid), null);
+            RegisterProperty("Id", typeof (Guid));
 
         /// <summary>
         ///     Guid that identifies this parameter set.

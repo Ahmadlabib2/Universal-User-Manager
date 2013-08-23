@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Runtime.Serialization;
+
 using Catel.Data;
-using UUM.Api.Interfaces;
+
 using UUM.Api.Models;
 
 namespace UUM.Plugin.Ldap.Models
@@ -17,11 +17,6 @@ namespace UUM.Plugin.Ldap.Models
         #endregion
 
         #region Constructors
-
-        public UserInSource()
-        {
-        }
-
         #endregion
 
         #region Properties
@@ -76,7 +71,7 @@ namespace UUM.Plugin.Ldap.Models
         }
 
         public static readonly PropertyData UserNameProperty =
-            RegisterProperty("UserName", typeof(String), null);
+            RegisterProperty("UserName", typeof(String));
         #endregion
 
 

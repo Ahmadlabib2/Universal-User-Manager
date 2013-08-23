@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Runtime.Serialization;
-using Catel.Data;
-using UUM.Api.Interfaces;
+
 using UUM.Api.Models;
 
 namespace UUM.Plugin.Sbm.Models
@@ -17,11 +15,6 @@ namespace UUM.Plugin.Sbm.Models
         #endregion
 
         #region Constructors
-
-        public UserInSource()
-        {
-        }
-
         #endregion
 
         #region Properties

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 using Catel.Data;
 using Catel.MVVM;
@@ -41,7 +40,7 @@ namespace UUM.Controls.ViewModels
 		#region Property: SelectedUser
 
 		public static readonly PropertyData SelectedUserProperty =
-			RegisterProperty("SelectedUser", typeof (UserModel), null);
+			RegisterProperty("SelectedUser", typeof (UserModel));
 
 		public UserModel SelectedUser
 		{

@@ -19,7 +19,7 @@ namespace UUM.Plugin.Wmi.Models
         ///     Register the name property so it is known in the class.
         /// </summary>
         public static readonly PropertyData ComputerNameProperty =
-            RegisterProperty("ComputerName", typeof (String), null);
+            RegisterProperty("ComputerName", typeof (String));
 
         /// <summary>
         ///     Path to Subversion Configuration File.

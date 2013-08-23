@@ -30,7 +30,13 @@ namespace UUM.Api
 		
 		protected abstract IRepository GetRepositoryInternal(TParameters parameters);
 
-		public IRepository GetRepository(ParametersBase parameters)
+        /// <summary>
+        /// Build the repository based on the settings
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Parameters not belonging to this plugin</exception>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+	    public IRepository GetRepository(ParametersBase parameters)
 		{
 			var p = parameters as TParameters;
 			if (p == null)

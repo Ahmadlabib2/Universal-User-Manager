@@ -5,7 +5,7 @@ using System.Reflection;
 
 using Catel.Data;
 using Catel.MVVM;
-using UUM.Api.Interfaces;
+
 using UUM.Api.Models;
 
 namespace UUM.Controls.ViewModels

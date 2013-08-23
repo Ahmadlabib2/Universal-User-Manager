@@ -59,7 +59,7 @@ namespace UUM.Gui.ViewModels
         #region Property: Project
 
         public static readonly PropertyData ProjectProperty =
-            RegisterProperty("Project", typeof (ProjectModel), null);
+            RegisterProperty("Project", typeof (ProjectModel));
 
         public ProjectModel Project
         {

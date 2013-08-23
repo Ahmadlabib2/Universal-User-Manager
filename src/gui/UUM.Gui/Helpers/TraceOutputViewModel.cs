@@ -29,7 +29,7 @@ namespace UUM.Gui.Helpers
         }
 
         public static readonly PropertyData TopProperty =
-            RegisterProperty("Top", typeof(double), null);
+            RegisterProperty("Top", typeof(double));
         #endregion
 
         #region Property: Left
@@ -40,7 +40,7 @@ namespace UUM.Gui.Helpers
         }
 
         public static readonly PropertyData LeftProperty =
-            RegisterProperty("Left", typeof(double), null);
+            RegisterProperty("Left", typeof(double));
         #endregion
 
         #region Property: Width

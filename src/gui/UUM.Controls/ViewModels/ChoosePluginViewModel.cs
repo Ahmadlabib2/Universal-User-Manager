@@ -23,7 +23,7 @@ namespace UUM.Controls.ViewModels
 		/// </summary>
 		/// 
 		public static readonly PropertyData PluginsProperty =
-			RegisterProperty("Plugins", typeof (ObservableCollection<IPlugin>), null);
+			RegisterProperty("Plugins", typeof (ObservableCollection<IPlugin>));
 
 		public ObservableCollection<IPlugin> Plugins
 		{
@@ -34,7 +34,7 @@ namespace UUM.Controls.ViewModels
 		#region Property: SelectedPlugin
 		
 		public static readonly PropertyData SelectedPluginProperty =
-			RegisterProperty("SelectedPlugin", typeof (IPlugin), null);
+			RegisterProperty("SelectedPlugin", typeof (IPlugin));
 
 		public IPlugin SelectedPlugin
 		{

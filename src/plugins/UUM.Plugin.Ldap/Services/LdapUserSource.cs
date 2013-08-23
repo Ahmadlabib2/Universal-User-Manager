@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.DirectoryServices;
-using System.Xml;
 
-using UUM.Api;
 using UUM.Plugin.Ldap.Models;
 
-namespace UUM.Plugin.Ldap
+namespace UUM.Plugin.Ldap.Services
 {
     /// <summary>
 	/// Description of LdapUserSource.
@@ -23,23 +20,23 @@ namespace UUM.Plugin.Ldap
 			_nameProperty = nameProperty;
 		}
 		
-		private string _ldapServer;
-		private string _username;
-		private string _password;
-		private string _ldapSearchFilter;
-		private string _nameProperty;
+		private readonly string _ldapServer;
+		private readonly string _username;
+		private readonly string _password;
+		private readonly string _ldapSearchFilter;
+		private readonly string _nameProperty;
 		
 		public IEnumerable<UserInSource> GetUsers()
 		{
-			DirectoryEntry entry = new DirectoryEntry(_ldapServer, _username, _password);
+			var entry = new DirectoryEntry(_ldapServer, _username, _password);
 			
 			entry.AuthenticationType = AuthenticationTypes.None;
-			DirectorySearcher searcher = new DirectorySearcher(entry);
+			var searcher = new DirectorySearcher(entry);
 			
 			searcher.Filter = _ldapSearchFilter;
 			searcher.SearchScope = SearchScope.Subtree;
 
-			SortOption option = new SortOption(_nameProperty, SortDirection.Ascending);
+			var option = new SortOption(_nameProperty, SortDirection.Ascending);
 			searcher.Sort = option;
 			searcher.PageSize = 500;
 			int count = 0;
@@ -51,33 +48,31 @@ namespace UUM.Plugin.Ldap
 				//Trace.TraceInformation("Loading User #"+count);
 				count++;
 				DirectoryEntry de = resEnt.GetDirectoryEntry();
-				if (de.SchemaClassName == "group")
+				switch (de.SchemaClassName)
 				{
-					// ignore
-				}
-				else if (de.SchemaClassName == "user")
-				{
-					String account = Convert.ToString(de.Properties[_nameProperty].Value);
-					String displayName = Convert.ToString(de.Properties["displayName"].Value);
-					String sn = Convert.ToString(de.Properties["sn"].Value);
-					String fn = Convert.ToString(de.Properties["givenName"].Value);
-					Int32 userAccountControl = Convert.ToInt32(de.Properties["userAccountControl"].Value);
-					LdapFlags flags = (LdapFlags)userAccountControl;
-					bool isEnabled = (flags & LdapFlags.AccountDisabled) == 0;
+				    case "group":
+				        break;
+				    case "user":
+				        {
+				            String account = Convert.ToString(de.Properties[_nameProperty].Value);
+				            String displayName = Convert.ToString(de.Properties["displayName"].Value);
+				            String sn = Convert.ToString(de.Properties["sn"].Value);
+				            String fn = Convert.ToString(de.Properties["givenName"].Value);
+				            Int32 userAccountControl = Convert.ToInt32(de.Properties["userAccountControl"].Value);
+				            var flags = (LdapFlags)userAccountControl;
+				            bool isEnabled = (flags & LdapFlags.AccountDisabled) == 0;
 					
-					// get the group from Ldap and assign it to the user
-					var newUser = new UserInSource();
-					//newUser.LoginName = account;
-					// fn, sn, isEnabled;
-					users.Add(newUser);
-				}
-				else if (de.SchemaClassName == "computer")
-				{
-					// ignore
-				}
-				else
-				{
-					//ignore
+				            // get the group from Ldap and assign it to the user
+				            var newUser = new UserInSource();
+				            //newUser.LoginName = account;
+				            // fn, sn, isEnabled;
+				            users.Add(newUser);
+				        }
+				        break;
+				    case "computer":
+				        break;
+				    default:
+				        break;
 				}
 			}
 			
