@@ -67,7 +67,7 @@ namespace UUM.Plugin.Ldap
 					
 					// get the group from Ldap and assign it to the user
 					var newUser = new UserInSource();
-					newUser.LoginName = account;
+					//newUser.LoginName = account;
 					// fn, sn, isEnabled;
 					users.Add(newUser);
 				}

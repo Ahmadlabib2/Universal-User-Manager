@@ -53,7 +53,7 @@ namespace UUM.Api.Models
             RegisterProperty("Name", typeof (String), null);
 
         /// <summary>
-        ///     Path to Subversion Configuration File.
+        ///     Name of this parameter set.
         /// </summary>
         public String Name
         {
@@ -63,9 +63,26 @@ namespace UUM.Api.Models
 
         #endregion
 
+        #region Property: Name
+
+        /// <summary>
+        ///     Register the id property so it is known in the class.
+        /// </summary>
+        public static readonly PropertyData IdProperty =
+            RegisterProperty("Id", typeof (Guid), null);
+
+        /// <summary>
+        ///     Guid that identifies this parameter set.
+        /// </summary>
+        public Guid Id
+        {
+            get { return GetValue<Guid>(IdProperty); }
+            private set { SetValue(IdProperty, value); }
+        }
+
         #endregion
 
-        public Guid Id { get; private set; }
+        #endregion
         
         public Guid PluginId { get; private set; }
 

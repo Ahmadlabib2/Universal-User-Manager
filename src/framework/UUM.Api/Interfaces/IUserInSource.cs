@@ -9,8 +9,8 @@ namespace UUM.Api.Interfaces
     public interface IUserInSource : IIdentifiable
     {
         /// <summary>
-        ///     The Guid of the plugin that was used to create this user in source.
-        ///     Identifies which plugin created this item. Used for serialization.
+        ///     The Guid of the plugin parameters that was used to create this user in source.
+        ///     Identifies which plugin instance created this item. Used for serialization.
         /// </summary>
         Guid PluginId { get; }
 
@@ -18,6 +18,6 @@ namespace UUM.Api.Interfaces
         ///     The login for the target system, must be unique within the target system.
         ///     Used for associating local users from the remote users on update for example.
         /// </summary>
-        string LoginName { get; }
+        //string LoginName { get; }
     }
 }
