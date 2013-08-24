@@ -15,6 +15,7 @@ namespace UUM.Controls.ViewModels
         /// Initializes a new instance of the <see cref="UserViewModel"/> class.
         /// </summary>
         public UserViewModel(UserModel model)
+        	: base(false)
         {
             User = model;
             

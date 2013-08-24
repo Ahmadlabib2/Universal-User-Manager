@@ -37,6 +37,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <views:RepositorySettingsControl DataContext="{Binding SelectedParameters}" />
+        <views:RepositorySettingsControl DataContext="{Binding SelectedParameters}"/>
     </catel:StackGrid>
 </catel:UserControl>

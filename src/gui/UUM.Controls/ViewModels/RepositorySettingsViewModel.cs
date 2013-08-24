@@ -16,6 +16,7 @@ namespace UUM.Controls.ViewModels
     public class RepositorySettingsViewModel : ViewModelBase
     {
         public RepositorySettingsViewModel(ParametersBase parameters)
+        	: base(false)
         {
             Parameters = parameters;
             Apply = new Command(OnApplyExecute);

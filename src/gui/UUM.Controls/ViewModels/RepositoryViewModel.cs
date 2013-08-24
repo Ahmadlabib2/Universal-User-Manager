@@ -16,6 +16,7 @@ namespace UUM.Controls.ViewModels
         ///     Initializes a new instance of the <see cref="RepositoryViewModel" /> class.
         /// </summary>
         public RepositoryViewModel(ObservableCollection<ParametersBase> parameters)
+        	: base(false)
         {
             Parameters = parameters;
             AddRepository = new Command(OnAddRepositoryExecute);
