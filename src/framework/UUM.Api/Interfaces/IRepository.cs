@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UUM.Api.Models;
 
 namespace UUM.Api.Interfaces
 {
@@ -10,6 +11,6 @@ namespace UUM.Api.Interfaces
         /// <summary>
         ///     Retrieve the users from the repository
         /// </summary>
-        IEnumerable<IUserInSource> Users { get; }
+        IEnumerable<UserInSourceBase> Users { get; }
     }
 }

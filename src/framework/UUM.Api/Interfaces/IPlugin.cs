@@ -1,4 +1,6 @@
-﻿using UUM.Api.Models;
+﻿using System;
+using UUM.Api.Models;
+
 namespace UUM.Api.Interfaces
 {
     public interface IPlugin: IIdentifiable
@@ -26,5 +28,17 @@ namespace UUM.Api.Interfaces
         /// </summary>
         /// <returns>Parameters initialized with default values</returns>
     	ParametersBase GetParameters();
+
+    	/// <summary>
+    	/// Return the type of the parameters for this plugin
+    	/// </summary>
+    	/// <returns></returns>
+    	Type GetParametersType();
+
+    	/// <summary>
+    	/// Return the type of the user in source for this plugin
+    	/// </summary>
+    	/// <returns></returns>
+    	Type GetUserInSourceType();
     }
 }

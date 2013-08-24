@@ -8,9 +8,9 @@
                    d:DesignHeight="180" d:DesignWidth="280">
     <catel:StackGrid>
         <catel:StackGrid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
         </catel:StackGrid.ColumnDefinitions>
         <catel:StackGrid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -31,7 +31,7 @@
                             <ColumnDefinition Width="Auto" SharedSizeGroup="A" />
                             <ColumnDefinition Width="Auto" SharedSizeGroup="B" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Id}" />
+                        <TextBlock Grid.Column="0" FontFamily="Courier New" Text="{Binding Id}" />
                         <TextBlock Grid.Column="1" Text="{Binding Name}" />
                     </Grid>
                 </DataTemplate>

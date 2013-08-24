@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Runtime.Serialization;
+
 using Catel.Data;
-using UUM.Api.Interfaces;
+
+using UUM.Api.Models;
 
 namespace UUM.Plugin.Doors.Models
 {
@@ -9,50 +10,16 @@ namespace UUM.Plugin.Doors.Models
     ///     User in source class.
     /// </summary>
     [Serializable]
-    public class UserInSource : SavableModelBase<UserInSource>, IUserInSource
+    public class UserInSource : UserInSourceBase
     {
-        #region Discriminator
-
-        // discriminator field for serialization
-        public Guid PluginId
-        {
-            get { return DoorsPlugin.PluginId; }
-        }
-
-        #endregion
-
         #region Fields
 
         #endregion
 
         #region Constructors
-
-        public UserInSource()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        protected UserInSource(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
-
         #endregion
 
         #region Properties
-
-        #region Property: Id
-
-        public static readonly PropertyData IdProperty =
-            RegisterProperty("Id", typeof (Guid));
-
-        public Guid Id
-        {
-            get { return GetValue<Guid>(IdProperty); }
-            set { SetValue(IdProperty, value); }
-        }
-
-        #endregion
 
         #region Property: LoginName
 

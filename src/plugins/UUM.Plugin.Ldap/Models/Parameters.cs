@@ -10,16 +10,6 @@ namespace UUM.Plugin.Ldap.Models
         #region Fields
         #endregion
 
-        #region Constructors
-        /// <summary>
-        /// Initializes a new object from scratch.
-        /// </summary>
-        public Parameters()
-            : base(LdapPlugin.PluginId)
-        { }
-
-        #endregion
-
         #region Properties
 
         #region Property: Server
@@ -33,7 +23,7 @@ namespace UUM.Plugin.Ldap.Models
         }
 
         public static readonly PropertyData ServerProperty =
-            RegisterProperty("Server", typeof(String), null);
+            RegisterProperty("Server", typeof(String));
         #endregion
 
         #region Property: UserName
@@ -47,7 +37,7 @@ namespace UUM.Plugin.Ldap.Models
         }
 
         public static readonly PropertyData UserNameProperty =
-            RegisterProperty("UserName", typeof(String), null);
+            RegisterProperty("UserName", typeof(String));
         #endregion
 
         #region Property: Password
@@ -61,7 +51,7 @@ namespace UUM.Plugin.Ldap.Models
         }
 
         public static readonly PropertyData PasswordProperty =
-            RegisterProperty("Password", typeof(String), null);
+            RegisterProperty("Password", typeof(String));
         #endregion
 
         #region Property: Filter
@@ -75,7 +65,7 @@ namespace UUM.Plugin.Ldap.Models
         }
 
         public static readonly PropertyData FilterProperty =
-            RegisterProperty("Filter", typeof(String), null);
+            RegisterProperty("Filter", typeof(String));
         #endregion
 
         #endregion

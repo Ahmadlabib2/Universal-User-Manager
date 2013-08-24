@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
+
 using Catel.Data;
-using UUM.Api.Interfaces;
+using UUM.Api.Models;
 
 namespace UUM.Engine.Models
 {
@@ -40,9 +41,9 @@ namespace UUM.Engine.Models
         public static readonly PropertyData UsersInSourcesProperty =
             RegisterProperty("UsersInSources", typeof(ObservableCollection<UserModel>));
 
-        public ObservableCollection<IUserInSource> UsersInSources
+        public ObservableCollection<UserInSourceBase> UsersInSources
         {
-            get { return GetValue<ObservableCollection<IUserInSource>>(UsersInSourcesProperty); }
+            get { return GetValue<ObservableCollection<UserInSourceBase>>(UsersInSourcesProperty); }
             set { SetValue(UsersInSourcesProperty, value); }
         }
 
@@ -60,7 +61,7 @@ namespace UUM.Engine.Models
             Users.Remove(user);
         }
 
-        public IUserInSource FindUserInSourceById(Guid id)
+        public UserInSourceBase FindUserInSourceById(Guid id)
         {
             throw new NotImplementedException();
         }

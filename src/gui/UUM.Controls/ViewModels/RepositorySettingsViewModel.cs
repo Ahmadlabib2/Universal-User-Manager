@@ -5,7 +5,7 @@ using System.Reflection;
 
 using Catel.Data;
 using Catel.MVVM;
-using UUM.Api.Interfaces;
+
 using UUM.Api.Models;
 
 namespace UUM.Controls.ViewModels
@@ -19,7 +19,8 @@ namespace UUM.Controls.ViewModels
         	: base(false)
         {
             Parameters = parameters;
-            Apply = new Command(OnApplyExecute);
+            GetUsers = new Command(GetUsersExecute);
+            GetGroups = new Command(GetGroupsExecute);
         }
 
         /// <summary>
@@ -39,6 +40,7 @@ namespace UUM.Controls.ViewModels
             RegisterProperty("Parameters", typeof (ParametersBase));
 
         [Model]
+        [Expose("Name")]
         public ParametersBase Parameters
         {
             get { return GetValue<ParametersBase>(ParametersProperty); }
@@ -55,25 +57,36 @@ namespace UUM.Controls.ViewModels
             {
                 PropertyInfo[] properties = Parameters.GetType().GetProperties();
                 IEnumerable<PropertyInfo> readWriteProperties = properties.Where(x => x.CanRead && x.CanWrite);
-                return
-                    readWriteProperties.Where(x => x.Module.Name != "Catel.Core.dll")
-                                       .Select(x => new PluginParameter(Parameters, x));
+                return readWriteProperties
+                	.Where(x => x.Module.Name != "Catel.Core.dll" && x.Name != "Name")
+                    .Select(x => new PluginParameter(Parameters, x));
             }
         }
 
         #endregion
 
         #endregion
-
+        
         #region Commands
 
-        #region Command: Apply
+        #region Command: GetUsers
 
-        public Command Apply { get; private set; }
+        public Command GetUsers { get; private set; }
 
-        private void OnApplyExecute()
+        private void GetUsersExecute()
         {
-            //Parameters.EndEdit();
+        	throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region Command: GetGroups
+
+        public Command GetGroups { get; private set; }
+
+        private void GetGroupsExecute()
+        {
+        	throw new NotImplementedException();
         }
 
         #endregion

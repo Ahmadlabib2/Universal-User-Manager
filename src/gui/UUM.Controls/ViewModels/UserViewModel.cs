@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Catel.Data;
+﻿using Catel.Data;
 using Catel.MVVM;
 using UUM.Engine.Models;
 

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+
 using Catel.Data;
 using Catel.IoC;
+
 using UUM.Api.Interfaces;
 
 namespace UUM.Api.Models
@@ -12,7 +14,7 @@ namespace UUM.Api.Models
     ///     backwards compatibility and error checking.
     /// </summary>
     [Serializable]
-    [KnownType("GetPluginParameterTypes")]
+    [KnownType("GetPluginTypes")]
     public abstract class ParametersBase : SavableModelBase<ParametersBase>
     {
         #region Constructors
@@ -20,10 +22,9 @@ namespace UUM.Api.Models
         /// <summary>
         ///     Initializes a new object from scratch.
         /// </summary>
-        protected ParametersBase(Guid pluginId) 
+        protected ParametersBase() 
         {
         	Id = Guid.NewGuid();
-            PluginId = pluginId;
         }
 
         /// <summary>
@@ -50,10 +51,10 @@ namespace UUM.Api.Models
         ///     Register the name property so it is known in the class.
         /// </summary>
         public static readonly PropertyData NameProperty =
-            RegisterProperty("Name", typeof (String), null);
+            RegisterProperty("Name", typeof (String));
 
         /// <summary>
-        ///     Path to Subversion Configuration File.
+        ///     Name of this parameter set.
         /// </summary>
         public String Name
         {
@@ -63,21 +64,67 @@ namespace UUM.Api.Models
 
         #endregion
 
+        #region Property: Id
+
+        /// <summary>
+        ///     Register the id property so it is known in the class.
+        /// </summary>
+        public static readonly PropertyData IdProperty =
+            RegisterProperty("Id", typeof (Guid));
+
+        /// <summary>
+        ///     Guid that identifies this parameter set.
+        /// </summary>
+        public Guid Id
+        {
+            get { return GetValue<Guid>(IdProperty); }
+            private set { SetValue(IdProperty, value); }
+        }
+
         #endregion
 
-        public Guid Id { get; private set; }
+        #endregion
         
-        public Guid PluginId { get; private set; }
+        #region Property: Plugin
+        
+        /// <summary>
+        /// Determine the associated plugin
+        /// </summary>
+        public IPlugin Plugin 
+        {
+        	get
+        	{
+        		if (_plugin == null)
+        		{
+					var pluginRepository = ServiceLocator.Default.ResolveType<IPluginRepository>();
+		            foreach (var plugin in pluginRepository.Plugins)
+		            {
+		            	if (plugin.GetParametersType() == GetType())
+		            	{
+		            		_plugin = plugin;
+		            		break;
+		            	}
+		            }
+        		}
+        		return _plugin;
+        	}
+        }
+        
+        private IPlugin _plugin;
+        
+        #endregion
 
-        static Type[] GetPluginParameterTypes()
+        #region KnownTypes
+        static Type[] GetPluginTypes()
         {
             var types = new List<Type>();
-            var pluginRepository = ServiceLocator.Default.GetService(typeof(IPluginRepository)) as IPluginRepository;
+			var pluginRepository = ServiceLocator.Default.ResolveType<IPluginRepository>();
             foreach (var plugin in pluginRepository.Plugins)
             {
-                types.Add(plugin.GetParameters().GetType());
+                types.Add(plugin.GetParametersType());
             }
             return types.ToArray();
-        }        
+        }
+        #endregion
     }
 }

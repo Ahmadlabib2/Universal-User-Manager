@@ -11,12 +11,6 @@ namespace UUM.Gui.ViewModels
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
-        /// </summary>
-        public MainWindowViewModel()
-        {
-        }
         #endregion
 
         #region Properties

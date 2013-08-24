@@ -6,7 +6,7 @@ namespace UUM.Gui.Views
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : DataWindow
+    public partial class MainWindow
     {
 #if DEBUG
         private readonly TraceOutputWindow _traceOutputWindow;

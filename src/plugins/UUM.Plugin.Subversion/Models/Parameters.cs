@@ -11,19 +11,6 @@ namespace UUM.Plugin.Subversion.Models
 
         #endregion
 
-        #region Constructors
-
-        /// <summary>
-        ///     Initializes a new object from scratch.
-        /// </summary>
-        public Parameters()
-            : base(SubversionPlugin.PluginId)
-        {
-        }
-        
-
-        #endregion
-
         #region Properties
 
         #region Property: ConfigurationFile
@@ -32,7 +19,7 @@ namespace UUM.Plugin.Subversion.Models
         ///     Register the name property so it is known in the class.
         /// </summary>
         public static readonly PropertyData ConfigurationFileProperty =
-            RegisterProperty("ConfigurationFile", typeof (String), null);
+            RegisterProperty("ConfigurationFile", typeof (String));
 
         /// <summary>
         ///     Path to Subversion Configuration File.

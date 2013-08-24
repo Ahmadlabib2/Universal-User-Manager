@@ -1,6 +1,7 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Diagnostics;
+
 using log4net;
 
 namespace UUM.Gui.Logging
@@ -9,7 +10,7 @@ namespace UUM.Gui.Logging
 	/// Trace listener that will redirect all trace messages to log4net. This listener makes sure not
 	/// to break existing trace functionality.
 	/// </summary>
-	public class Log4netTraceListener : TraceListener
+	public class Log4NetTraceListener : TraceListener
 	{
 		#region Constants
 		/// <summary>
@@ -19,14 +20,14 @@ namespace UUM.Gui.Logging
 		#endregion
 
 		#region Variables
-		private static readonly ILog _log = LogManager.GetLogger("TraceOutput");
+		private static readonly ILog Log = LogManager.GetLogger("TraceOutput");
 		#endregion
 
 		#region Constructor & destructor
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Log4netTraceListener"/> class.
+		/// Initializes a new instance of the <see cref="Log4NetTraceListener"/> class.
 		/// </summary>
-		public Log4netTraceListener()
+		public Log4NetTraceListener()
 		{
 			// Set default values
 			Name = "Log4net Trace Listener";
@@ -111,7 +112,7 @@ namespace UUM.Gui.Logging
 						 (ActiveTraceLevel == TraceLevel.Info) ||
 						 (ActiveTraceLevel == TraceLevel.Verbose))
 					{
-						_log.Error(message);
+						Log.Error(message);
 					}
 					break;
 
@@ -120,7 +121,7 @@ namespace UUM.Gui.Logging
 						 (ActiveTraceLevel == TraceLevel.Info) ||
 						 (ActiveTraceLevel == TraceLevel.Verbose))
 					{
-						_log.Warn(message);
+						Log.Warn(message);
 					}
 					break;
 
@@ -128,7 +129,7 @@ namespace UUM.Gui.Logging
 					if ((ActiveTraceLevel == TraceLevel.Info) ||
 						 (ActiveTraceLevel == TraceLevel.Verbose))
 					{
-						_log.Info(message);
+						Log.Info(message);
 					}
 					break;
 
@@ -137,7 +138,7 @@ namespace UUM.Gui.Logging
 				default:
 					if (ActiveTraceLevel == TraceLevel.Verbose)
 					{
-						_log.Debug(message);
+						Log.Debug(message);
 					}
 					break;
 			}
@@ -162,7 +163,7 @@ namespace UUM.Gui.Logging
 			// Invoke the event (but only when output is set to verbose)
 			if (ActiveTraceLevel == TraceLevel.Verbose)
 			{
-				_log.Debug(message);
+				Log.Debug(message);
 			}
 		}
 		#endregion

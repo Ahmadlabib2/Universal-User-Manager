@@ -1,13 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+
 using Catel.Data;
+using Catel.IoC;
 using Catel.Logging;
 using Catel.MVVM;
 using Catel.MVVM.Services;
 using Catel.MVVM.Tasks;
+
 using UUM.Api.Interfaces;
 using UUM.Engine.Models;
-using UUM.Gui.Logging;
 
 namespace UUM.Gui.ViewModels
 {
@@ -22,11 +24,8 @@ namespace UUM.Gui.ViewModels
 		private readonly ILog _log = LogManager.GetCurrentClassLogger();
 
         public WorkspaceViewModel()
-        
         {
-        	Catel.Logging.LogManager.AddListener(new Log4netListener());
-        	
-            var splashScreenService = GetService<ISplashScreenService>();
+            var splashScreenService = ServiceLocator.ResolveType<ISplashScreenService>();
             splashScreenService.Enqueue(new ActionTask("Loading plug-ins", OnLoadPlugins));
             splashScreenService.Commit();
             NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
@@ -38,7 +37,7 @@ namespace UUM.Gui.ViewModels
         
         private void OnLoadPlugins(ITaskProgressTracker tracker)
         {
-            var pluginRepository = GetService<IPluginRepository>();
+            var pluginRepository = ServiceLocator.ResolveType<IPluginRepository>();
             pluginRepository.Initialize();
             Plugins = pluginRepository.Plugins;  
         }
@@ -60,7 +59,7 @@ namespace UUM.Gui.ViewModels
         #region Property: Project
 
         public static readonly PropertyData ProjectProperty =
-            RegisterProperty("Project", typeof (ProjectModel), null);
+            RegisterProperty("Project", typeof (ProjectModel));
 
         public ProjectModel Project
         {
@@ -107,7 +106,7 @@ namespace UUM.Gui.ViewModels
 
         private void OnSaveProjectExecuted()
         {
-            var saveFileService = GetService<ISaveFileService>();
+            var saveFileService = ServiceLocator.ResolveType<ISaveFileService>();
             saveFileService.Filter = UumProjectFileFilter;
             if (saveFileService.DetermineFile())
             {
@@ -132,15 +131,13 @@ namespace UUM.Gui.ViewModels
 
         private void OnLoadProjectExecuted()
         {
-            var openFileService = GetService<IOpenFileService>();
+            var openFileService = ServiceLocator.ResolveType<IOpenFileService>();
             openFileService.Filter = UumProjectFileFilter;
             if (openFileService.DetermineFile())
             {
                 string fileName = openFileService.FileName;
                 Project = ProjectModel.Load(fileName, SerializationMode.Xml);
                 
-                // LogManager.AddListener(new FileLogListener("UUM.log"));
-                 
                 _log.Info("LoadProject command executed: '{0}'", fileName);
             }
         }
@@ -174,7 +171,7 @@ namespace UUM.Gui.ViewModels
 
         private void OnApplicationExitExecuted()
         {
-            var messageService = GetService<IMessageService>();
+            var messageService = ServiceLocator.ResolveType<IMessageService>();
             if (messageService.Show("Are you sure you want to exit application?",
                                     "Are you sure?", MessageButton.YesNo) == MessageResult.Yes)
             {

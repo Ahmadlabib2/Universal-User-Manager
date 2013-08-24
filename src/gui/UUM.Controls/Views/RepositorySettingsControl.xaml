@@ -6,21 +6,30 @@
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    d:DesignHeight="80" d:DesignWidth="270">
-    <StackPanel Orientation="Vertical">
-        <Button Command="{Binding Apply}" IsEnabled="{Binding IsDirty}">Apply</Button>
-        <ListView ItemsSource="{Binding Properties}" HorizontalAlignment="Stretch" Grid.IsSharedSizeScope="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <catel:StackGrid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" SharedSizeGroup="A" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Name}" />
-                        <TextBox Text="{Binding Value,UpdateSourceTrigger=PropertyChanged}" />
-                    </catel:StackGrid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackPanel>
+	<GroupBox>
+		<GroupBox.Header>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="Name : "></TextBlock>
+				<TextBox Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+			</StackPanel>
+		</GroupBox.Header>
+	    <StackPanel Orientation="Vertical">
+	        <Button Command="{Binding GetUsers}">Get Users</Button>
+	        <Button Command="{Binding GetGroups}" IsEnabled="False">Get Groups</Button>
+	    	<ListView ItemsSource="{Binding Properties}" HorizontalAlignment="Stretch" Grid.IsSharedSizeScope="True">
+	            <ListView.ItemTemplate>
+	                <DataTemplate>
+	                    <catel:StackGrid>
+	                        <Grid.ColumnDefinitions>
+	                            <ColumnDefinition Width="Auto" SharedSizeGroup="A" />
+	                            <ColumnDefinition Width="1*" />
+	                        </Grid.ColumnDefinitions>
+	                        <TextBlock Text="{Binding Name}" />
+	                        <TextBox Text="{Binding Value,UpdateSourceTrigger=PropertyChanged}" />
+	                    </catel:StackGrid>
+	                </DataTemplate>
+	            </ListView.ItemTemplate>
+	        </ListView>
+	    </StackPanel>
+	</GroupBox>
 </catel:UserControl>
