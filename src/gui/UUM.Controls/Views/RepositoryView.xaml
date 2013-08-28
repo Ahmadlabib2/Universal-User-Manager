@@ -30,9 +30,11 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" SharedSizeGroup="A" />
                             <ColumnDefinition Width="Auto" SharedSizeGroup="B" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="C" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" FontFamily="Courier New" Text="{Binding Id}" />
-                        <TextBlock Grid.Column="1" Text="{Binding Name}" />
+                        <TextBlock Grid.Column="1" Text="{Binding Plugin.Name}" />
+                        <TextBlock Grid.Column="2" Text="{Binding Name}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
