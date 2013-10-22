@@ -13,10 +13,16 @@ namespace UUM.Plugin.Subversion.Models
     public class UserInSource : UserInSourceBase
     {
         #region Fields
-
+		private String ConfigurationFile;
         #endregion
 
         #region Constructors
+        
+        public UserInSource(String filepath)
+		{
+			ConfigurationFile= filepath;
+		}
+		
         #endregion
 
         #region Properties
