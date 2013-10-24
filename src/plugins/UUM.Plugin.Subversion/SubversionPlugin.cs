@@ -26,7 +26,7 @@ namespace UUM.Plugin.Subversion
 			Subversion.Models.Parameters = paramaeters;
 		}
 		
-		public  ObservableCollection<UserInSource> GetUsers()
+		public  ObservableCollection<UserInSource> GetUserInSourceType()
 		{
 			//get the whole line that seperated the group name and divide it to many different users and add to list
 			var users = new List<String>();
@@ -50,7 +50,7 @@ namespace UUM.Plugin.Subversion
 			var distinctUsers = users.Distinct().OrderBy(x => x);
 			// another syntax is possible... var distinctUsers = from users select x orderby x;
 			//users.Count;
-			return distinctUsers.Select(x =>  new UserInSource(x,null, null, true, Name));
+			return distinctUsers.Select(x =>  new TUserInSource(x,null, null, true, Name));
 		}
     }
 }

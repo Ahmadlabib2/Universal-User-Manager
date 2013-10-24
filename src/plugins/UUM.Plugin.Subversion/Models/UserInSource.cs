@@ -13,16 +13,26 @@ namespace UUM.Plugin.Subversion.Models
     public class UserInSource : UserInSourceBase
     {
         #region Fields
-		private String ConfigurationFile;
+		
         #endregion
 
         #region Constructors
-        
-        public UserInSource(String filepath)
+        public UserInSource(string login, string firstname, string lastname, string source)
 		{
-			ConfigurationFile= filepath;
+			Source = source;
+			FirstName = firstname;
+			LastName = lastname;
+			IsEnabled = enabled;
+			LoginName = login;
 		}
-		
+
+		public UserInSource(UserInSource user)
+		{
+			Source = user.Source;
+			FirstName = user.FirstName;
+			LastName = user.LastName;
+			LoginName = user.LoginName;
+		}
         #endregion
 
         #region Properties
@@ -38,6 +48,37 @@ namespace UUM.Plugin.Subversion.Models
             set { SetValue(LoginNameProperty, value); }
         }
 
+         public static readonly PropertyData FirstNameProperty =
+            RegisterProperty("FirstName", typeof (string));
+
+        public string FirstName
+        {
+            get { return GetValue<string>(FirstNameProperty); }
+            set { SetValue(FirstNameProperty, value); }
+        }
+        
+         public static readonly PropertyData LastNameProperty =
+            RegisterProperty("LastName", typeof (string));
+
+        public string LastName
+        {
+            get { return GetValue<string>(LastNameProperty); }
+            set { SetValue(LastNameProperty, value); }
+        }
+        
+         public static readonly PropertyData SourceProperty =
+            RegisterProperty("Source", typeof (string));
+
+        public string Source
+        {
+            get { return SetValue<"Source">(SourceProperty); }
+            set { SetValue(SourceProperty, value); }
+        }
+        
+        public override string ToString()
+		{
+			return string.Format("UserInSource: {2}, IsEnabled={0}, Login={1}", Source);
+		}
         #endregion
 
         #endregion
