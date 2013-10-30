@@ -17,12 +17,17 @@ namespace UUM.Plugin.Subversion.Models
         #endregion
 
         #region Constructors
+
+        public UserInSource()
+        {
+        }
+
         public UserInSource(string login, string firstname, string lastname, string source)
 		{
 			Source = source;
 			FirstName = firstname;
 			LastName = lastname;
-			IsEnabled = enabled;
+			//IsEnabled = enabled;
 			LoginName = login;
 		}
 
@@ -71,7 +76,7 @@ namespace UUM.Plugin.Subversion.Models
 
         public string Source
         {
-            get { return SetValue<"Source">(SourceProperty); }
+            get { return GetValue<string>(SourceProperty); }
             set { SetValue(SourceProperty, value); }
         }
         
