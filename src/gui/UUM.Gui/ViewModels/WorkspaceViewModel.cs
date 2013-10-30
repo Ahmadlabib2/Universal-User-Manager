@@ -25,7 +25,7 @@ namespace UUM.Gui.ViewModels
 
         public WorkspaceViewModel()
         {
-            var splashScreenService = ServiceLocator.ResolveType<ISplashScreenService>();
+            var splashScreenService = DependencyResolver.Resolve<ISplashScreenService>();
             splashScreenService.Enqueue(new ActionTask("Loading plug-ins", OnLoadPlugins));
             splashScreenService.Commit();
             NewProject = new Command(OnNewProjectExecuted, OnNewProjectCanExecute);
@@ -37,7 +37,7 @@ namespace UUM.Gui.ViewModels
         
         private void OnLoadPlugins(ITaskProgressTracker tracker)
         {
-            var pluginRepository = ServiceLocator.ResolveType<IPluginRepository>();
+            var pluginRepository = DependencyResolver.Resolve<IPluginRepository>();
             pluginRepository.Initialize();
             Plugins = pluginRepository.Plugins;  
         }
@@ -106,7 +106,7 @@ namespace UUM.Gui.ViewModels
 
         private void OnSaveProjectExecuted()
         {
-            var saveFileService = ServiceLocator.ResolveType<ISaveFileService>();
+            var saveFileService = DependencyResolver.Resolve<ISaveFileService>();
             saveFileService.Filter = UumProjectFileFilter;
             if (saveFileService.DetermineFile())
             {
@@ -131,7 +131,7 @@ namespace UUM.Gui.ViewModels
 
         private void OnLoadProjectExecuted()
         {
-            var openFileService = ServiceLocator.ResolveType<IOpenFileService>();
+            var openFileService = DependencyResolver.Resolve<IOpenFileService>();
             openFileService.Filter = UumProjectFileFilter;
             if (openFileService.DetermineFile())
             {
@@ -171,7 +171,7 @@ namespace UUM.Gui.ViewModels
 
         private void OnApplicationExitExecuted()
         {
-            var messageService = ServiceLocator.ResolveType<IMessageService>();
+            var messageService = DependencyResolver.Resolve<IMessageService>();
             if (messageService.Show("Are you sure you want to exit application?",
                                     "Are you sure?", MessageButton.YesNo) == MessageResult.Yes)
             {
