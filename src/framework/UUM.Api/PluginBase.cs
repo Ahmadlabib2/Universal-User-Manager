@@ -58,5 +58,10 @@ namespace UUM.Api
 		{
 			return typeof(TUserInSource);
 		}
+		
+		public UserInSourceBase GetUsers()
+		{
+			return new TUserInSource();
+		}
 	}
 }

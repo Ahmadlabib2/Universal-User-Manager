@@ -26,7 +26,7 @@ namespace UUM.Plugin.Subversion
 			Subversion.Models.Parameters = paramaeters;
 		}
 		
-		public  ObservableCollection<UserInSource> GetUserInSourceType()
+		public  ObservableCollection<UserInSource> GetUsers()
 		{
 			//get the whole line that seperated the group name and divide it to many different users and add to list
 			var users = new List<String>();

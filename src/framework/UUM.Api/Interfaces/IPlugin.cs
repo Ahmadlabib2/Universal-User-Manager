@@ -40,5 +40,7 @@ namespace UUM.Api.Interfaces
     	/// </summary>
     	/// <returns></returns>
     	Type GetUserInSourceType();
+    	
+    	UserInSourceBase GetUsers();
     }
 }
