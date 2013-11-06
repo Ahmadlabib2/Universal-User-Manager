@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using System.Runtime.InteropServices;
 
 using UUM.Api;
@@ -23,6 +21,7 @@ namespace UUM.Plugin.Subversion
     	
 		protected override IRepository GetRepositoryInternal(Parameters parameters)
 		{
+
 			Subversion.Models.Parameters = paramaeters;
 		}
 		
@@ -51,6 +50,9 @@ namespace UUM.Plugin.Subversion
 			// another syntax is possible... var distinctUsers = from users select x orderby x;
 			//users.Count;
 			return distinctUsers.Select(x =>  new TUserInSource(x,null, null, true, Name));
+
+		    return new SubversionRepository(parameters);
+
 		}
     }
 }

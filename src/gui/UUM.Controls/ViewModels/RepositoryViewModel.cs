@@ -74,7 +74,7 @@ namespace UUM.Controls.ViewModels
         private void OnAddRepositoryExecute()
         {
             var viewModel = TypeFactory.Default.CreateInstance<ChoosePluginViewModel>();
-            var uiVisualizerService = ServiceLocator.ResolveType<IUIVisualizerService>();
+            var uiVisualizerService = DependencyResolver.Resolve<IUIVisualizerService>();
             if (uiVisualizerService.ShowDialog(viewModel) == true)
             {
                 if (viewModel.SelectedPlugin != null)
