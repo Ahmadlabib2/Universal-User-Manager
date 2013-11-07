@@ -5,7 +5,8 @@ using UUM.Api.Models;
 namespace UUM.Api
 {
 	/// <summary>
-	/// Description of PluginBase.
+	/// PluginBase is used to get or call the plugin details like the GUID, Name of Plugin, Description of Plugin,
+	/// Build the repository based on their settings.
 	/// </summary>
 	public abstract class PluginBase<TParameters, TUserInSource> : IPlugin
 		where TParameters : ParametersBase, new()
@@ -57,11 +58,6 @@ namespace UUM.Api
 		public Type GetUserInSourceType()
 		{
 			return typeof(TUserInSource);
-		}
-		
-		public UserInSourceBase GetUsers()
-		{
-			return new TUserInSource();
 		}
 	}
 }

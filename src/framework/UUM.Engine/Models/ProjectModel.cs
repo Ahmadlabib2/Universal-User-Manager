@@ -11,7 +11,7 @@ using UUM.Api.Models;
 namespace UUM.Engine.Models
 {
 	/// <summary>
-	/// Description of Project.
+	/// Project class is used to fetch and distinhuish each project with a name and a description with its own Userpool, plugins, Parameters and Parameter types.
 	/// </summary>
 	[Serializable]
 	public class ProjectModel : SavableModelBase<ProjectModel>

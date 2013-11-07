@@ -3,6 +3,10 @@ using UUM.Api.Models;
 
 namespace UUM.Api.Interfaces
 {
+	/// <summary>
+	/// Interface used for fetching and distinguishing each Plugin uniquely, according to its Name, Description, Users, Repository, 
+	/// Prarameters and Parameters type.
+	/// </summary>
     public interface IPlugin: IIdentifiable
     {
 
@@ -41,6 +45,5 @@ namespace UUM.Api.Interfaces
     	/// <returns></returns>
     	Type GetUserInSourceType();
     	
-    	UserInSourceBase GetUsers();
     }
 }

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
-
 using Catel.Data;
 using UUM.Api.Models;
 
 namespace UUM.Engine.Models
 {
     /// <summary>
-    ///     UserPool: contains the users.
+    ///     UserPool: Pool containing the users from different plugin(i.e different sources).
     /// </summary>
     [Serializable]
     public class UserPoolModel : SavableModelBase<UserPoolModel>

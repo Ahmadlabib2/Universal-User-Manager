@@ -6,7 +6,7 @@ using Catel.Data;
 namespace UUM.Engine.Models
 {
     /// <summary>
-    ///     User abstraction
+    ///     User abstraction of his Firstname, Lastname, Emailaddress, Phonenumber, IsEnabled property and LinkedUsers property. 
     /// </summary>
     [Serializable]
     public class UserModel : SavableModelBase<UserModel>
