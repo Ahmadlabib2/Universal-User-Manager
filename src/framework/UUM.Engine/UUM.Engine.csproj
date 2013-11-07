@@ -62,6 +62,8 @@
     <Compile Include="..\..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Models\GroupPoolModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\UserPoolModel.cs" />
     <Compile Include="Models\ProjectModel.cs" />
