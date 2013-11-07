@@ -51,5 +51,26 @@ namespace UUM.Plugin.Subversion
             //users.Count;
             return distinctUsers.Select(x => new UserInSource(x, null, null, "Subversion"));
         }
+        
+        public IEnumerable<Group> GetGroups()
+        {
+           var groups = new List<Group>();
+            // Read the file and display it line by line.
+            foreach (String line in File.ReadAllLines(_parameters.ConfigurationFile))
+            {
+               Regex groupDefinition = new Regex(@"^(.*?)=(.*)$");
+                if (groupDefinition.IsMatch(line))
+                {
+                    String groupName = groupDefinition.Match(line).Groups[1].Value.Trim();
+                    String userNames = groupDefinition.Match(line).Groups[2].Value;
+                   // var newGroup = new Group(groupName, Name);
+                    var names = userNames.Split(',').Select(x => x.Trim());
+                   // newGroup.AddUsers(names.Select(groupname => new UserReference(groupname, Name)));
+                   // groups.Add(newGroup);
+                }
+            }
+
+            return groups;
+        }
     }
 }
