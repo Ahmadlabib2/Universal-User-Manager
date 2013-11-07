@@ -6,7 +6,7 @@ namespace UUM.Gui.Helpers
     using Catel.MVVM;
 
     /// <summary>
-    /// TraceOutput view model.
+    /// TraceOutput view model for logging purpose.
     /// </summary>
     public class TraceOutputViewModel : ViewModelBase
     {

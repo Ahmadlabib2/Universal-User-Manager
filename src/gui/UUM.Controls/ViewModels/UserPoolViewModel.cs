@@ -8,7 +8,7 @@ using UUM.Engine.Models;
 namespace UUM.Controls.ViewModels
 {
 	/// <summary>
-	///     Description of UserpoolViewModel.
+	///     Viewing and Adding commands within the UserPool.
 	/// </summary>
 	public class UserPoolViewModel : ViewModelBase
 	{

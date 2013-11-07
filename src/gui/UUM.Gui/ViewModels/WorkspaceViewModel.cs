@@ -14,7 +14,7 @@ using UUM.Engine.Models;
 namespace UUM.Gui.ViewModels
 {
     /// <summary>
-    ///     Description of WorkspaceViewModel.
+    ///     Views the workspace where all projects could be loaded including all pluging, userpool and everything else.
     /// </summary>
     public class WorkspaceViewModel : ViewModelBase
     {

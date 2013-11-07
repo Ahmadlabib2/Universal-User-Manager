@@ -5,7 +5,7 @@ using UUM.Engine.Models;
 namespace UUM.Controls.ViewModels
 {
 	/// <summary>
-	/// Description of ProjectViewModel.
+	/// Viewing the title and description of each Project.
 	/// </summary>
 	public class ProjectViewModel : ViewModelBase
 	{
