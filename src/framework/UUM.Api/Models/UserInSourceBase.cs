@@ -15,13 +15,14 @@ namespace UUM.Api.Models
     /// </summary>
     [Serializable]
     [KnownType("GetPluginTypes")]
-    public class UserInSourceBase : SavableModelBase<UserInSourceBase>, IIdentifiable
+    public abstract class UserInSourceBase : SavableModelBase<UserInSourceBase>, IIdentifiable
     {
         #region Constructors
 
-        public UserInSourceBase()
+        protected UserInSourceBase(Guid pluginId)
         {
             Id = Guid.NewGuid();
+            PluginId = pluginId;
         }
 
         protected UserInSourceBase(SerializationInfo info, StreamingContext context)

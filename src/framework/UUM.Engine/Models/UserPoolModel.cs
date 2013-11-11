@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Runtime.Serialization;
 using Catel.Data;
 using UUM.Api.Models;
@@ -7,7 +8,7 @@ using UUM.Api.Models;
 namespace UUM.Engine.Models
 {
     /// <summary>
-    ///     UserPool: Pool containing the users from different plugin(i.e different sources).
+    ///     UserPool: Pool containing the users from different plugins (i.e different sources).
     /// </summary>
     [Serializable]
     public class UserPoolModel : SavableModelBase<UserPoolModel>
@@ -60,9 +61,9 @@ namespace UUM.Engine.Models
             Users.Remove(user);
         }
 
-        public UserInSourceBase FindUserInSourceById(Guid id)
+        public UserModel FindUserInSourceById(Guid id)
         {
-            throw new NotImplementedException();
+            return Users.SingleOrDefault(x => x.Id == id);
         }
 
         #endregion

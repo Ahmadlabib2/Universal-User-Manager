@@ -15,6 +15,10 @@ namespace UUM.Plugin.Wmi.Models
         #endregion
 
         #region Constructors
+        public UserInSource()
+            : base(typeof(WmiPlugin).GUID)
+        {
+        }
         #endregion
 
         #region Properties

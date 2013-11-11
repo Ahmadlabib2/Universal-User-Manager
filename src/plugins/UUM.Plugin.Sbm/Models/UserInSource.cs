@@ -15,6 +15,10 @@ namespace UUM.Plugin.Sbm.Models
         #endregion
 
         #region Constructors
+        public UserInSource()
+            : base(typeof(SbmPlugin).GUID)
+        {
+        }
         #endregion
 
         #region Properties

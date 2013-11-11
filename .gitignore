@@ -4,5 +4,6 @@ obj
 /src/packages/Catel.*
 /src/packages/log4net.*
 /src/packages/NUnit*
+/src/packages/NSubstitute*
 /src/*.suo
 /src/*.user

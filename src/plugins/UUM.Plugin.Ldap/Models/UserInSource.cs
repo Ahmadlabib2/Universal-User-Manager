@@ -17,6 +17,10 @@ namespace UUM.Plugin.Ldap.Models
         #endregion
 
         #region Constructors
+        public UserInSource()
+            : base(typeof(LdapPlugin).GUID)
+        {
+        }
         #endregion
 
         #region Properties

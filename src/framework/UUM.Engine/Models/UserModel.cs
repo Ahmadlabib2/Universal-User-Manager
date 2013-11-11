@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Catel.Data;
+using UUM.Api.Interfaces;
 
 namespace UUM.Engine.Models
 {
@@ -9,16 +10,30 @@ namespace UUM.Engine.Models
     ///     User abstraction of his Firstname, Lastname, Emailaddress, Phonenumber, IsEnabled property and LinkedUsers property. 
     /// </summary>
     [Serializable]
-    public class UserModel : SavableModelBase<UserModel>
+    public class UserModel : SavableModelBase<UserModel>, IIdentifiable
     {
         public UserModel()
         {
+            Id = Guid.NewGuid();
         }
 
         protected UserModel(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
+
+        #region Property: Id
+
+        public static readonly PropertyData IdProperty =
+            RegisterProperty("Id", typeof(Guid));
+
+        public Guid Id
+        {
+            get { return GetValue<Guid>(IdProperty); }
+            set { SetValue(IdProperty, value); }
+        }
+
+        #endregion
 
         #region Property: FirstName
 

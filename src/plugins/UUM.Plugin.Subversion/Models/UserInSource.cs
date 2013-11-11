@@ -19,10 +19,12 @@ namespace UUM.Plugin.Subversion.Models
         #region Constructors
 
         public UserInSource()
+            : base(typeof(SubversionPlugin).GUID)
         {
         }
 
         public UserInSource(string login, string firstname, string lastname, string source)
+            : this()
 		{
 			Source = source;
 			FirstName = firstname;
@@ -32,7 +34,8 @@ namespace UUM.Plugin.Subversion.Models
 		}
 
 		public UserInSource(UserInSource user)
-		{
+            : this()
+        {
 			Source = user.Source;
 			FirstName = user.FirstName;
 			LastName = user.LastName;

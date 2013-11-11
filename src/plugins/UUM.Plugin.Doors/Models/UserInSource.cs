@@ -17,6 +17,10 @@ namespace UUM.Plugin.Doors.Models
         #endregion
 
         #region Constructors
+        public UserInSource()
+            : base(typeof(DoorsPlugin).GUID)
+        {
+        }
         #endregion
 
         #region Properties
