@@ -54,6 +54,7 @@ namespace UUM.Controls.ViewModels
 
 		#region Command: AddUser
 
+		
 		public Command AddUser { get; private set; }
 
 		private void OnAddUserExecute()

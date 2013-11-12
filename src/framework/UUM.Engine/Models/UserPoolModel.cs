@@ -2,6 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
+
 using Catel.Data;
 using UUM.Api.Models;
 
@@ -65,7 +68,29 @@ namespace UUM.Engine.Models
         {
             return Users.SingleOrDefault(x => x.Id == id);
         }
-
+        
+		 #region Load/Save
+         public static UserPoolModel Load(String _configfile)
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof(UserPoolModel));
+			using (var xmlReader = XmlReader.Create(_configfile))
+			{
+				return serializer.Deserialize(xmlReader) as UserPoolModel;
+			}
+		}
+         
+		public void Save(String _configfile)
+		{
+            XmlSerializer serializer = new XmlSerializer(typeof(UserPoolModel));
+            XmlWriterSettings settings = new XmlWriterSettings();
+			settings.Indent = true;
+			using (var xmlWriter = XmlWriter.Create(_configfile, settings))
+			{
+				serializer.Serialize(xmlWriter, this);
+			}
+		}
+		
         #endregion
+         #endregion
     }
 }

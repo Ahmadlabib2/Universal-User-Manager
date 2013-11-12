@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-
 using Catel.Data;
 using Catel.MVVM;
 
@@ -75,7 +74,9 @@ namespace UUM.Controls.ViewModels
 
         private void GetUsersExecute()
         {
-        	throw new NotImplementedException();
+        
+        	
+        	
         }
 
         #endregion
