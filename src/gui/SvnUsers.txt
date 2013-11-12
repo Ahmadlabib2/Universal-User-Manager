@@ -1,0 +1,70 @@
+aoeur-adm = aoeuradmin, reinmar.mueck, jaap.dehaan
+aoeur-sen-manager = osamu.oie, frank.dietrich, klaus.schwemmer, manfred.petschauer, ingo.moldenhauer, reinmar.mueck
+
+aoeur-department-manager = osamu.oie, frank.dietrich, klaus.schwemmer, manfred.petschauer, ingo.moldenhauer, thorsten.kueper, kengo.watanabe, reinmar.mueck, alexander.bauer
+
+aoeur-manager = osamu.oie, frank.dietrich, klaus.schwemmer, manfred.petschauer, ingo.moldenhauer, johannes.loebbert, timo.esser, alexander.bauer, bruno.lach, andreas.hohn, novica.parlic, kengo.watanabe, thorsten.kueper, rainer.fischer, reinmar.mueck, johannes.spindler, ovidiu.barota, michael.ramtke, yukihiro.inazawa
+
+aoeur-members = alexander.bauer, alexander.froehlich, kathrin.barcal, andre.bothner, andreas.galos, andreas.hohn, bruno.lach, bruno.nupoue, daniel.gamradt, denis.radtke, dennis.marczy, dominik.schubert, dominik.wohlschiess, emmanuel.pennimpede, erwin.hofstetter, ester.olivella, evangeline.moldenhau, flavin.dsouza, frank.dietrich, heiko.frommann, helmut.buescher, helmut.hoppe, ingo.moldenhauer, isaac.alfia, jaap.dehaan, johannes.loebbert, johannes.spindler, kaitaro.saruwatari, karl.roman, kaoru.yamamoto, kengo.watanabe, kenichiro.harima, kirstin.wiedmann, klaus.schwemmer, lueder.grosser, magnus.dannehl, maiko.kozakai, manfred.gailing, manfred.petschauer, marijo.sesar, markus.brueckner, markus.erhardt, marcus.herrgesell, martin.lutz, martina.theilacker, matthias.john, maurizio.verdecchia, michael.lebelt, michael.ramtke, michael.uebe, narinder.soni, novica.parlic, oliver.novakovic, osamu.oie, ovidiu.barota, puneet.madaan, rainer.fischer, reinmar.mueck, robert.fuchs, sabine.terranova, sabine.ude, silvia.gebhardt, sorin.aldea, stavros.aristidou, stefan.mast, stephan.wiehr, subramanian.dhandapa, taro.kitagawa, thomas.fezer, thorsten.kueper, thorsten.stapel, timo.esser, timo.schaefer, vitali.werner, yukihiro.inazawa, ahmed-labib.wadi
+
+aoeur-egp = sabine.ude, reinmar.mueck, evangeline.moldenhau, tina.brereton, jaap.dehaan, kaoru.yamamoto, kathrin.barcal
+aoeu-accounting = reiner.brueckner, eva.casale, michael.wagner
+
+si.aoeur-leaders = manfred.petschauer, novica.parlic, isaac.alfia, daniel.gamradt
+
+si.aoeur-team = manfred.petschauer, novica.parlic, isaac.alfia, dominik.schubert, andre.bothner, alexander.froehlich, liviu-lucian.ionesi, lueder.grosser, matthias.john, stefan.mast, timo.schaefer, denis.radtke, dennis.marczy, marijo.sesar, flavin.dsouza, johannes.spindler, michael.ramtke, daniel.gamradt, sorin.aldea, michael.uebe, thomas.fezer, dennis.steinfeld, emmanuel.pennimpede, jaap.dehaan, markus.brueckner, heiko.frommann, saristidou, stavros.aristidou, maiko.kozakai, matthias.fischer
+
+si.iwaki-team = mitsuhiro.murata, tomoko.yoshida, mitsuo.suzuki, makoto.ishii, kenji.ouchida, masahiro.ono, hajime.iwazaki, osamu.watanabe, masashi.ogino
+
+si.global = pacifico.julian, erwin.soriano, kiyoshi.hashimoto, johannes.spindler, michael.ramtke, daniel.gamradt, isaac.alfia, novica.parlic, manfred.petschauer, kengo.watanabe, alexander.bauer, naoki.kurihara, junichiro.mimori
+
+aoeur-pro = frank.dietrich, ovidiu.barota, klaus.schwemmer, sabine.ude, kathrin.barcal, andre.bothner, johannes.loebbert, timo.esser, thorsten.kueper, alexander.bauer, bruno.lach, ingo.moldenhauer,  andreas.hohn, novica.parlic, isaac.alfia, andreas.galos, timo.esser, johannes.spindler, jaap.dehaan, manfred.petschauer, richard.wimmersberg, rainer.fischer, stephan.wiehr, denis.radtke, helmut.buescher, kengo.watanabe, michael.ramtke, markus.erhardt, kaoru.yamamoto, taro.kitagawa, maurizio.verdecchia, yukihiro.inazawa
+
+aoeur-pro-adm =  reinmar.mueck, sabine.ude, kaoru.yamamoto, kathrin.barcal
+aoeur-lic-adm =  reinmar.mueck, jaap.dehaan, kaoru.yamamoto
+
+ECCAM-ALL = vaclav.opekar, david.ambroz, tomas.lusk, david.kozub, libor.bus, rostislav.matura, tomas.kopal, milan.kriz, jan.hadrava
+
+#------------------------------------------------------------
+# Non AOEUR GROUPS mainly used for WIKI related SVN access
+#------------------------------------------------------------
+aoeu-all = bernd.duee, juergen.angele, juergen.gabriel, damir.premuzic, thorsten.kober, daniel.beckert, ruediger.bodack, 
+
+alpine-members = takeshi.kato, hitoshi.kobayashi
+
+#------------------------------------------------------------
+# GENIVI GROUPS
+#------------------------------------------------------------
+
+aoeur-genivi = martina.theilacker, subramanian.dhandapa, andreas.hohn, thorsten.stapel, stephan.wiehr, nils.unger, reinmar.mueck, masayuki.yamato, klaus.schwemmer, ester.olivella, puneet.madaan, nb.genivi, kaoru.yamamoto, ingo.moldenhauer, thorsten.kueper, rainer.fischer, markus.erhardt, ovidiu.barota
+eccam-genivi = vaclav.opekar, milan.kriz, sabine.terranova
+
+#------------------------------------------------------------
+# MEDIA PLAYER GROUPS
+#------------------------------------------------------------
+aoeur-mediaplayer = klaus.schwemmer, ovidiu.barota, stephan.wiehr, kaoru.yamamoto
+iwaki-mediaplayer = yoshiaki.mori, osamu.kazama
+eccam-mediaplayer = vaclav.opekar, libor.bus, tomas.kopal
+
+#------------------------------------------------------------
+# ETHERNET AVB GROUPS
+#------------------------------------------------------------
+aoeur-eth-avb = markus.erhardt, osamu.oie, andreas.hohn, ingo.moldenhauer, klaus.schwemmer, ovidiu.barota, vitali.werner, rainer.fischer, kaoru.yamamoto
+
+#------------------------------------------------------------
+# J5 Linux GROUPS
+#------------------------------------------------------------
+eccam-j5linux = milan.kriz, hana.truskova
+
+#------------------------------------------------------------
+# VW New Infotainment group (PD0084)
+#------------------------------------------------------------
+eccam-pd0084 = tomas.lusk, tomas.kopal, milan.kriz
+
+#------------------------------------------------------------
+
+aoeur-audits = reinmar.mueck, jaap.dehaan, kaoru.yamamoto
+
+cmtools-adm = reinmar.mueck, jaap.dehaan, aoeuradmin, erwin.hofstetter, kaoru.yamamoto
+
+ntgs-publishers = ovidiu.barota, thorsten.kueper, jaap.dehaan, aoeuradmin
