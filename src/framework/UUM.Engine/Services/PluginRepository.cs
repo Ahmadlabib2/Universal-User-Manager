@@ -12,6 +12,7 @@ namespace UUM.Engine.Services
     {
         public void Initialize()
         {
+        	
             if (Plugins == null)
             {
                 // MEF loading of available plug-ins
@@ -20,6 +21,7 @@ namespace UUM.Engine.Services
 
                 container.SatisfyImportsOnce(this);
             }
+            
         }
 
         [ImportMany(AllowRecomposition = true)]
