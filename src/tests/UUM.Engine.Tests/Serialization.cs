@@ -23,14 +23,14 @@ namespace UUM.Engine.Tests
         // This method returns the array of known types.
         static Type[] KnownTypes()
         {
-            return new Type[] { typeof(ParamsPluginA), typeof(ParamsPluginB) };
+        	return new Type[] { typeof(ParamsPluginA), typeof(ParamsPluginB)};
         }        
     }
 
     public class ParamsPluginA : ParamsBase
     {
-        #region Property: SettingA
-        public String SettingA
+    	#region Property: SettingA
+    	 public String SettingA
         {
             get { return GetValue<String>(SettingAProperty); }
             set { SetValue(SettingAProperty, value); }
@@ -38,7 +38,9 @@ namespace UUM.Engine.Tests
 
         public static readonly PropertyData SettingAProperty =
             RegisterProperty("SettingA", typeof(String));
+        
         #endregion
+        
     }
 
     public class ParamsPluginB : ParamsBase
@@ -54,7 +56,8 @@ namespace UUM.Engine.Tests
             RegisterProperty("SettingB", typeof(String));
         #endregion
     }
-
+    
+   
     public class Container : SavableModelBase<Container>
     {
         #region Property: Parameters
@@ -85,6 +88,7 @@ namespace UUM.Engine.Tests
             c.Parameters.Add(pB);
             c.Save("test.xml", SerializationMode.Xml);
             var c2 = Container.Load("test.xml", SerializationMode.Xml);
+            
         }
 
     }
