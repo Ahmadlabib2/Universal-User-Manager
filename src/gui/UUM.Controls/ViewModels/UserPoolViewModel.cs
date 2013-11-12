@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 using Catel.Data;
 using Catel.MVVM;
@@ -17,6 +18,7 @@ namespace UUM.Controls.ViewModels
 		public UserPoolViewModel(UserPoolModel pool)
 		{
 			UserPool= pool;
+			LoadUser = new Command(OnLoadUserExecute);
 			AddUser = new Command(OnAddUserExecute);
 			RemoveUser = new Command(OnRemoveUserExecute);
 			EditUser = new Command(OnEditUserExecute);
@@ -63,13 +65,25 @@ namespace UUM.Controls.ViewModels
 			UserPool.Add(new UserModel());
 		}
 		
+		#endregion
 		
+		#region Command: EditUser
 		public Command EditUser {get; private set; }
 		
 		private void OnEditUserExecute()
 		{
 			throw new NotImplementedException();
 			//IEditableObject.BeginEdit();
+			
+		}
+		#endregion
+		
+		#region Command: LoadUser
+		public Command LoadUser {get; private set; }
+		
+		private void OnLoadUserExecute()
+		{
+			UserPoolModel.Load("Users.txt");
 			
 		}
 		#endregion
