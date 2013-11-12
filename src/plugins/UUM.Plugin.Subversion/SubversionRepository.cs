@@ -3,74 +3,98 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Catel.Data;
 
 using UUM.Api.Interfaces;
 using UUM.Api.Models;
+using UUM.Engine.Models;
 using UUM.Plugin.Subversion.Models;
+
 
 namespace UUM.Plugin.Subversion
 {
-    public class SubversionRepository : IRepository
-    {
-        private readonly Parameters _parameters;
-        private IEnumerable<UserInSource> _users;
+	public class SubversionRepository : IRepository
+	{
+		private readonly Parameters _parameters;
+		private IEnumerable<UserInSource> _users;
 
-        public SubversionRepository(Parameters parameters)
-        {
-            _parameters = parameters;
-        }
+		public SubversionRepository(Parameters parameters)
+		{
+			_parameters = parameters;
+			
+		}
+		
+		public IEnumerable<UserInSourceBase> Users
+		{
+			get { return _users ?? (_users = ReadUsers()); }
+		}
+		
+		public static readonly PropertyData ProjectProperty =
+			RegisterProperty("Project", typeof (ProjectModel));
+		
+		public ProjectModel Project
+		{
+			get { return GetValue<ProjectModel>(ProjectProperty); }
+			set { SetValue(ProjectProperty, value); }
+		}
+		
+		public void SaveProject()
+		{
+			var saveFileService = DependencyResolver.Resolve<ISaveFileService>();
+			saveFileService.Filter = UumProjectFileFilter;
+			if (saveFileService.DetermineFile())
+			{
+				string fileName = saveFileService.FileName;
+				Project.Save(fileName, SerializationMode.Xml);
+			}
+		}
+		
+		public IEnumerable<UserInSource> ReadUsers()
+		{
+			//get the whole line that seperated the group name and divide it to many different users and add to list
+			var users = new List<String>();
 
-        public IEnumerable<UserInSourceBase> Users
-        {
-            get { return _users ?? (_users = ReadUsers()); }
-        }
+			if (File.Exists(_parameters.ConfigurationFile))
+			{
+				// Read the file and display it line by line.
+				foreach (String line in File.ReadAllLines(_parameters.ConfigurationFile))
+				{
+					Regex groupDefinition = new Regex(@"^(.*?)=(.*)$");
+					if (groupDefinition.IsMatch(line))
+					{
+						String userNames = groupDefinition.Match(line).Groups[2].Value;
+						users.AddRange(userNames.Split(',').Select(x => x.Trim()));
+					}
 
-        public IEnumerable<UserInSource> ReadUsers()
-        {
-            //get the whole line that seperated the group name and divide it to many different users and add to list
-            var users = new List<String>();
+				}
+			}
 
-            if (File.Exists(_parameters.ConfigurationFile))
-            {
-                // Read the file and display it line by line.
-                foreach (String line in File.ReadAllLines(_parameters.ConfigurationFile))
-                {
-                    Regex groupDefinition = new Regex(@"^(.*?)=(.*)$");
-                    if (groupDefinition.IsMatch(line))
-                    {
-                        String userNames = groupDefinition.Match(line).Groups[2].Value;
-                        users.AddRange(userNames.Split(',').Select(x => x.Trim()));
-                    }
+			//LINQ
+			var distinctUsers = users.Distinct().OrderBy(x => x);
+			// another syntax is possible... var distinctUsers = from users select x orderby x;
+			//users.Count;
+			return distinctUsers.Select(x => new UserInSource(x, null, null, "Subversion"));
+		}
+		
+		public IEnumerable<Group> GetGroups()
+		{
+			var groups = new List<Group>();
+			// Read the file and display it line by line.
+			foreach (String line in File.ReadAllLines(_parameters.ConfigurationFile))
+			{
+				Regex groupDefinition = new Regex(@"^(.*?)=(.*)$");
+				if (groupDefinition.IsMatch(line))
+				{
+					String groupName = groupDefinition.Match(line).Groups[1].Value.Trim();
+					String userNames = groupDefinition.Match(line).Groups[2].Value;
+					// var newGroup = new Group(groupName, Name);
+					var names = userNames.Split(',').Select(x => x.Trim());
+					// newGroup.AddUsers(names.Select(groupname => new UserReference(groupname, Name)));
+					// groups.Add(newGroup);
+				}
+			}
 
-                }
-            }
-
-            //LINQ
-            var distinctUsers = users.Distinct().OrderBy(x => x);
-            // another syntax is possible... var distinctUsers = from users select x orderby x;
-            //users.Count;
-            return distinctUsers.Select(x => new UserInSource(x, null, null, "Subversion"));
-        }
-        
-        public IEnumerable<Group> GetGroups()
-        {
-           var groups = new List<Group>();
-            // Read the file and display it line by line.
-            foreach (String line in File.ReadAllLines(_parameters.ConfigurationFile))
-            {
-               Regex groupDefinition = new Regex(@"^(.*?)=(.*)$");
-                if (groupDefinition.IsMatch(line))
-                {
-                    String groupName = groupDefinition.Match(line).Groups[1].Value.Trim();
-                    String userNames = groupDefinition.Match(line).Groups[2].Value;
-                   // var newGroup = new Group(groupName, Name);
-                    var names = userNames.Split(',').Select(x => x.Trim());
-                   // newGroup.AddUsers(names.Select(groupname => new UserReference(groupname, Name)));
-                   // groups.Add(newGroup);
-                }
-            }
-
-            return groups;
-        }
-    }
+			return groups;
+		}
+	}
 }

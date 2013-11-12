@@ -69,6 +69,10 @@
       <Project>{D0B6587F-D167-4FD8-A3CD-080FBDE45BE9}</Project>
       <Name>UUM.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\framework\UUM.Engine\UUM.Engine.csproj">
+      <Project>{26317A12-5078-452C-AF0E-5CAC6FE1C769}</Project>
+      <Name>UUM.Engine</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
