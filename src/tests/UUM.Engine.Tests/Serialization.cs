@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Runtime.Serialization;
 using Catel.Data;
 using NUnit.Framework;
@@ -94,32 +95,46 @@ namespace UUM.Engine.Tests
     {
         [Test]
         public void EnumerableOfInterfacesViaKnownTypes_SameNameDifferentNamespaces_SaveLoadRoundTrip()
-        {
-            var c = new ContainerInterfaces();
-            var pA = new PluginA.Params();
+        {			
+ 			var c = new ContainerInterfaces();
+            
+ 			var pA = new PluginA.Params();
             pA.SettingA = "TestA";
             c.Parameters.Add(pA);
+            
             var pB = new PluginB.Params();
             pB.SettingB = "TestB";
             c.Parameters.Add(pB);
-            c.Save("test.xml", SerializationMode.Xml);
-            var c2 = ContainerInterfaces.Load("test.xml", SerializationMode.Xml);
-            Assert.AreEqual(2, c2.Parameters.Count);
+            
+ 			using (var memoryStream = new MemoryStream())
+ 			{
+				c.Save(memoryStream, SerializationMode.Xml);
+				memoryStream.Position = 0L;
+				var c2 = ContainerInterfaces.Load(memoryStream, SerializationMode.Xml);
+				Assert.AreEqual(c, c2);   
+			}
         }
 
         [Test]
         public void EnumerableOfAbstractClassesViaKnownTypes_SameNameDifferentNamespaces_SaveLoadRoundTrip()
         {
             var c = new ContainerAbstractClasses();
+
             var pA = new PluginA.Params();
             pA.SettingA = "TestA";
             c.Parameters.Add(pA);
+
             var pB = new PluginB.Params();
             pB.SettingB = "TestB";
             c.Parameters.Add(pB);
-            c.Save("test.xml", SerializationMode.Xml);
-            var c2 = ContainerAbstractClasses.Load("test.xml", SerializationMode.Xml);
-            Assert.AreEqual(2, c2.Parameters.Count);
+
+ 			using (var memoryStream = new MemoryStream())
+ 			{
+				c.Save(memoryStream, SerializationMode.Xml);
+				memoryStream.Position = 0L;
+				var c2 = ContainerAbstractClasses.Load(memoryStream, SerializationMode.Xml);
+				Assert.AreEqual(c, c2);   
+			}
         }
     }
 }
