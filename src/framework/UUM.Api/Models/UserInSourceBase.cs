@@ -36,14 +36,8 @@ namespace UUM.Api.Models
 
         #region Property: Id
 
-        public static readonly PropertyData IdProperty =
-            RegisterProperty("Id", typeof (Guid));
-
         public Guid Id
-        {
-            get { return GetValue<Guid>(IdProperty); }
-            set { SetValue(IdProperty, value); }
-        }
+        { get; set; }
 
         #endregion
 
@@ -53,7 +47,8 @@ namespace UUM.Api.Models
         ///     The Guid of the plugin parameters that was used to create this user in source.
         ///     Identifies which plugin instance created this item. Used for serialization.
         /// </summary>
-        public Guid PluginId { get; private set; }
+        public Guid PluginId
+        { get; private set; }
 
         /// <summary>
         ///     The login for the target system, must be unique within the target system.

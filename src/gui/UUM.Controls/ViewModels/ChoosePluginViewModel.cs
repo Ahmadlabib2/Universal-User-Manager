@@ -17,33 +17,21 @@ namespace UUM.Controls.ViewModels
 			Plugins = pluginRepository.Plugins;
 		}
 
-		#region Model
-		/// <summary>
-		/// Loads the Plugins
-		/// </summary>
-		/// 
-		public static readonly PropertyData PluginsProperty =
-			RegisterProperty("Plugins", typeof (ObservableCollection<IPlugin>));
+		#region Property: Plugins
 
-		public ObservableCollection<IPlugin> Plugins
-		{
-			get { return GetValue<ObservableCollection<IPlugin>>(PluginsProperty); }
-			set { SetValue(PluginsProperty, value); }
-		}
-
-		#region Property: SelectedPlugin
-		
-		public static readonly PropertyData SelectedPluginProperty =
-			RegisterProperty("SelectedPlugin", typeof (IPlugin));
-
-		public IPlugin SelectedPlugin
-		{
-			get { return GetValue<IPlugin>(SelectedPluginProperty); }
-			set { SetValue(SelectedPluginProperty, value); }
-		}
+        /// <summary>
+        /// Available plugins
+        /// </summary>
+        public ObservableCollection<IPlugin> Plugins
+        { get; private set; }
 
 		#endregion
-		#endregion
-		
-	}
+
+        #region Property: SelectedPlugin
+
+        public IPlugin SelectedPlugin
+        { get; set; }
+
+        #endregion
+    }
 }

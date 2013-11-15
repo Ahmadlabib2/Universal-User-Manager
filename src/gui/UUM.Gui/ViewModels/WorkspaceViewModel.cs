@@ -42,13 +42,12 @@ namespace UUM.Gui.ViewModels
             Plugins = pluginRepository.Plugins;  
         }
 
-        #region Properties
+        #region Title
 
         /// <summary>
         ///     Gets the title of the view model.
         /// </summary>
         /// <value>The title.</value>
-        
         public override string Title
         {
             get { return "Workspace"; }
@@ -58,27 +57,15 @@ namespace UUM.Gui.ViewModels
 		
         #region Property: Project
 
-        public static readonly PropertyData ProjectProperty =
-            RegisterProperty("Project", typeof (ProjectModel));
-
         public ProjectModel Project
-        {
-            get { return GetValue<ProjectModel>(ProjectProperty); }
-            set { SetValue(ProjectProperty, value); }
-        }
+        { get; set; }
 
         #endregion
 		
         #region Property: Plugins
 
-        public static readonly PropertyData PluginsProperty =
-            RegisterProperty("Plugins", typeof (ObservableCollection<IPlugin>), new ObservableCollection<IPlugin>());
-
         public ObservableCollection<IPlugin> Plugins
-        {
-            get { return GetValue<ObservableCollection<IPlugin>>(PluginsProperty); }
-            set { SetValue(PluginsProperty, value); }
-        }
+        { get; set; }
 
         #endregion
 

@@ -48,38 +48,20 @@ namespace UUM.Api.Models
         #region Property: Name
 
         /// <summary>
-        ///     Register the name property so it is known in the class.
-        /// </summary>
-        public static readonly PropertyData NameProperty =
-            RegisterProperty("Name", typeof (String));
-
-        /// <summary>
         ///     Name of this parameter set.
         /// </summary>
         public String Name
-        {
-            get { return GetValue<String>(NameProperty); }
-            set { SetValue(NameProperty, value); }
-        }
+        { get; set; }
 
         #endregion
 
         #region Property: Id
 
         /// <summary>
-        ///     Register the id property so it is known in the class.
-        /// </summary>
-        public static readonly PropertyData IdProperty =
-            RegisterProperty("Id", typeof (Guid));
-
-        /// <summary>
         ///     Guid that identifies this parameter set.
         /// </summary>
         public Guid Id
-        {
-            get { return GetValue<Guid>(IdProperty); }
-            private set { SetValue(IdProperty, value); }
-        }
+        { get; private set; }
 
         #endregion
 
