@@ -7,3 +7,5 @@ obj
 /src/packages/NSubstitute*
 /src/*.suo
 /src/*.user
+
+/src/.nuget/*.old
