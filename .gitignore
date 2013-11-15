@@ -9,3 +9,4 @@ obj
 /src/*.suo
 /src/*.user
 /src/.nuget/*.old
+/src/tests/UUM.Engine.Tests/OpenCover/coverage.xml

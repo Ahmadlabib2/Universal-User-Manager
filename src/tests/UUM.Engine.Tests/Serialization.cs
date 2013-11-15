@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Runtime.Serialization;
 using Catel.Data;
 using NUnit.Framework;
@@ -15,47 +16,51 @@ namespace UUM.Engine.Tests
     // but is not feasible as the possible derived classes are implemented by
     // plugins which are not known in advance. Is there a way to do this dynamically,
     // by making a request to the plugin manager?
-    //[KnownType(typeof(ParamsPluginA))]
-    //[KnownType(typeof(ParamsPluginB))]
     [KnownType("KnownTypes")]
     public class ParamsBase : SavableModelBase<ParamsBase>, IParams
     {
         // This method returns the array of known types.
         static Type[] KnownTypes()
         {
-            return new Type[] { typeof(ParamsPluginA), typeof(ParamsPluginB) };
+            return new Type[] { typeof(PluginA.Params), typeof(PluginB.Params) };
         }        
     }
 
-    public class ParamsPluginA : ParamsBase
+    namespace PluginA
     {
-        #region Property: SettingA
-        public String SettingA
-        {
-            get { return GetValue<String>(SettingAProperty); }
-            set { SetValue(SettingAProperty, value); }
-        }
-
-        public static readonly PropertyData SettingAProperty =
-            RegisterProperty("SettingA", typeof(String));
-        #endregion
+	    public class Params : ParamsBase
+	    {
+	        #region Property: SettingA
+	        public String SettingA
+	        {
+	            get { return GetValue<String>(SettingAProperty); }
+	            set { SetValue(SettingAProperty, value); }
+	        }
+	
+	        public static readonly PropertyData SettingAProperty =
+	            RegisterProperty("SettingA", typeof(String));
+	        #endregion
+	    }
     }
-
-    public class ParamsPluginB : ParamsBase
+    
+    namespace PluginB
     {
-        #region Property: SettingB
-        public String SettingB
-        {
-            get { return GetValue<String>(SettingBProperty); }
-            set { SetValue(SettingBProperty, value); }
-        }
-
-        public static readonly PropertyData SettingBProperty =
-            RegisterProperty("SettingB", typeof(String));
-        #endregion
+	    public class Params : ParamsBase
+	    {
+	        #region Property: SettingB
+	        public String SettingB
+	        {
+	            get { return GetValue<String>(SettingBProperty); }
+	            set { SetValue(SettingBProperty, value); }
+	        }
+	
+	        public static readonly PropertyData SettingBProperty =
+	            RegisterProperty("SettingB", typeof(String));
+	        #endregion
+	    }
     }
-
-    public class Container : SavableModelBase<Container>
+	
+    public class ContainerInterfaces : SavableModelBase<ContainerInterfaces>
     {
         #region Property: Parameters
         public ObservableCollection<IParams> Parameters
@@ -70,22 +75,66 @@ namespace UUM.Engine.Tests
         #endregion
     }
 
+    public class ContainerAbstractClasses : SavableModelBase<ContainerAbstractClasses>
+    {
+        #region Property: Parameters
+        public ObservableCollection<ParamsBase> Parameters
+        {
+            get { return GetValue<ObservableCollection<ParamsBase>>(ParametersProperty); }
+            set { SetValue(ParametersProperty, value); }
+        }
+
+        public static readonly PropertyData ParametersProperty =
+            RegisterProperty("Parameters", typeof(ObservableCollection<ParamsBase>),
+            new ObservableCollection<ParamsBase>());
+        #endregion
+    }
+
     [TestFixture]
     public class Serialization
     {
         [Test]
-        public void Save()
-        {
-            var c = new Container();
-            var pA = new ParamsPluginA();
+        public void EnumerableOfInterfacesViaKnownTypes_SameNameDifferentNamespaces_SaveLoadRoundTrip()
+        {			
+ 			var c = new ContainerInterfaces();
+            
+ 			var pA = new PluginA.Params();
             pA.SettingA = "TestA";
             c.Parameters.Add(pA);
-            var pB = new ParamsPluginB();
+            
+            var pB = new PluginB.Params();
             pB.SettingB = "TestB";
             c.Parameters.Add(pB);
-            c.Save("test.xml", SerializationMode.Xml);
-            var c2 = Container.Load("test.xml", SerializationMode.Xml);
+            
+ 			using (var memoryStream = new MemoryStream())
+ 			{
+				c.Save(memoryStream, SerializationMode.Xml);
+				memoryStream.Position = 0L;
+				var c2 = ContainerInterfaces.Load(memoryStream, SerializationMode.Xml);
+				Assert.AreEqual(c, c2);   
+			}
         }
 
+        [Test]
+        public void EnumerableOfAbstractClassesViaKnownTypes_SameNameDifferentNamespaces_SaveLoadRoundTrip()
+        {
+            var c = new ContainerAbstractClasses();
+
+            var pA = new PluginA.Params();
+            pA.SettingA = "TestA";
+            c.Parameters.Add(pA);
+
+            var pB = new PluginB.Params();
+            pB.SettingB = "TestB";
+            c.Parameters.Add(pB);
+
+ 			using (var memoryStream = new MemoryStream())
+ 			{
+				c.Save(memoryStream, SerializationMode.Xml);
+				memoryStream.Position = 0L;
+				var c2 = ContainerAbstractClasses.Load(memoryStream, SerializationMode.Xml);
+				Assert.AreEqual(c, c2);   
+			}
+        }
     }
 }
