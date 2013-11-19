@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using UUM.Api.Interfaces;
@@ -25,5 +26,16 @@ namespace UUM.Engine.Services
         [ImportMany(AllowRecomposition = true)]
         public ObservableCollection<IPlugin> Plugins { get; set; }
 
+        public IPlugin ResolvePluginFromType(Type type)
+        {
+            foreach (var plugin in Plugins)
+            {
+                if (plugin.GetParametersType() == type)
+                {
+                    return plugin;
+                }
+            }
+            throw new TypeLoadException(String.Format("Cannot find any plugin implementing {0}", type));
+        }
     }
 }

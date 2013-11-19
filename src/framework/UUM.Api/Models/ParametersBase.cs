@@ -10,8 +10,9 @@ using UUM.Api.Interfaces;
 namespace UUM.Api.Models
 {
     /// <summary>
-    ///     Parameters model which fully supports serialization, property changed notifications,
-    ///     backwards compatibility and error checking.
+    ///     Base class for implementing Plugin specific Parameters. The ability
+    ///     to serialize and deserialize to/from disk is implemented. Automatic
+    ///     notifications are sent on property changes.
     /// </summary>
     [Serializable]
     [KnownType("GetPluginTypes")]
@@ -79,14 +80,7 @@ namespace UUM.Api.Models
         		if (_plugin == null)
         		{
 					var pluginRepository = ServiceLocator.Default.ResolveType<IPluginRepository>();
-		            foreach (var plugin in pluginRepository.Plugins)
-		            {
-		            	if (plugin.GetParametersType() == GetType())
-		            	{
-		            		_plugin = plugin;
-		            		break;
-		            	}
-		            }
+                    _plugin = pluginRepository.ResolvePluginFromType(GetType());
         		}
         		return _plugin;
         	}
