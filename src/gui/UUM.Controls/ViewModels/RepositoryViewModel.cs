@@ -38,28 +38,16 @@ namespace UUM.Controls.ViewModels
 
         #region Property: Parameters
 
-        public static readonly PropertyData ParametersProperty =
-            RegisterProperty("Parameters", typeof (ObservableCollection<ParametersBase>));
-
         [Model]
         public ObservableCollection<ParametersBase> Parameters
-        {
-            get { return GetValue<ObservableCollection<ParametersBase>>(ParametersProperty); }
-            private set { SetValue(ParametersProperty, value); }
-        }
+        { get; private set; }
 
         #endregion
 
         #region Property: SelectedParameters
 
-        public static readonly PropertyData SelectedParametersProperty =
-            RegisterProperty("SelectedParameters", typeof (ParametersBase));
-
         public ParametersBase SelectedParameters
-        {
-            get { return GetValue<ParametersBase>(SelectedParametersProperty); }
-            set { SetValue(SelectedParametersProperty, value); }
-        }
+        { get; set; }
 
         #endregion
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Catel.Data;
+using Catel.Fody;
 using Catel.IoC;
 using UUM.Api.Interfaces;
 using UUM.Api.Models;
@@ -10,14 +11,16 @@ using UUM.Api.Models;
 namespace UUM.Engine.Models
 {
 	/// <summary>
-	/// Project class is used to fetch and distinhuish each project with a name and a description with its
-	/// own Userpool, plugins, Parameters and Parameter types.
+	///     A ProjectModel contains all data strucutres that have to be stored into a file and
+    ///     reloaded later on. This includes the defines Users and their links in other sources,
+    ///     parameters to update these users from the remote sources, ...
 	/// </summary>
 	[Serializable]
 	public class ProjectModel : SavableModelBase<ProjectModel>
 	{
 		public ProjectModel()
 		{
+            Parameters = new ObservableCollection<ParametersBase>();
 		}
 		
 		protected ProjectModel(SerializationInfo info, StreamingContext context)
@@ -27,44 +30,34 @@ namespace UUM.Engine.Models
 
 		#region Property: Name
 
-		public string Name
-		{
-			get { return GetValue<string>(NameProperty); }
-			set { SetValue(NameProperty, value); }
-		}
-
-		public static readonly PropertyData NameProperty =
-			RegisterProperty("Name", typeof(string), "<New Project Name>");
+        [DefaultValue("<New Project Name>")]
+        public string Name
+        { get; set; }
 
 		#endregion
 
 		#region Property: Description
 
+        [DefaultValue("<Add Description Here>")]
 		public string Description
-		{
-			get { return GetValue<string>(DescriptionProperty); }
-			set { SetValue(DescriptionProperty, value); }
-		}
-		
-		public static readonly PropertyData DescriptionProperty =
-			RegisterProperty("Description", typeof(string), "<Add Description Here>");
+        { get; set; }
 		
 		#endregion
 
 		#region Property: UserPool
 
 		public UserPoolModel UserPool
-		{
-			get { return GetValue<UserPoolModel>(UserPoolProperty); }
-			set { SetValue(UserPoolProperty, value); }
-		}
-
-		public static readonly PropertyData UserPoolProperty =
-			RegisterProperty("UserPool", typeof(UserPoolModel), new UserPoolModel());
+        { get; set; }
 
 		#endregion
 
 		#region Property: Parameters
+
+        public ObservableCollection<ParametersBase> Parameters
+        { get; set; }
+
+		#endregion
+
 		static Type[] GetPluginParameterTypes()
 		{
 			var types = new List<Type>();
@@ -75,16 +68,6 @@ namespace UUM.Engine.Models
 			}
 			return types.ToArray();
 		}
-		public ObservableCollection<ParametersBase> Parameters
-		{
-			get { return GetValue<ObservableCollection<ParametersBase>>(ParametersProperty); }
-			set { SetValue(ParametersProperty, value); }
-		}
-
-		public static readonly PropertyData ParametersProperty =
-			RegisterProperty("Parameters", typeof(ObservableCollection<ParametersBase>), new ObservableCollection<ParametersBase>());
-
-		#endregion
 	}
 
 }

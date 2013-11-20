@@ -23,15 +23,9 @@ namespace UUM.Engine.Models
 			: base(info, context)
 		{
 		}
-		
-		public static readonly PropertyData UsersInGroupProperty =
-			RegisterProperty("UsersInGroup", typeof(ObservableCollection<UserModel>));
 
-		public ObservableCollection<UserModel> UsersInGroup
-		{
-			get { return GetValue<ObservableCollection<UserModel>>(UsersInGroupProperty); }
-			set { SetValue(UsersInGroupProperty, value); }
-		}
+        public ObservableCollection<UserModel> UsersInGroup
+        { get; private set; }
 		
 		public void AddUser(UserModel user)
 		{

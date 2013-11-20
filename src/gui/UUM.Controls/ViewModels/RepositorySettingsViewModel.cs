@@ -35,16 +35,10 @@ namespace UUM.Controls.ViewModels
 
         #region Property: Parameters
 
-        public static readonly PropertyData ParametersProperty =
-            RegisterProperty("Parameters", typeof (ParametersBase));
-
         [Model]
         [Expose("Name")]
         public ParametersBase Parameters
-        {
-            get { return GetValue<ParametersBase>(ParametersProperty); }
-            private set { SetValue(ParametersProperty, value); }
-        }
+        { get; private set; }
 
         #endregion
 
