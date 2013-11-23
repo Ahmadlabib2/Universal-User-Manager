@@ -61,8 +61,7 @@
       <HintPath>..\..\packages\Catel.Extensions.Controls.3.7.1311181747-beta\lib\net40\Catel.Extensions.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Catel.Fody.Attributes">
-      <HintPath>..\..\packages\Catel.Fody.1.5.3.1311182103-beta\lib\net40\Catel.Fody.Attributes.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\packages\Catel.Fody.1.5.3.1311221607-beta\lib\net40\Catel.Fody.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Catel.MVVM, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.Serialization;
 using Catel.Data;
-using Catel.Fody;
 using Catel.IoC;
 using UUM.Api.Interfaces;
 using UUM.Api.Models;

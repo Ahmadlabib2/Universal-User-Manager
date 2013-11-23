@@ -56,8 +56,7 @@
       <HintPath>..\..\packages\Catel.Core.3.7.1311181747-beta\lib\net40\Catel.Core.dll</HintPath>
     </Reference>
     <Reference Include="Catel.Fody.Attributes">
-      <HintPath>..\..\packages\Catel.Fody.1.5.3.1311182103-beta\lib\net40\Catel.Fody.Attributes.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\packages\Catel.Fody.1.5.3.1311221607-beta\lib\net40\Catel.Fody.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
