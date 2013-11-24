@@ -24,8 +24,8 @@ namespace UUM.Controls.ViewModels
         #region Property: Project
 
         [Model]
-        [Expose("Name")]
-        [Expose("Description")]
+        [Catel.Fody.Expose("Name")]
+        [Catel.Fody.Expose("Description")]
         [Expose("UserPool")]
         [Expose("Parameters", Mode = ViewModelToModelMode.OneWay)]
         public ProjectModel Project
