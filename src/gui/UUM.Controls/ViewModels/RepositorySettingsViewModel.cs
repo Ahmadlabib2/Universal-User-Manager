@@ -36,7 +36,7 @@ namespace UUM.Controls.ViewModels
         #region Property: Parameters
 
         [Model]
-        [Expose("Name")]
+        [Catel.Fody.Expose("Name")]
         public ParametersBase Parameters
         { get; private set; }
 
