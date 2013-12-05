@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-# SharpDevelop 4.3
+# SharpDevelop 4.4
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "framework", "framework", "{22867BB0-D04A-4324-BB22-359E958FD526}"
 	ProjectSection(SolutionItems) = postProject
 	EndProjectSection
@@ -51,6 +51,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UUM.Engine.Tests", "tests\UUM.Engine.Tests\UUM.Engine.Tests.csproj", "{B62F47E6-2BC6-4FF1-B41F-D3998CB3D0ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UUM.Controls.Tests", "tests\UUM.Controls.Tests\UUM.Controls.Tests.csproj", "{E7E006E9-33B9-4233-8EED-52BCCD4E6BF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing files", "Testing files", "{5694443A-C41E-4B6D-A5FC-595D59D4F377}"
+	ProjectSection(SolutionItems) = postProject
+		..\..\UserManagement\Listboxofusers\UserManagement.Tests\TestFiles\Test2.xml = ..\..\UserManagement\Listboxofusers\UserManagement.Tests\TestFiles\Test2.xml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{397D143E-E035-49B9-94FB-1D9287D0637F}"
 	ProjectSection(SolutionItems) = preProject
@@ -217,5 +222,6 @@ Global
 		{BC0746C2-4F7B-4AD0-9DD3-3CE22F866205} = {ABED6DB8-EE56-48A2-8D59-DC340F8EE923}
 		{B62F47E6-2BC6-4FF1-B41F-D3998CB3D0ED} = {D67A98D0-4EDA-45DE-8F4E-0529CB0B4FE0}
 		{E7E006E9-33B9-4233-8EED-52BCCD4E6BF8} = {D67A98D0-4EDA-45DE-8F4E-0529CB0B4FE0}
+		{5694443A-C41E-4B6D-A5FC-595D59D4F377} = {D67A98D0-4EDA-45DE-8F4E-0529CB0B4FE0}
 	EndGlobalSection
 EndGlobal

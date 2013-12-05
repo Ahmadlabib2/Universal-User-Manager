@@ -18,7 +18,7 @@
     <WarningLevel>4</WarningLevel>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <FodyPath>..\..\packages\Fody.1.17.4.0</FodyPath>
+    <FodyPath>..\..\packages\Fody.1.18.0.0</FodyPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -53,7 +53,7 @@
       <HintPath>..\..\packages\Catel.Extensions.Controls.3.7.1311230108-beta\lib\net40\Catel.Extensions.Controls.dll</HintPath>
     </Reference>
     <Reference Include="Catel.Fody.Attributes">
-      <HintPath>..\..\packages\Catel.Fody.1.5.3.1311221607-beta\lib\net40\Catel.Fody.Attributes.dll</HintPath>
+      <HintPath>..\..\packages\Catel.Fody.1.5.3.1311250610-beta\lib\net40\Catel.Fody.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="Catel.MVVM">
       <HintPath>..\..\packages\Catel.MVVM.3.7.1311230108-beta\lib\net40\Catel.MVVM.dll</HintPath>

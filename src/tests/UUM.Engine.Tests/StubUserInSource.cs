@@ -11,10 +11,13 @@ namespace UUM.Engine.Tests
         public StubUserInSource()
             : base(_pluginId)
         {
+        //UserInSourceBase userinsource = new Api.Models.UserInSourceBase();
+        //	UserInSourceBase.Load
         }
 
         public StubUserInSource(SerializationInfo info, StreamingContext context) : base(info, context)
         {
+        	
         }
     }
 }

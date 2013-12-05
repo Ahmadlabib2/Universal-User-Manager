@@ -20,7 +20,9 @@ namespace UUM.Engine.Models
 		public UserPoolModel()
 		{
 		}
-
+		public int Counter {get;set;} 
+		
+		
 		protected UserPoolModel(SerializationInfo info, StreamingContext context)
 			: base(info, context)
 		{
@@ -56,11 +58,13 @@ namespace UUM.Engine.Models
 
 		public void Add(UserModel user)
 		{
+			Counter++;
 			Users.Add(user);
 		}
 
 		public void Remove(UserModel user)
 		{
+			Counter--;
 			Users.Remove(user);
 		}
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-
 using UUM.Api.Interfaces;
 using UUM.Api.Models;
 using UUM.Plugin.Subversion.Models;
@@ -31,10 +30,10 @@ namespace UUM.Plugin.Subversion
             var users = new List<String>();
 
             if (File.Exists(_parameters.ConfigurationFile))
-            {
+            { 
                 // Read the file and display it line by line.
                 foreach (String line in File.ReadAllLines(_parameters.ConfigurationFile))
-                {
+                { 
                     Regex groupDefinition = new Regex(@"^(.*?)=(.*)$");
                     if (groupDefinition.IsMatch(line))
                     {

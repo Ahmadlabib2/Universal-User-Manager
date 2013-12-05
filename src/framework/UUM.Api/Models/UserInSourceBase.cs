@@ -49,7 +49,7 @@ namespace UUM.Api.Models
         /// </summary>
         public Guid PluginId
         { get; private set; }
-
+	
         /// <summary>
         ///     The login for the target system, must be unique within the target system.
         ///     Used for associating local users from the remote users on update for example.

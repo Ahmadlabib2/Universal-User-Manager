@@ -7,6 +7,7 @@ using Catel.MVVM;
 
 using UUM.Api.Models;
 
+
 namespace UUM.Controls.ViewModels
 {
     /// <summary>
@@ -68,9 +69,29 @@ namespace UUM.Controls.ViewModels
 
         private void GetUsersExecute()
         {
-        
-        	
-        	
+        //var users = new List<String>();
+
+          //  if (File.Exists(Parameters.ConfigurationFile))
+          //  { 
+                // Read the file and display it line by line.
+          //      foreach (String line in File.ReadAllLines(Parameters.ConfigurationFile))
+          //      { 
+          //          Regex groupDefinition = new Regex(@"^(.*?)=(.*)$");
+          //          if (groupDefinition.IsMatch(line))
+          //          {
+          //              String userNames = groupDefinition.Match(line).Groups[2].Value;
+          //              users.AddRange(userNames.Split(',').Select(x => x.Trim()));
+          //          }
+
+          //      }
+          //  }
+
+            //LINQ
+          //  var distinctUsers = users.Distinct().OrderBy(x => x);
+            // another syntax is possible... var distinctUsers = from users select x orderby x;
+            //users.Count;
+          //  return distinctUsers.Select(x => new UserInSource(x, null, null, "Subversion"));
+         
         }
 
         #endregion

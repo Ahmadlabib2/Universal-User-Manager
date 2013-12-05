@@ -1,6 +1,6 @@
 ﻿
 using System;
-using System.Collections.Generic;
+
 using NSubstitute;
 using NUnit.Framework;
 using UUM.Api.Interfaces;
@@ -26,6 +26,10 @@ namespace UUM.Engine.Tests
 
             //TODO:
             // Perform synchronization from the stub
+            UserPoolModel.Load("TestFiles/Test2.xml");
+            Assert.AreEqual(1,pool.Counter);
+            
+                            
             // UserSynchronizer.Synchronize(pool, repos);
 
             Assert.IsNotEmpty(pool.UsersInSources);
