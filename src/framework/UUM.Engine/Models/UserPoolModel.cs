@@ -19,38 +19,28 @@ namespace UUM.Engine.Models
 	{
 		public UserPoolModel()
 		{
+			Users = new ObservableCollection<UserModel>();
+			UsersInSources = new ObservableCollection<UserInSourceBase>();
 		}
-		public int Counter {get;set;} 
-		
 		
 		protected UserPoolModel(SerializationInfo info, StreamingContext context)
 			: base(info, context)
 		{
 		}
 
+		public int Counter {get;set;}
+
 		#region Property: Users
 
-		public static readonly PropertyData UserProperty =
-			RegisterProperty("Users", typeof(ObservableCollection<UserModel>), new ObservableCollection<UserModel>());
-
 		public ObservableCollection<UserModel> Users
-		{
-			get { return GetValue<ObservableCollection<UserModel>>(UserProperty); }
-			set { SetValue(UserProperty, value); }
-		}
+		{ get; set;}
 
 		#endregion
 
 		#region Property: UsersInSources
 
-		public static readonly PropertyData UsersInSourcesProperty =
-			RegisterProperty("UsersInSources", typeof(ObservableCollection<UserModel>), new ObservableCollection<UserInSourceBase>());
-
 		public ObservableCollection<UserInSourceBase> UsersInSources
-		{
-			get { return GetValue<ObservableCollection<UserInSourceBase>>(UsersInSourcesProperty); }
-			set { SetValue(UsersInSourcesProperty, value); }
-		}
+		{ get; set;}
 
 		#endregion
 
