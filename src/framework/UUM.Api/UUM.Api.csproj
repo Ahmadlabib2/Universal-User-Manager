@@ -75,6 +75,7 @@
     <Compile Include="Interfaces\IPlugin.cs" />
     <Compile Include="Interfaces\IPluginRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Models\IParametersBase.cs" />
     <Compile Include="Models\UserInSourceBase.cs" />
     <Compile Include="Models\ParametersBase.cs" />
     <Compile Include="PluginBase.cs" />

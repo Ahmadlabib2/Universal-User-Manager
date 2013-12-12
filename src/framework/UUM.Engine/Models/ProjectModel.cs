@@ -20,7 +20,7 @@ namespace UUM.Engine.Models
 	{
 		public ProjectModel()
 		{
-            Parameters = new ObservableCollection<ParametersBase>();
+            Parameters = new ObservableCollection<IParametersBase>();
 		}
 		
 		protected ProjectModel(SerializationInfo info, StreamingContext context)
@@ -53,7 +53,7 @@ namespace UUM.Engine.Models
 
 		#region Property: Parameters
 
-        public ObservableCollection<ParametersBase> Parameters
+        public ObservableCollection<IParametersBase> Parameters
         { get; set; }
 
 		#endregion

@@ -17,7 +17,7 @@ namespace UUM.Controls.ViewModels
         /// <summary>
         ///     Initializes a new instance of the <see cref="RepositoryViewModel" /> class.
         /// </summary>
-        public RepositoryViewModel(ObservableCollection<ParametersBase> parameters)
+        public RepositoryViewModel(ObservableCollection<IParametersBase> parameters)
         	: base(false)
         {
             Parameters = parameters;
@@ -39,7 +39,7 @@ namespace UUM.Controls.ViewModels
         #region Property: Parameters
 
         [Model]
-        public ObservableCollection<ParametersBase> Parameters
+        public ObservableCollection<IParametersBase> Parameters
         { get; private set; }
 
         #endregion
