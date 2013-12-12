@@ -22,8 +22,7 @@
         <Button Command="{Binding AddUser}">Add User</Button>
         <Button Command="{Binding RemoveUser}">Remove User</Button>
         <!-- Button Command="{Binding SubmitAddUser}">Submit</Button- -->
-        <catel:EmptyColumn />
-
+        <catel:EmptyColumn/>
         <ListView
             Grid.ColumnSpan="3"
             ItemsSource="{Binding Users}"

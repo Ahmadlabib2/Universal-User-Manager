@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-
 using Catel.Data;
 using Catel.IoC;
 
@@ -67,6 +66,8 @@ namespace UUM.Api.Models
         public Boolean LastModificationAck { get; set; }
         
         //TODO: Keep history of modifications?
+        
+        public DateTime lastmodified {get; set; }
         
         #region KnownTypes
         static Type[] GetPluginTypes()
