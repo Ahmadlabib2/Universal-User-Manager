@@ -32,7 +32,7 @@ namespace UUM.Engine.Tests
             Assert.IsEmpty(pool.UsersInSources);
             //Assert.AreEqual(0, pool.UsersInSources.Count, "Pool is not empty after creation");
 
-            // create a mock object implementing IRepository
+            // create a stub object implementing IRepository
             var repos = Substitute.For<IRepository>();
             
             // specify what property "Users" shall return on call 
