@@ -6,111 +6,66 @@ using UUM.Api.Interfaces;
 
 namespace UUM.Engine.Models
 {
-    /// <summary>
-    ///     User abstraction of his Firstname, Lastname, Emailaddress, Phonenumber, IsEnabled property and LinkedUsers property. 
-    /// </summary>
-    [Serializable]
-    public class UserModel : SavableModelBase<UserModel>, IIdentifiable
-    {
-        public UserModel()
-        {
-            Id = Guid.NewGuid();
-        }
+	/// <summary>
+	///     User abstraction of his Firstname, Lastname, Emailaddress, Phonenumber, IsEnabled property and LinkedUsers property.
+	/// </summary>
+	[Serializable]
+	public class UserModel : SavableModelBase<UserModel>, IIdentifiable
+	{
+		public UserModel()
+		{
+			Id = Guid.NewGuid();
+			IsEnabled = true;
+			LinkedUsers = new ObservableCollection<Guid>();
+		}
+		
 
-        protected UserModel(SerializationInfo info, StreamingContext context)
-            : base(info, context)
-        {
-        }
+		protected UserModel(SerializationInfo info, StreamingContext context)
+			: base(info, context)
+		{
+		}
 
-        #region Property: Id
+		#region Property: Id
 
-        public static readonly PropertyData IdProperty =
-            RegisterProperty("Id", typeof(Guid));
+		public Guid Id
+		{ get; set; }
+		#endregion
 
-        public Guid Id
-        {
-            get { return GetValue<Guid>(IdProperty); }
-            set { SetValue(IdProperty, value); }
-        }
+		#region Property: FirstName
 
-        #endregion
+		public string FirstName
+		{ get; set; }
+		#endregion
 
-        #region Property: FirstName
+		#region Property: LastName
 
-        public static readonly PropertyData FirstNameProperty =
-            RegisterProperty("FirstName", typeof (string));
+		public string LastName
+		{ get; set; }
+		#endregion
 
-        public string FirstName
-        {
-            get { return GetValue<string>(FirstNameProperty); }
-            set { SetValue(FirstNameProperty, value); }
-        }
+		#region Property: EmailAddress
 
-        #endregion
+		public string EmailAddress
+		{ get; set; }
+		#endregion
 
-        #region Property: LastName
+		#region Property: PhoneNumber
 
-        public static readonly PropertyData LastNameProperty =
-            RegisterProperty("LastName", typeof (string));
+		public string PhoneNumber
+		{ get; set; }
+		#endregion
 
-        public string LastName
-        {
-            get { return GetValue<string>(LastNameProperty); }
-            set { SetValue(LastNameProperty, value); }
-        }
+		#region Property: IsEnabled
 
-        #endregion
 
-        #region Property: EmailAddress
+		public bool IsEnabled
+		{ get; set; }
+		#endregion
 
-        public static readonly PropertyData EmailAddressProperty =
-            RegisterProperty("EmailAddress", typeof (string));
+		#region Property: LinkedUsers
 
-        public string EmailAddress
-        {
-            get { return GetValue<string>(EmailAddressProperty); }
-            set { SetValue(EmailAddressProperty, value); }
-        }
-
-        #endregion
-
-        #region Property: PhoneNumber
-
-        public static readonly PropertyData PhoneNumberProperty =
-            RegisterProperty("PhoneNumber", typeof (string));
-
-        public string PhoneNumber
-        {
-            get { return GetValue<string>(PhoneNumberProperty); }
-            set { SetValue(PhoneNumberProperty, value); }
-        }
-
-        #endregion
-
-        #region Property: IsEnabled
-
-        public static readonly PropertyData IsEnabledProperty =
-            RegisterProperty("IsEnabled", typeof (bool), true);
-
-        public bool IsEnabled
-        {
-            get { return GetValue<bool>(IsEnabledProperty); }
-            set { SetValue(IsEnabledProperty, value); }
-        }
-
-        #endregion
-
-        #region Property: LinkedUsers
-
-        public static readonly PropertyData LinkedUsersProperty =
-            RegisterProperty("LinkedUsers", typeof(ObservableCollection<Guid>), new ObservableCollection<Guid>());
-
-        public ObservableCollection<Guid> LinkedUsers
-        {
-            get { return GetValue<ObservableCollection<Guid>>(LinkedUsersProperty); }
-            private set { SetValue(LinkedUsersProperty, value); }
-        }
-
-        #endregion
-    }
+		public ObservableCollection<Guid> LinkedUsers
+		{ get; set; }
+		#endregion
+	}
 }
