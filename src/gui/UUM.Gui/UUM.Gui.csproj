@@ -23,7 +23,7 @@
     <SourceAnalysisOverrideSettingsFile>C:\Users\Ahmed-Labib.Wadi\AppData\Roaming\ICSharpCode/SharpDevelop4\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <FodyPath>..\..\packages\Fody.1.18.0.0</FodyPath>
+    <FodyPath>..\..\packages\Fody.1.19.0.0</FodyPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
