@@ -71,6 +71,7 @@ namespace UUM.Engine.Models
 			using (var xmlReader = XmlReader.Create(filePath))
 			{
 				return serializer.Deserialize(xmlReader) as UserPoolModel;
+				
 			}
 		}
 		
@@ -84,6 +85,7 @@ namespace UUM.Engine.Models
 				serializer.Serialize(xmlWriter, this);
 			}
 		}
+		
 		
 		#endregion
 		#endregion
