@@ -70,6 +70,7 @@
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\UserPoolModel.cs" />
     <Compile Include="Models\ProjectModel.cs" />
+    <Compile Include="Models\UserSynchronizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PluginRepository.cs" />
   </ItemGroup>

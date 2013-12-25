@@ -71,26 +71,6 @@ namespace UUM.Engine.Models
 		public ObservableCollection<Guid> LinkedUsers
 		{ get; set; }
 		#endregion
-		
-		public void ReadXml(XmlReader reader)
-		{
-			
-			reader.ReadStartElement();
-			FirstName = reader.ReadElementString("FirstName");
-			LastName = reader.ReadElementString("LastName");
-			IsEnabled = Convert.ToBoolean(reader.ReadElementString("Active"));
-			reader.MoveToContent();
-			bool empty = reader.IsEmptyElement;
-			reader.ReadStartElement("Plugin");
-				while(reader.IsStartElement("User"))
-				{
-					
-					UserModel user = new UserModel();
-					user.ReadXml(reader);
-					Counter++;
-				}
-				reader.ReadEndElement();
-			}
 			
 		}
 }
