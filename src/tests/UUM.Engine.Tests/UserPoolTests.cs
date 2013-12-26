@@ -41,14 +41,7 @@ namespace UUM.Engine.Tests
             
             //TODO:
             // Perform synchronization from the stub
-            //UserSynchronizer.Synchronize(pool, repos); // prefer this for SRP
-            //pool.Synchronize();
-
-            //UserPoolModel.Load("TestFiles/Test2.xml");
-            //Assert.AreEqual(1,pool.Counter);
-            
-                            
-            // UserSynchronizer.Synchronize(pool, repos);
+             // prefer this for SRP
 
             Assert.IsNotEmpty(pool.UsersInSources);
         }

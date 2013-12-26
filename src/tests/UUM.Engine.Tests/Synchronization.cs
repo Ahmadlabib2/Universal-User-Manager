@@ -7,7 +7,12 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections;
+using NSubstitute;
 using NUnit.Framework;
+using UUM.Api.Interfaces;
+using UUM.Api.Models;
+using UUM.Engine.Models;
 
 namespace UUM.Engine.Tests
 {
@@ -15,9 +20,14 @@ namespace UUM.Engine.Tests
 	public class Synchronization
 	{
 		[Test]
-		public void TestMethod()
+		public void Synchronizing()
 		{
-			// TODO: Add your test.
+			var pool = new UserPoolModel();
+			 repos = Substitute.For<IRepository>();
+			repos.Users.Returns(x => new UserInSourceBase[] { new StubUserInSource() });
+			
+			UserSynchronizer.Synchronize(pool, repos);
+			Assert.AreEqual(2,pool.Counter); 
 		}
 	}
 }

@@ -9,6 +9,8 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Xml;
+
+using Catel.Data;
 using UUM.Api.Models;
 
 namespace UUM.Engine.Models
@@ -35,8 +37,7 @@ namespace UUM.Engine.Models
 		public void Synchronize(UserPoolModel userpool, String repository)
 		{
 			
-			UserPoolModel.Load(repository);
-			
+			userpool = UserPoolModel.Load(repository);
 		}
 		
 		public void ReadXml(XmlReader reader)
