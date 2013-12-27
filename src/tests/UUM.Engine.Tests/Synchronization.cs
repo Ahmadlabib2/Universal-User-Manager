@@ -23,10 +23,12 @@ namespace UUM.Engine.Tests
 		public void Synchronizing()
 		{
 			var pool = new UserPoolModel();
-			 repos = Substitute.For<IRepository>();
+			var repos = Substitute.For<IRepository>();
+			var synchronizer = new UserSynchronizer();
+			
 			repos.Users.Returns(x => new UserInSourceBase[] { new StubUserInSource() });
 			
-			UserSynchronizer.Synchronize(pool, repos);
+			synchronizer.Synchronize(pool, repos);
 			Assert.AreEqual(2,pool.Counter); 
 		}
 	}

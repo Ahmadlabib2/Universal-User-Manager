@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Xml;
 
 using Catel.Data;
+using UUM.Api.Interfaces;
 using UUM.Api.Models;
 
 namespace UUM.Engine.Models
@@ -34,10 +35,10 @@ namespace UUM.Engine.Models
 		
 		public ObservableCollection<UserInSourceBase> UserinSource;
 		
-		public void Synchronize(UserPoolModel userpool, String repository)
+		public void Synchronize(UserPoolModel userpool, IRepository repository)
 		{
 			
-			userpool = UserPoolModel.Load(repository);
+			//userpool = UserPoolModel.Load(repository);
 		}
 		
 		public void ReadXml(XmlReader reader)
