@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectModelTests.cs" />
     <Compile Include="Serialization.cs" />
     <Compile Include="StubUserInSource.cs" />
     <Compile Include="Synchronization.cs" />
