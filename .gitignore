@@ -1,8 +1,8 @@
 /build
 bin
 obj
+*.pdb
 /src/packages/Catel.*
-/src/packages/Fody.*
 /src/packages/log4net.*
 /src/packages/NUnit*
 /src/packages/NSubstitute*
