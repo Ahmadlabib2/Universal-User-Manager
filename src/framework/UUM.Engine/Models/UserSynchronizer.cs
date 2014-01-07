@@ -43,26 +43,27 @@ namespace UUM.Engine.Models
 		
 		public void ReadXml(XmlReader reader)
 		{
-			UserModel usermodel = new UserModel();
-			reader.ReadStartElement();
+            UserModel usermodel = new UserModel();
+            reader.ReadStartElement();
 			usermodel.FirstName = reader.ReadElementString("FirstName");
 			usermodel.LastName = reader.ReadElementString("LastName");
 			usermodel.IsEnabled = Convert.ToBoolean(reader.ReadElementString("Active"));
 			reader.MoveToContent();
 			bool empty = reader.IsEmptyElement;
 			reader.ReadStartElement("Plugin");
-				while(reader.IsStartElement("User"))
-				{
+			while(reader.IsStartElement("User"))
+			{
 					
 					
 					
-					UsersInPool.Add(usermodel);
+				UsersInPool.Add(usermodel);
 					
-				//	UserSynchronizer synchronize();
-					ReadXml(reader);
-					Counter++;
-				}
-				reader.ReadEndElement();
+			    //	UserSynchronizer synchronize();
+                //FIXME: uncommented because it's an endless recursion!
+				// ReadXml(reader);
+				Counter++;
 			}
+			reader.ReadEndElement();
+		}
 	}
 }
